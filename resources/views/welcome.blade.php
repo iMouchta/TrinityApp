@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="row">
         <h1>
-            TrinityApp
+            Gestor de eventos
         </h1>
     </div>
 @endsection
