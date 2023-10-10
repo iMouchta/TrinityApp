@@ -1,22 +1,35 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout/plantilla')
 
-        <title>Laravel</title>
+@section('titulo', 'TrinityApp')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+@section('contenido')
+    <br>
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">Pagina de inicio</h5>
+            <p class="card-text">Desarrollo en progreso, se mostraran todos los eventos a continuacion
+                funcionalidad para registrar nuevo evento ya realizado</p>
+            <a href="{{ route('Evento.create') }}" class="btn btn-primary">Registrar Evento</a>
+        </div>
+    </div>
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-        <h1>Holamundo</h1>
-    </head>
-    <body>
-        
-    </body>
-</html>
+    <br>
+    @foreach ($datos as $item)
+    <?php /*$x = $item->USUARIOS; 
+          $y = "false";
+          if ($x > 0){
+            $y ="true";
+          }
+    */?>
+        <div class="card" style="width: 20%;">
+            <div class="card-body">
+                <h5 class="card-title">{{ $item->TITULO }}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {{ $item->NOMBRE }}</li>
+                    <li class="list-group-item">{{ $item->MODALIDAD }}</li>
+                </ul>
+            </div>
+        </div>
+    @endforeach
+    </div>
+@endsection

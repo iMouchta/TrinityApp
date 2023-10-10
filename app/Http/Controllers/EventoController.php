@@ -9,13 +9,14 @@ class EventoController extends Controller
 {
     public function index()
     {
-        //
+        $datos = Evento::all();
+        return view('welcome', compact('datos'));
     }
 
 
     public function create()
     {
-        //
+        return view('agregarEvento');
     }
 
     public function store(Request $request)
