@@ -1,7 +1,6 @@
 @extends('layout/plantilla')
 
-@section('registro')
-
+@section('patrocinadores')
 <div class="container">
 <div class="row">
     <form>
@@ -105,4 +104,3 @@
 </div>
 </div>
 @endsection
-

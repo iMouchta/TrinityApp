@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('registro');
-});
-
-Route::get('/', function () {
+Route::get('/registro', function () {
     return view('registro');
 })->name('registro');
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/anuncios', function () {
+    return view('anuncios');
+})->name('anuncios');
+
+Route::get('/patrocinadores', function () {
+    return view('patrocinadores');
+})->name('patrocinadores');
