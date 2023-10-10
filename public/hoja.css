@@ -1,0 +1,106 @@
+body{
+    background-color:aliceblue;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
+
+.navbar {
+    font-size: 40px; /* Tamaño de fuente personalizado */
+    background-blend-mode: multiply;
+    background-color: initial;
+    background-image: url(https://www.umss.edu.bo/wp-content/uploads/2021/11/5650360.png),linear-gradient(56deg,#002a4c 76%,#e30613 100%);
+}
+.container{
+    margin-top: 40px;
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    border-radius: 5px; /* Borde redondeado del contenedor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
+    padding: 20px; /* Espaciado interno del contenido dentro del contenedor */  
+}
+
+.drop-container {
+    /* margin-top: 30px; */
+    border-radius: 5px;
+    border: 2px dashed #ccc;
+    padding: 120px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    height: 300px;
+    width: 500px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#fileList {
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+
+form {
+    margin: 0;
+    padding: 0;
+  }
+  
+  form > * {
+    margin: 20px 0;
+  }
+
+label{
+    font-weight: 700;
+}
+
+/* posicionamiento de los botones */
+.botones {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Estilos para el botón de Aceptar */
+.accept-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.accept-button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para el botón de Rechazar */
+.reject-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reject-button:hover {
+    background-color: #d32f2f;
+}
+
+
+
+
