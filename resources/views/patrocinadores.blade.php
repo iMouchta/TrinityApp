@@ -4,7 +4,7 @@
 <div class="container">
 <div class="row">
     <form>
-        <h1><center>FORMULARIO DE REGISTRO</center></h1>  
+        <h1><center>REGISTRO DE PATROCINADORES</center></h1>  
             <div class="row">
                 <div class="col">
                     <label for="formGroupExampleInput">Nombre:</label>
@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <label for="formGroupExampleInput">Modalidad:</label>
                     <select id="inputState" class="form-control">
@@ -41,9 +41,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <div class="col">
                     <div class="row">
                         <div class="col">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
             <div class="form-group">
