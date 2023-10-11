@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="row">
         <h1>
-            TrinityApp
+            Trinity App
         </h1>
     </div>
 @endsection
