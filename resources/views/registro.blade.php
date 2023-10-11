@@ -5,15 +5,20 @@
 <div class="container">
 <div class="row">
     <form>
-        <h1><center>FORMULARIO DE REGISTRO</center></h1>  
+        <h1><center>CREAR EVENTO</center></h1>  
             <div class="row">
                 <div class="col">
                     <label for="formGroupExampleInput">Nombre:</label>
                     <input type="text" class="form-control" placeholder="Ingrese el nombre del evento">
                 </div>
                 <div class="col">
-                    <label for="formGroupExampleInput2">Direccion:</label>
-                    <input type="text" class="form-control" placeholder="Ingrese la direccion">
+                <label for="formGroupExampleInput">Tipo de Evento:</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Competencia</option>
+                                    <option >Entrenamiento</option>
+                                </select>
+                    
+
                 </div>
             </div>
 
@@ -24,21 +29,20 @@
                         <option selected>Presencial</option>
                         <option >Virtual</option>
                     </select>
+                    
                 </div>
                 <div class="col">
+                    
                     <div class="row">
                         <div class="col">
-                            <label for="formGroupExampleInput">Fecha de Inicio:</label>
-                            <div class="col">
-                                <input type="date" id="fecha" name="fecha">
-                            </div>
+                            <label for="formGroupExampleInput2">Direccion:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la direccion">
                         </div>
 
                         <div class="col">
-                            <label for="formGroupExampleInput">Fecha Final:</label>
-                            <div class="col">
-                                <input type="date" id="fecha" name="fecha">
-                            </div>
+                        <label for="formGroupExampleInput2">Subir Direccion:</label>
+                        <label for="formGroupExampleInput2">Archivo seleccionado:</label>
+                        <button>subir Imagen</button>
                         </div>
                     </div>
                 </div>
@@ -79,24 +83,36 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="formGroupExampleInput">Imagenes del evento:</label>
-                <div class="drop-container" id="dropArea">
-                    <center>Arrastra y suelta archivos aquí.</center>
-                </div>
-                <div id="fileList">
-                    <p>Archivos seleccionados:</p>
-                    <ul></ul>
-                    <p class="center"><input   type="submit" value="Subir archivo"></p>
-                </div>
-                <script src="manejador.js"></script>
-            </div>
+            
 
         <div class="form-group">
             <label for="formGroupExampleInput">Requisitos:</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Describa los requisitos para el evento">
         </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Calendarizacion:</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Describa los requisitos para el evento">
+        </div>
+        <div class="form-group">
+        <div class="col">
+                <label for="formGroupExampleInput">Anadir Patrocinador:</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>patrocinador 1</option>
+                                    <option >patrocindor 2</option>
+                                </select>
+                    
 
+                </div>
+                <div class="col">
+                
+                <label for="formGroupExampleInput2">Subir Afiche:</label>
+                        <label for="formGroupExampleInput2">Archivo seleccionado:</label>
+                </div>
+
+
+
+
+        </div>
         <div class="botones">
             <button class="reject-button">Cancelar</button>
             <button class="accept-button">Registrar</button>

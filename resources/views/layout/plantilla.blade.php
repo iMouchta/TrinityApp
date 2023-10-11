@@ -20,19 +20,19 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('registro') }}">Registro</a>
+              <a class="nav-link" href="{{ route('registro') }}">Evento</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('patrocinadores') }}">patrocinadores</a>
+              <a class="nav-link" href="{{ route('patrocinadores') }}">Patrocinador</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('anuncios') }}">Anuncios</a>
-            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="{{ route('anuncios') }}">Anadir-patrocinadores</a>
+            </li> -->
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Busqueda ..." aria-label="Search">
@@ -48,7 +48,7 @@
       @yield('anuncios')
     
  
-      <!-- <footer class="bg-white text-white text-center py-3">
+      <footer class="bg-white text-white text-center py-3">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-</footer> -->
+</footer>
   
   
 
