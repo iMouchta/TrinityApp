@@ -40,6 +40,7 @@ class eventoRequest extends FormRequest
 
             'afiche'=>'required|file|image',
             'costo'=>'required|numeric|decimal:2|min:0'
+            
         ];
     }
 }
