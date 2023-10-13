@@ -10,7 +10,6 @@ main {
     flex: 1;
 }
 
-
 .navbar {
     font-size: 40px; /* Tamaño de fuente personalizado */
     background-blend-mode: multiply;
@@ -52,15 +51,14 @@ li {
     margin: 5px 0;
 }
 
-
 form {
     margin: 0;
     padding: 0;
-  }
+}
   
-  form > * {
+form > * {
     margin: 20px 0;
-  }
+}
 
 label{
     font-weight: 700;
@@ -101,12 +99,10 @@ label{
     background-color: #d32f2f;
 }
 
-
 .centrar-boton{
     display: flex;
     justify-content: center;
     align-items: center;
-   
 }
 .actividad{
     background-color: #ffffff; /* Color de fondo del contenedor */
@@ -115,26 +111,13 @@ label{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
     padding: 10px; /* Espaciado interno del contenido dentro del contenedor */  
     display: flex;
-    
-    
 }
 .actividad-izquierdo{
-    /* display: flex;
-    justify-content:left; */
     flex: 2; 
-   
 }
 .actividad-derecho{
-    /* display: flex;
-    justify-content:right; */
     flex: 0;
-    
-    
 }
 .actividad-centro{
-    /* display: flex;
-    justify-content:right; */
     flex: 2;
-    
-    
 }
