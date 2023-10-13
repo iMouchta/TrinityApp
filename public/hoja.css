@@ -18,7 +18,7 @@ main {
     background-image: url(https://www.umss.edu.bo/wp-content/uploads/2021/11/5650360.png),linear-gradient(56deg,#002a4c 76%,#e30613 100%);
 }
 .container{
-    margin-top: 40px;
+    margin-top: 20px;
     background-color: #ffffff; /* Color de fondo del contenedor */
     background-color: #ffffff; /* Color de fondo del contenedor */
     border-radius: 5px; /* Borde redondeado del contenedor */
@@ -30,11 +30,11 @@ main {
     /* margin-top: 30px; */
     border-radius: 5px;
     border: 2px dashed #ccc;
-    padding: 120px;
+    padding: 75px;
     background-color: #f9f9f9;
     cursor: pointer;
-    height: 300px;
-    width: 500px;
+    height: 280px;
+    width: 442px;
     font-size: 20px;
     font-weight: 500;
 }
@@ -78,9 +78,9 @@ label{
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 18px;
 }
 
 .accept-button:hover {
@@ -93,7 +93,7 @@ label{
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -102,5 +102,39 @@ label{
 }
 
 
-
-
+.centrar-boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.actividad{
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    border-radius: 5px; /* Borde redondeado del contenedor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
+    padding: 10px; /* Espaciado interno del contenido dentro del contenedor */  
+    display: flex;
+    
+    
+}
+.actividad-izquierdo{
+    /* display: flex;
+    justify-content:left; */
+    flex: 2; 
+   
+}
+.actividad-derecho{
+    /* display: flex;
+    justify-content:right; */
+    flex: 0;
+    
+    
+}
+.actividad-centro{
+    /* display: flex;
+    justify-content:right; */
+    flex: 2;
+    
+    
+}
