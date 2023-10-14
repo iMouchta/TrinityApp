@@ -13,22 +13,34 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar navbar-dark " style="background-color: #e3f2fd;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" >
-          <img class="logo" src="{{ asset('images/icpc.png')}}" width="130" height="130" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="#"   > Logo 
+          
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 10px;" >
               <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('evento') }}">Evento</a>
+
+
+            <li class="nav-item dropdown"   style="margin-right: 10px;" >
+              <a class="nav-link dropdown-toggle"  href="#"  id="navbarDropdown"  role="button"  data-bs-toggle="dropdown" aria-expanded="false" >Evento</a>
+                      
+                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('evento') }}">Crear Evento</a></li>
+                        <li><a class="dropdown-item" href="{{ route('misEventos') }}">Todos los Eventos</a></li>                     
+                       </ul>
+           
+           
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('patrocinador') }}">Patrocinador</a>
+
+
+
+            <li class="nav-item" style="margin-right: 10px;" >
+              <a class="nav-link" href="{{ route('patrocinador') }}" >Patrocinador</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="{{ route('anuncios') }}">Anadir-patrocinadores</a>
@@ -46,6 +58,7 @@
       @yield('evento')
       @yield('patrocinador')
       @yield('anuncios')
+      @yield('misEventos')
      
       <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">
