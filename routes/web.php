@@ -36,3 +36,7 @@ Route::get('/patrocinador', function () {
 Route::get('/misEventos', function () {
     return view('misEventos');
 })->name('misEventos');
+
+
+
+

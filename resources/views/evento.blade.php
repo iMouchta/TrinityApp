@@ -4,23 +4,28 @@
 
 <div class="container">
     <div class="row">
-        <form action="tu_script_php.php" method="post">
-
-                <button type="submit" class="reject-button" >enviar</button>
-        
+        <form action="tu_script_php.php" method="post" id="eventoC">
             <h1><center>Crear evento</center></h1>  
             <div class="row">
                                 <div class="col">
                                         <label for="formGroupExampleInput">Nombre:</label>
                                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingrese el nombre del evento" required minlength="4" maxlength="200">
                                         
+                                        <br>
+                                        <label for="tipoDeCompetencia">Tipo de Competencia:</label>
+                                        <select id="tipoDeCompetencia" class="form-control" placeholder="Seleccione una opcion" required>
+                                        <option selected></option>
+                                        <option value ="Individual" >Individual</option>
+                                        <option value ="Grupal" >Grupal</option> 
+                                       </select>
+                                        
                                 </div>
                 
-                <div class="col">
+                            <div class="col">
 
 
                                             <label for="tipoEvento">Tipo de evento:</label>
-                                            <select id="tipoEvento" class="form-control"required>
+                                            <select id="tipoEvento" class="form-control" placeholder="Seleccione una opcion" required>
                                             <option selected></option>
                                             <option value ="Competecnia">Competencia</option>
                                             <option value ="Entrenamiento">Entrenamiento</option>
@@ -38,70 +43,7 @@
                                                         }
                                                     });
                                                 </script>
-                </div>
-            </div>
-
-
-
-            <div class="row">
-                <div class="col">
-                         <div class="row">
-                                                         <div class="col">
-                                                                        <label for="formGroupExampleInput">Modalidad:</label>
-                                                                        <select id="inputState" class="form-control"required>
-                                                                        <option selected>Presencial</option>
-                                                                        <option >Virtual</option>
-                                                                        </select>
-                                                            </div>
-
-                                                        <div class="col">
-                                                            <label for="formGroupExampleInput2">Dirección:</label>
-                                                            <input type="text" class="form-control" placeholder="Ingrese la direccion" >
-                                                        </div>
-
-                                                    <label for="formGroupExampleInput">Subir imagen de la ubicaion :</label>
-                                                    <div class="drop-container" id="dropArea">
-                                                        <center>Arrastra y suelta la imagen aquí</center>
-                                                        <center>o</center>
-                                                        <div class="centrar-boton"><input  class="btn btn-primary" type="submit" value="Selecciona la imagen"></div>
-                                                    </div>
-                                                    <div id="fileList">
-                                                        <p>Archivos seleccionados:</p>
-                                                        <ul></ul>
-                                                        <p class="center"><input class="btn btn-success" type="submit" value="Ver imagen"></p>                                        </div>
-                                                        <script src="manejador.js"></script>                                                                                    
-                                                     </div>
-                                       
-                            
-                           
-                              </div>
-
-                                    <div class="col">
-                                    <label for="formGroupExampleInput">Instrucciones:</label>
-                                    <p>Nota: Suba una imagen de la ubicación en formato jpg, jpng o png; como en el ejemplo siguente de tamaño  700 px * 700 px.</p>
-                                    <img  src="{{ asset('images/croquis.jpg')}}"  width="442" height="300" alt="">
-                                
-                                    </div> 
-                     </div>
-            </div>
-
-                   
                 
-            <div class="form-group">
-                 <div class="col">
-                      <div class="row">
-                              <div class="col">
-                                    
-                                    <label for="tipoDeCompetencia">Tipo de Competencia:</label>
-                                        <select id="tipoDeCompetencia" class="form-control" required>
-                                        <option selected></option>
-                                        <option value ="Individual" >Individual</option>
-                                        <option value ="Grupal" >Grupal</option> 
-                                       </select>
-                              </div>
-
-
-                            <div class="col">
                                     <div class="row">
                                                 <div class="col">
                                                     <label for="costos">Costo:</label>
@@ -116,6 +58,7 @@
                                                 <label id="labelcosto" style="display: none;" >Costo del evento:</label>
                                                 <input type="number" id="costo" class="form-control" style="display: none;" placeholder="costo del evento" required> 
                                                 <script>
+                                                  var costoInput = document.getElementById("costo");
                                                 document.getElementById("costos").addEventListener("change", function () {
                                                     var costoInput = document.getElementById("costo");
                                                     var labelInput = document.getElementById("labelcosto");
@@ -133,160 +76,133 @@
                                                     this.value = this.value.replace(/\s/g, '').replace(/[^\d]/g, '');
                                                     });
                                                 </script>
-                                         </div>
+                                             </div>
                                      </div>
-                             </div>
-                         </div>
-                  </div>
-             </div>
 
-                     <div class="form-group">
+                             </div>
+                   
+                   
                         <label for="descripcion">Descripción del Evento:</label>
                         <textarea class="form-control" id="descripcion" rows="3" style="resize: none;" required></textarea>
-                    </div>
+                   
 
-                    <div class="form-group">
+                    
                         <label for="requisitos">Requisitos:</label>
                         <input type="text" class="form-control" id="requisitos" placeholder="Describa los requisitos para el evento" required>
-                    </div>
-
-                    <div class="form-group">
+                 
                         <label for="bases">Bases del Evento:</label>
-                        <textarea class="form-control" id="bases" rows="3"  style="resize: none;" ></textarea>
-                    </div>
+                        <textarea class="form-control" id="bases" rows="3"  style="resize: none;" required></textarea >
 
-         
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
+                        <div class="row">          
                                 <div class="col">
-                                    <div class="col">
-                                        <br>
-                                        <label for="formGroupExampleInput">Subir imagen del afiche:</label>
-                                        <div class="drop-container" id="dropArea">
-                                            <center>Arrastra y suelta la imagen aquí</center>
-                                            <center>o</center>
-                                            <div class="centrar-boton"><input  class="btn btn-primary" type="submit" value="Selecciona la imagen"></div>
-                                        </div>
-                                        <div id="fileList">
-                                            <p>Archivos seleccionados:</p>
-                                            <ul></ul>
-                                            <p class="center"><input class="btn btn-success" type="submit" value="Ver imagen"></p>
-                                        </div>
-                                        <script src="manejador.js"></script>
-                                    </div>
+                                <label for="fecha">fecha Inicio:</label>
+                                <input type="date" class="form-control" id="fecha" placeholder="Describa los requisitos para el evento" required>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="col">
-                            <br>
-                            <label for="instruciones">Instrucciones:</label>
-                            <p>Nota: Suba la imagen del afiche en formato jpg, jpng o png; como en el ejemplo siguente de tamaño  700 px * 700 px.</p>
-                            <img  src="{{ asset('images/afiche.png')}}"  width="442" height="300" alt="">
-                        </div>
-                    </div>
+                              <div class="col">
+                                <label for="fechaf">fecha fin:</label>
+                                <input type="date" class="form-control" id="fechaf" placeholder="Describa los requisitos para el evento" required>
+                                </div>
+                         </div>
+                         <div id="calendarioContainer">
+                                    <!-- Aquí se agregarán los campos de calendario y hora dinámicamente -->
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" onclick="agregarCalendario()">Añadir calendario</button>
+                                
+                               
+                                                 <script>
+                                            function resetForm() {
+                                                // Elimina los calendarios dinámicos
+                                                const calendarioContainer = document.getElementById("calendarioContainer");
+                                                calendarioContainer.innerHTML = "";
+
+                                                // Restablece el formulario
+                                                document.getElementById("eventoC").reset();
+                                            }
+
+                                            function agregarCalendario() {
+                                                // Verificar que todos los campos obligatorios estén llenos
+                                                const nombreEvento = document.getElementById("formGroupExampleInput");
+                                                const tipoCompetencia = document.getElementById("tipoDeCompetencia");
+                                                const tipoEvento = document.getElementById("tipoEvento");
+                                                const descripcion = document.getElementById("descripcion");
+                                                const requisitos = document.getElementById("requisitos");
+                                                const bases = document.getElementById("bases");
+                                                const fechaInicio = document.getElementById("fecha");
+                                                const fechaFin = document.getElementById("fechaf");
+
+                                                // Campos de calendario y fecha
+                                                const calendarioInputs = document.querySelectorAll("input[name='calendario[]']");
+                                                const fechaInputs = document.querySelectorAll("input[name='fecha[]']");
+
+                                                // Verificar que todos los campos tengan un valor
+                                                if (
+                                                    nombreEvento.value === "" ||
+                                                    tipoCompetencia.value === "" ||
+                                                    tipoEvento.value === "" ||
+                                                    descripcion.value === "" ||
+                                                    requisitos.value === "" ||
+                                                    bases.value === "" ||
+                                                    fechaInicio.value === "" ||
+                                                    fechaFin.value === ""
+                                                ) {
+                                                    alert("Por favor, complete todos los campos antes de agregar calendarios.");
+                                                    return; // No se pueden agregar calendarios si hay campos vacíos
+                                                }
+
+                                                // Verificar que los campos de calendario y fecha estén llenos
+                                                for (let i = 0; i < calendarioInputs.length; i++) {
+                                                    if (calendarioInputs[i].value === "" || fechaInputs[i].value === "") {
+                                                        alert("Por favor, complete los campos de calendario y fecha antes de agregar otro calendario.");
+                                                        return; // No se pueden agregar calendarios si hay campos de calendario o fecha vacíos
+                                                    }
+                                                }
+
+                                                // Si todos los campos obligatorios están llenos, agrega un nuevo calendario
+                                                const nuevoCalendario = document.createElement("div");
+                                                nuevoCalendario.classList.add("row");
+
+                                                // Campo de calendario
+                                                const calendarioInput = document.createElement("div");
+                                                calendarioInput.innerHTML = `
+                                                    <div class="col">
+                                                        <label for="calendario">Calendario:</label>
+                                                        <input type="text" class="form-control" name="calendario[]" required>
+                                                    </div>
+                                                `;
+
+                                                // Campo de fecha
+                                                const fechaInput = document.createElement("div");
+                                                fechaInput.innerHTML = `
+                                                    <div class="col">
+                                                        <label for="fecha">Fecha:</label>
+                                                        <input type="date" class="form-control" name="fecha[]" required>
+                                                    </div>
+                                                `;
+
+                                                nuevoCalendario.appendChild(calendarioInput);
+                                                nuevoCalendario.appendChild(fechaInput);
+
+                                                const calendarioContainer = document.getElementById("calendarioContainer");
+                                                calendarioContainer.appendChild(nuevoCalendario);
+                                            }
+                                        </script>
+                        </div>                                  
+              </div>
                 
 
 
 
-            
-                            <div class="row">
-                                <label for="formGroupExampleInput">Cronograma de actividades:</label>
-                                <div class="col">
-                                    <ul class="list-group">
+                
+                            <div>               
+                            <center>                   
+                    <button type="submit" class="btn btn-success"  >Registrar</button>
+                    <button type="reset" class="btn btn-danger" form="eventoC"  onclick="resetForm()">Cancelar</button>
+                    </center> </div>    
 
-                                        <li class="list-group-item">
-                                            <div class="actividad">
-                                                <div class="actividad-izquierdo">
-                                                    <input type="text" class="form-control" style="width: 100%;"placeholder="Inicio">
-                                                </div>  
-                                                <div class="actividad-derecho">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <input class="btn btn-outline-primary btn-sm" type="date" id="fecha" name="fecha">
-                                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="actividad">
-                                                <div class="actividad-izquierdo">
-                                                    <input type="text" class="form-control" style="width: 100%;"placeholder="Fase 1">
-                                                </div>  
-                                                <div class="actividad-derecho">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <input class="btn btn-outline-primary btn-sm" type="date" id="fecha" name="fecha">
-                                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="actividad">
-                                                <div class="actividad-izquierdo">
-                                                    <input type="text" class="form-control" style="width: 100%;"placeholder="Fase 2">
-                                                </div>  
-                                                <div class="actividad-derecho">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <input class="btn btn-outline-primary btn-sm" type="date" id="fecha" name="fecha">
-                                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="actividad">
-                                                <div class="actividad-izquierdo">
-                                                    <input type="text" class="form-control" style="width: 100%;"placeholder="Fase 3">
-                                                </div>  
-                                                <div class="actividad-derecho">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <input class="btn btn-outline-primary btn-sm" type="date" id="fecha" name="fecha">
-                                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="actividad">
-                                                <div class="actividad-izquierdo">
-                                                    <input type="text" class="form-control" style="width: 100%;"placeholder="Fase 4">
-                                                </div>  
-                                                <div class="actividad-derecho">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <input class="btn btn-outline-primary btn-sm" type="date" id="fecha" name="fecha">
-                                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                        </li>
-                                        
-                                        <li class="list-group-item">
-                                            <div class="actividad">
-                                                <div class="actividad-izquierdo">
-                                                    <input type="text" class="form-control" style="width: 100%;"placeholder="Ingrese el nombre del evento  ">
-                                                </div>  
-                                                <div class="actividad-derecho">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <input class="btn btn-outline-primary btn-sm" type="date" id="fecha" name="fecha">
-                                                        <button type="button" class="btn btn-success">Agregar</button>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-         
-                <button type="submit" class="reject-button" >Registrar</button>
-                <button class="reject-button">Cancelar</button>
-           
+                                
+              
         </form>
     </div>
 </div>
