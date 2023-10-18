@@ -121,3 +121,11 @@ label{
 .actividad-centro{
     flex: 2;
 }
+
+.drop-container__result--active {
+	background-color: rgba(82, 81, 79, 0.314);
+}
+
+.hidden{
+    display:none;
+}
