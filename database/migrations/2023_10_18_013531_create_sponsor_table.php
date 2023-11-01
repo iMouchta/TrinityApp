@@ -9,14 +9,14 @@ class CreateSponsorTable extends Migration
     public function up()
     {
         Schema::create('sponsor', function (Blueprint $table) {
-            $table->integer('SPONSOR_ID')->unsigned();
-            $table->string('SPONSOR_NOMBRE', 255);
-            $table->string('SPONSOR_ENLACE', 1024)->nullable();
-            $table->string('SPONSOR_LOGO', 1024)->nullable();
+            $table->increments('SPONSOR_ID'); // Campo ID autoincremental
+            $table->string('SPONSOR_NOMBRE', 1024);
+            $table->string('SPONSOR_ENLACE', 1024)->nullable(); // Campo de enlace (puede ser nulo)
+            $table->string('SPONSOR_LOGO', 1024)->nullable(); // Campo de logo (puede ser nulo)
+            $table->timestamps();
 
-            // Definir la clave primaria y la clave única
-            $table->primary(['SPONSOR_ID', 'SPONSOR_NOMBRE']);
-            $table->unique(['SPONSOR_ID', 'SPONSOR_NOMBRE'], 'SPONSOR_PK');
+            // Definir la llave primaria
+            $table->unique('SPONSOR_ID', 'SPOSOR_PK');
         });
     }
 
@@ -25,3 +25,4 @@ class CreateSponsorTable extends Migration
         Schema::dropIfExists('sponsor');
     }
 }
+

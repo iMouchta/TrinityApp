@@ -9,16 +9,21 @@ class CreateEventoTable extends Migration
     public function up()
     {
         Schema::create('evento', function (Blueprint $table) {
-            $table->integer('EVENTO_ID')->unsigned();
-            $table->string('EVENTO_NOMBRE', 255);
-            $table->string('EVENTO_TIPO', 255);
+            $table->increments('EVENTO_ID'); // Campo ID autoincremental
+            $table->string('EVENTO_NOMBRE', 1024);
+            $table->string('EVENTO_TIPO', 1024);
+            $table->mediumText('EVENTO_DESCRIPCION');
+            $table->string('EVENTO_MODALIDAD', 1024);
+            $table->smallInteger('EVENTO_NOTIFICACIONES');
+            $table->smallInteger('EVENTO_USUARIOS');
+            $table->string('EVENTO_UBICACION', 1024)->nullable();
+            $table->mediumText('EVENTO_REQUISITOS')->nullable();
             $table->float('EVENTO_COSTO')->nullable();
+            $table->mediumText('EVENTO_BASES')->nullable();
             $table->timestamps();
 
-
-            // Definir la clave primaria compuesta
-            $table->primary(['EVENTO_ID', 'EVENTO_NOMBRE']);
-            $table->unique(['EVENTO_ID', 'EVENTO_NOMBRE'], 'EVENTO_PK');
+            // Definir la llave primaria
+            $table->unique('EVENTO_ID', 'EVENTO_PK');
         });
     }
 
@@ -27,3 +32,4 @@ class CreateEventoTable extends Migration
         Schema::dropIfExists('evento');
     }
 }
+
