@@ -47,4 +47,10 @@ class EventoController extends Controller
             return redirect()->route('formulario')->withErrors($e->validator->errors());
         }
     }
+
+    public function misEventos()
+    {
+        $eventos = Evento::all(); // Obtener eventos desde la base de datos
+        return view('misEventos')->with('eventos', $eventos);
+    }
 }
