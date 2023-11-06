@@ -30,7 +30,7 @@
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('evento') }}">Crear Evento</a></li>
-                            <li><a class="dropdown-item" href="">Todos los Eventos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('misEventos') }}">Todos los Eventos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">

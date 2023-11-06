@@ -50,7 +50,7 @@ class EventoController extends Controller
 
     public function misEventos()
     {
-        $eventos = Evento::all(); // Obtener eventos desde la base de datos
+        $eventos = Evento::all();
         return view('misEventos')->with('eventos', $eventos);
     }
 }

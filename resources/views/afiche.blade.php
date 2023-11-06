@@ -2,17 +2,29 @@
 
 @section('afiche')
 <form action="{{ route('afiche') }}" method="POST" enctype="multipart/form-data">
-    <div class="row">
-                                <label for="formGroupExampleInput2">Subir Afiche</label>
-                                <div class="col">
-                                    <input type="file" name="file" id="file" style="display: none;">
-                                    <button class="btn btn-primary" type="button" onclick="document.getElementById('file').click()">Selecciona la imagen</button>
-                                </div>
-                                
-                                <label for="formGroupExampleInput2">Archivos seleccionados:</label>
-                                <p id="selectedFile"> </p>
+    @csrf
 
-                                <p class="center"><input class="btn btn-success" type="submit" value="Subir Archivo"></p>
-                            </div>
-                            </form>
+    <div class="mb-3">
+        <label for="banner" class="form-label">Banner:</label>
+        <input type="file" class="form-control" id="banner" name="banner">
+    </div>
+
+    <div class="mb-3">
+        <label for="icono" class="form-label">Icono del evento:</label>
+        <input type="file" class="form-control" id="icono" name="icono">
+    </div>
+
+    <div class="mb-3">
+        <label for="afiche" class="form-label">Afiche oficial del evento:</label>
+        <input type="file" class="form-control" id="afiche" name="afiche">
+    </div>
+
+    <div class="mb-3">
+        <label for="imagenesDiversas" class="form-label">Imágenes diversas:</label>
+        <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
 @endsection
