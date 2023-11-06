@@ -34,7 +34,7 @@
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
-                        <a class="nav-link active" aria-current="page" href="{{ route('afiche') }}">Afiche</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('imagen') }}">Registrar Afiche</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -48,7 +48,7 @@
     @yield('welcome')
     @yield('evento')
     @yield('misEventos')
-    @yield('afiche')
+    @yield('imagen')
 
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">

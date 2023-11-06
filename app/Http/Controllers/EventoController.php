@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use App\Models\Fecha;
+use App\Models\Imagen;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 
 class EventoController extends Controller
 {
@@ -15,7 +14,8 @@ class EventoController extends Controller
     {
         $request->validate([
             'EVENTO_NOMBRE' => 'required|unique:evento',
-        ]);
+           
+            ]);
 
         try {
 
@@ -42,7 +42,7 @@ class EventoController extends Controller
                 }
             }
 
-            return redirect()->route('formulario')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');
+                      return redirect()->route('formulario')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');
         } catch (ValidationException $e) {
             return redirect()->route('formulario')->withErrors($e->validator->errors());
         }
@@ -53,4 +53,5 @@ class EventoController extends Controller
         $eventos = Evento::all();
         return view('misEventos')->with('eventos', $eventos);
     }
-}
+
+ }
