@@ -42,9 +42,9 @@ class EventoController extends Controller
                 }
             }
 
-            return redirect()->route('formulario')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');
+            return redirect()->route('evento')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');
         } catch (ValidationException $e) {
-            return redirect()->route('formulario')->withErrors($e->validator->errors());
+            return redirect()->route('evento')->withErrors($e->validator->errors());
         }
     }
 

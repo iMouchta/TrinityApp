@@ -30,12 +30,22 @@
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('evento') }}">Crear Evento</a></li>
-                            <li><a class="dropdown-item" href="">Todos los Eventos</a></li>
+
+                            <li><a class="dropdown-item" href="{{ route('misEventos') }}">Todos los Eventos</a></li>
+
+                
+                            
+                           
                         </ul>
                     </li>
+
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link active" aria-current="page" href="{{ route('afiche') }}">Afiche</a>
                     </li>
+                  
+
+                 
+
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Busqueda ..." aria-label="Search">
@@ -49,6 +59,8 @@
     @yield('evento')
     @yield('misEventos')
     @yield('afiche')
+    @yield('verTodos')
+   
 
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">

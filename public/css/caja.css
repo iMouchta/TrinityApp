@@ -1,0 +1,20 @@
+.btn-custom {
+    background-color:red;
+    color: rgb(251, 232, 232);
+     display: block; /* Convierte el botón en un bloque para centrarlo */
+    margin: 0 auto;
+}
+.card-body {
+    background-color: #3564dcdb; 
+    border-radius: 10px;
+    
+   
+}
+
+.btn-custom:hover {
+    background-color: green; /* Color de fondo cuando está en estado de hover */
+    color: white; /* Puedes cambiar el color del texto en estado de hover si lo deseas */
+}
+.titulo{
+    background-color: rgb(137, 228, 137);
+}
