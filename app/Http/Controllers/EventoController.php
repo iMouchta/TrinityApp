@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use App\Models\Fecha;
+use App\Models\Imagen;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 
 class EventoController extends Controller
 {
@@ -15,7 +14,8 @@ class EventoController extends Controller
     {
         $request->validate([
             'EVENTO_NOMBRE' => 'required|unique:evento',
-        ]);
+           
+            ]);
 
         try {
 
@@ -50,7 +50,8 @@ class EventoController extends Controller
 
     public function misEventos()
     {
-        $eventos = Evento::all(); // Obtener eventos desde la base de datos
+        $eventos = Evento::all();
         return view('misEventos')->with('eventos', $eventos);
     }
-}
+
+ }

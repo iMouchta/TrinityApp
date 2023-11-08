@@ -1,9 +1,7 @@
 @extends('layout/plantilla')
 
 @section('evento')
-
-    <link rel="stylesheet" href="{{ asset('hoja.css') }}">
-    <div class="container">
+        <div class="container">
         <div class="row">
             <form action="{{ route('guardarEvento') }}" method="post" id="eventoC" enctype="multipart/form-data">
                 @csrf

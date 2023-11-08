@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ImagenController;
+
+
+Route::get('/imagen', [ImagenController::class, 'mostrarFormulario']) -> name('imagen');
+
+Route::post('/guardarImagen', [ImagenController::class, 'guardarImagen'])->name('guardarImagen');
 
 
 Route::get('/', function () { return view('welcome');}) ->name('welcome');
@@ -20,4 +26,6 @@ Route::get('/afiche', function () {return view('afiche');})->name('afiche');
 Route::get('/verTodos', function () {return view('verTodos');})->name('verTodos');
 
 Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->name('formulario');
-Route::post('/guardar-evento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');   
+
+Route::post('/guardar-evento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');
+
