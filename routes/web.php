@@ -20,3 +20,7 @@ Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->n
 
 Route::post('/guardar-evento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');
 
+Route::get('/', function () { return view('home');}) ->name('home');
+
+Route::get('/vista', function () { return view('vista');}) ->name('vista');
+

@@ -8,6 +8,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/hoja.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@yield('titulo')</title>
 
@@ -31,10 +32,12 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('evento') }}">Crear Evento</a></li>
                             <li><a class="dropdown-item" href="{{ route('misEventos') }}">Todos los Eventos</a></li>
+                            
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link active" aria-current="page" href="{{ route('imagen') }}">Registrar Afiche</a>
+                        
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -45,11 +48,12 @@
         </div>
     </nav>
 
-    @yield('welcome')
+    <!-- @yield('welcome') -->
+    @yield('home')
     @yield('evento')
     @yield('misEventos')
     @yield('imagen')
-
+    @yield('vista')
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">
             <div class="row">

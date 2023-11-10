@@ -2,6 +2,7 @@
 
 @section('imagen')
     <div class="container">
+        <h1><center>Registrar Afiche</center></h1>
         <form action="{{ route('guardarImagen') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -12,8 +13,6 @@
                     @endforeach
                 </select>
             </div>
-
-
             <div class="mb-3">
                 <label for="banner" class="form-label">Banner:</label>
                 <input type="file" class="form-control" id="banner" name="banner">
@@ -33,8 +32,12 @@
                 <label for="imagenesDiversas" class="form-label">Imágenes diversas:</label>
                 <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple>
             </div>
-
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <!-- <button type="submit" class="btn btn-primary">Guardar</button> -->
+            <center>
+                <button type="button" class="btn btn-danger">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </center>
         </form>
     </div>
+<br>
 @endsection
