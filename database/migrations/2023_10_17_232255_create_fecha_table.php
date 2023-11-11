@@ -9,7 +9,7 @@ class CreateFechaTable extends Migration
     public function up()
     {
         Schema::create('fecha', function (Blueprint $table) {
-            $table->increments('FECHA_ID'); // Campo ID autoincremental
+            $table->increments('FECHA_ID'); 
             $table->integer('EVENTO_ID')->unsigned(); // Campo de evento (puede ser nulo)
             $table->string('FECHA_NOMBRE', 1024);
             $table->date('FECHA_FECHA');

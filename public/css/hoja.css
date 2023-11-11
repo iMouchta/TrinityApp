@@ -129,3 +129,8 @@ label{
 .hidden{
     display:none;
 }
+
+.requisito-input {
+    margin-bottom: 10px; 
+}
+

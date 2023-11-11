@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use App\Models\Fecha;
-use App\Models\Imagen;
+use App\Models\Requisito;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -26,7 +26,6 @@ class EventoController extends Controller
             $evento->EVENTO_MODALIDAD = $request->input('EVENTO_MODALIDAD');
             $evento->EVENTO_BASES = $request->input('EVENTO_BASES');
             $evento->EVENTO_UBICACION = $request->input('EVENTO_UBICACION');
-            $evento->EVENTO_REQUISITOS = $request->input('EVENTO_REQUISITOS');
             $evento->EVENTO_NOTIFICACIONES = $request->has('EVENTO_NOTIFICACIONES') ? 1 : 0;
             $evento->EVENTO_USUARIOS = $request->has('EVENTO_USUARIOS') ? 1 : 0;
             $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
@@ -37,9 +36,20 @@ class EventoController extends Controller
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
                     $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
-                    $fecha->EVENTO_ID = $evento->id; // Asociar con el evento
+                    $fecha->EVENTO_ID = $evento->id; 
                     $fecha->save();
                 }
+            }
+
+            if($request->has('requisitos.REQUISITO_NOMBRE')){
+                foreach ($request->input('requisitos.REQUISITO_NOMBRE') as $key => $nombreRequisito){
+                    $requisito = new Requisito;
+                    $requisito -> REQUISITO_NOMBRE = $nombreRequisito;
+                    $requisito -> EVENTO_ID = $evento->id;
+                    $requisito -> save();
+
+                }
+
             }
 
                       return redirect()->route('formulario')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');

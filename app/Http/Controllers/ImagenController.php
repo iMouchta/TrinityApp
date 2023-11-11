@@ -11,7 +11,7 @@ class ImagenController extends Controller
 {
     public function mostrarFormulario()
     {
-        $eventos = Evento::all(); // Obtener eventos ya registrados
+        $eventos = Evento::all(); 
         return view('imagen', compact('eventos'));
     }
 
@@ -36,7 +36,7 @@ class ImagenController extends Controller
         if ($request->hasFile('imagenesDiversas')) {
             foreach ($request->file('imagenesDiversas') as $key => $imagen) {
                 $tipo = 'imagenvariada-' . $eventoId . '-' . $key;
-                $this->registrarImagen($tipo, $imagen, $eventoId);
+                $this->registrarImagen('imagen', $imagen, $eventoId);
             }
         }
 
@@ -51,7 +51,6 @@ class ImagenController extends Controller
             ->first();
 
         if ($imagenExistente) {
-            // Si la imagen ya existe, eliminarla antes de guardar la nueva
             Storage::delete($imagenExistente->IMAGEN_IMAGEN);
             $imagenExistente->delete();
         }

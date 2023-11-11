@@ -1,7 +1,7 @@
 @extends('layout/plantilla')
 
 @section('evento')
-        <div class="container">
+    <div class="container">
         <div class="row">
             <form action="{{ route('guardarEvento') }}" method="post" id="eventoC" enctype="multipart/form-data">
                 @csrf
@@ -14,19 +14,25 @@
                         <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}"
                             required minlength="4" maxlength="200">
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
-                        <select name= "EVENTO_MODALIDAD" class="form-control" value="{{ old('EVENTO_MODALIDAD') }}" required>
+                        <select name= "EVENTO_MODALIDAD" class="form-control" value="{{ old('EVENTO_MODALIDAD') }}"
+                            required>
                             <option value ="Individual">Individual</option>
                             <option value ="Grupal">Grupal</option>
                         </select>
+
                         <label for="EVENTO_COSTO" class="form-label">Costo:</label>
                         <input type="number" class="form-control" name="EVENTO_COSTO" value="{{ old('EVENTO_COSTO') }}">
                         <label for="EVENTO_TIPO" class="form-label">Tipo de evento:</label>
-                        <input type="text" class="form-control" name="EVENTO_TIPO" required minlength="4"
-                            maxlength="200">
+                        <select name= "EVENTO_TIPO" class="form-control" value="{{ old('EVENTO_TIPO') }}" required>
+                            <option value ="Entrenamiento">Rondas de entrenamiento</option>
+                            <option value ="Reclutamiento">Reclutamiento</option>
+                            <option value ="Clasificatorios">Clasificatorios</option>
+                            <option value ="Taller">Taller de programacion competitiva</option>
+                            <option value ="Competencias">Competencias</option>
+                            <option value ="Especial">Especial</option>
+                        </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
                         <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3" required></textarea>
-                        <label for="EVENTO_REQUISITOS" class="form-label">Requisitos:</label>
-                        <textarea class="form-control" name= "EVENTO_REQUISITOS" rows="3" required></textarea>
                         <label for="EVENTO_BASE" class="form-label">Bases del Evento:</label>
                         <textarea class="form-control" name="EVENTO_BASE" rows="3" style="resize: none;" required></textarea>
                         <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
@@ -35,30 +41,30 @@
                     </div>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="1" id="EVENTO_NOTIFICACIONES"
-                        name="EVENTO_NOTIFICACIONES">
-                    <label class="form-check-label" for="EVENTO_NOTIFICACIONES">
-                        ¿Desea que los registrados reciban notifiaciones?
-                    </label>
+                <div>
+                    <div id="requisitos-container">
+                        <label for="requisitos-container" class="form-label">Requisitos:</label>
+                        <div class="requisito-input">
+                            <div class ="row g-1">
+                                <input type="text" class="form-control" name="requisitos[REQUISITO_NOMBRE][]">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="agregarRequisito()">Agregar
+                        Requisito</button>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="1" id="EVENTO_USUARIOS"
-                        name="EVENTO_USUARIOS">
-                    <label class="form-check-label" for="EVENTO_USUARIOS">
-                        ¿Desea que a los registrados se les cree una cuenta?
-                    </label>
-                </div>
+
+
 
                 <div>
                     <div id="fechas-container">
+                        <label for="fecha-input" class="form-label">Cronograma:</label>
                         <div class="fecha-input">
-                            <label for="fechas-container" class="form-label">Cronograma:</label>
-                            <br>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Fecha Inicio">
+                                        placeholder="Actividad Inicial">
                                 </div>
                                 <div class="col-auto">
                                     <input type="date" class="form-control" name="fechas[FECHA_FECHA][]"
@@ -73,7 +79,7 @@
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Fecha Fin">
+                                        placeholder="Actividad Final">
                                 </div>
                                 <div class="col-auto">
                                     <input type="date" class="form-control" name="fechas[FECHA_FECHA][]"
@@ -91,6 +97,20 @@
                     <button type="button" class="btn btn-primary" onclick="agregarFecha()">Agregar Fecha</button>
                 </div>
 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="EVENTO_NOTIFICACIONES"
+                        name="EVENTO_NOTIFICACIONES">
+                    <label class="form-check-label" for="EVENTO_NOTIFICACIONES">
+                        ¿Desea que los registrados reciban notifiaciones?
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="EVENTO_USUARIOS"
+                        name="EVENTO_USUARIOS">
+                    <label class="form-check-label" for="EVENTO_USUARIOS">
+                        ¿Desea que a los registrados se les cree una cuenta?
+                    </label>
+                </div>
 
 
                 @if ($errors->any())
@@ -122,11 +142,9 @@
                     var container = document.getElementById('fechas-container');
                     var div = document.createElement('div');
                     div.className = 'fecha-input';
-
-                    // Estructura interna con el mismo formato que el original, incluyendo el botón de eliminar
                     div.innerHTML = '<div class="row g-4 align-items-center">' +
                         '<div class="col-auto" style="margin-bottom:3px">' +
-                        '<input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]" placeholder="Nombre de la fecha">' +
+                        '<input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]" placeholder="Actividad">' +
                         '</div>' +
                         '<div class="col-auto">' +
                         '<input type="date" class="form-control" name="fechas[FECHA_FECHA][]" placeholder="Fecha">' +
@@ -143,9 +161,29 @@
                 }
 
                 function eliminarFecha(element) {
-                    // Obtén el div padre (contenedor de la fila) y elimínalo
                     var fila = element.parentNode.parentNode;
                     fila.parentNode.removeChild(fila);
+                }
+
+
+                function agregarRequisito() {
+                    var container = document.getElementById('requisitos-container');
+                    var div = document.createElement('div');
+                    div.className = 'requisito-input';
+                    div.innerHTML = '<div class="row g-1">' +
+                        '<div class="col-md-11">' +
+                        '<input type="text" class="form-control" name="requisitos[REQUISITO_NOMBRE][]">' +
+                        '</div>' +
+                        '<div class="col-auto">' +
+                        '<button type="button" class="btn btn-danger" onclick="eliminarElemento(this)">Eliminar</button>' +
+                        '</div>' +
+                        '</div>';
+                    container.appendChild(div);
+                }
+
+                function eliminarElemento(elemento) {
+                    var fila = elemento.closest('.requisito-input');
+                    fila.remove();
                 }
             </script>
 

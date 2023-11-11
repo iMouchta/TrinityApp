@@ -13,10 +13,8 @@ class CreatePatrocinioTable extends Migration
             $table->integer('EVENTO_ID')->unsigned();
             $table->timestamps();
 
-            // Definir la llave primaria
             $table->primary(['SPONSOR_ID', 'EVENTO_ID']);
 
-            // Definir las claves foráneas
             $table->foreign('SPONSOR_ID')
                 ->references('SPONSOR_ID')
                 ->on('sponsor')
