@@ -3,7 +3,7 @@
 @section('evento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('guardarEvento') }}" method="post" id="eventoC" enctype="multipart/form-data">
+            <form action="{{ route('guardarEvento') }}" method="post" id="formulario" enctype="multipart/form-data">
                 @csrf
                 <h1>
                     <center>Crear evento</center>
@@ -54,8 +54,6 @@
                     <button type="button" class="btn btn-primary" onclick="agregarRequisito()">Agregar
                         Requisito</button>
                 </div>
-
-
 
                 <div>
                     <div id="fechas-container">
@@ -130,11 +128,10 @@
                 @endif
 
                 <center>
-                    <button type="button" class="btn btn-danger">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Registar</button>
+                    <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
                 </center>
-
-
+                
             </form>
 
             <script>
@@ -192,3 +189,56 @@
     </div>
     <br>
 @endsection
+
+@section('scripts')
+<script>
+    $('#formulario').on('submit' ,function(e){ 
+        e.preventDefault(); 
+        Swal.fire({
+        title: "¿Estas seguro de registrar la información?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Registrar" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Registrado",
+            text: "Se registro correctamente.",
+            icon: "success",
+            allowOutsideClick: false
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/welcome';
+            }
+            });
+        }
+        });
+    })
+
+    $('#cancelar').on('click', function() {
+        Swal.fire({
+        title: "¿Estas Seguro que deseas Salir?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, salir del registro" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/welcome';
+        }
+        });
+    });
+</script>
+@endsection
+
+
+
+
+

@@ -2,9 +2,9 @@
 
 @section('sponsor')
     <div class="container">
-        <form action="{{ route('guardarSponsor') }}" method="POST" enctype="multipart/form-data">
+        <form  id="formulario" action="{{ route('guardarSponsor') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            <h1><center>Registrar Sponsor</center></h1>
             <div class="mb-3">
                 <label for="SPONSOR_NOMBRE" class="form-label">Nombre del Sponsor:</label>
                 <input type="text" class="form-control" name="SPONSOR_NOMBRE" required>
@@ -28,8 +28,59 @@
                     @endforeach
                 </select>
             </div> --}}
-
-            <button type="submit" class="btn btn-primary">Guardar Sponsor</button>
+            <center>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
+            </center>
         </form>
     </div>
 @endsection
+
+@section('scripts')
+<script>
+    $('#formulario').on('submit' ,function(e){ 
+        e.preventDefault(); 
+        Swal.fire({
+        title: "¿Estas seguro de registrar la información?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Registrar" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Registrado",
+            text: "Se registro correctamente.",
+            icon: "success",
+            allowOutsideClick: false
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/welcome';
+            }
+            });
+        }
+        });
+    })
+
+    $('#cancelar').on('click', function() {
+        Swal.fire({
+        title: "¿Estas Seguro que deseas Salir?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, salir del registro" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/welcome';
+        }
+        });
+    });
+</script>
+@endsection
+

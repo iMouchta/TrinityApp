@@ -5,6 +5,7 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\SponsorController;
 
+use App\Http\Controllers\MainController;
 
 Route::get('/imagen', [ImagenController::class, 'mostrarFormulario']) -> name('imagen');
 
@@ -24,3 +25,4 @@ Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->n
 
 Route::post('/guardarEvento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');
 
+Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
