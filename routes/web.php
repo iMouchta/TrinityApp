@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\OrganizadorController;
 use App\Http\Controllers\SponsorController;
 
 
@@ -13,6 +14,11 @@ Route::post('/guardarImagen', [ImagenController::class, 'guardarImagen'])->name(
 Route::get('/sponsor', [SponsorController::class, 'mostrarFormulario']) -> name('sponsor');
 
 Route::post('/guardarSponsor', [SponsorController::class, 'guardarSponsor'])->name('guardarSponsor');
+
+Route::get('/organizador', [OrganizadorController::class, 'formularioOrganizador']) -> name('organizador');
+
+Route::post('/guardarOrganizador', [OrganizadorController::class, 'guardarOrganizador'])->name('guardarOrganizador');
+
 
 Route::get('/', function () { return view('welcome');}) ->name('welcome');
 
