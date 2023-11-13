@@ -31,6 +31,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('evento') }}">Crear Evento</a></li>
                             <li><a class="dropdown-item" href="{{ route('misEventos') }}">Todos los Eventos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('eventoDetalle') }}">Ver eventos a detalle</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
@@ -60,6 +61,7 @@
     @yield('imagen')
     @yield('sponsor')
     @yield('organizador')
+    @yield('eventoDetalle')
     @yield('contacto')
 
     <footer class="bg-white text-white text-center py-3">
