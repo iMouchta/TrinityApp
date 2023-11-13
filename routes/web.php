@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImagenController;
@@ -18,6 +19,10 @@ Route::post('/guardarSponsor', [SponsorController::class, 'guardarSponsor'])->na
 Route::get('/organizador', [OrganizadorController::class, 'formularioOrganizador']) -> name('organizador');
 
 Route::post('/guardarOrganizador', [OrganizadorController::class, 'guardarOrganizador'])->name('guardarOrganizador');
+
+Route::get('/contacto', [ContactoController::class, 'formularioContacto']) -> name('contacto');
+
+Route::post('/guardarContacto', [ContactoController::class, 'guardarContacto'])->name('guardarContacto');
 
 
 Route::get('/', function () { return view('welcome');}) ->name('welcome');

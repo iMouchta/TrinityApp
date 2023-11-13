@@ -36,7 +36,9 @@ class EventoController extends Controller
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
                     $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
-                    $fecha->EVENTO_ID = $evento->id; 
+                    $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
+                    $fecha->EVENTO_ID = $evento->id;
+                    
                     $fecha->save();
                 }
             }

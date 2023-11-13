@@ -42,6 +42,9 @@
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link active" aria-current="page" href="{{ route('organizador') }}">Registrar Organizador</a>
                     </li>
+                    <li class="nav-item" style="margin-right: 10px;">
+                        <a class="nav-link active" aria-current="page" href="{{ route('contacto') }}">Registrar Contacto</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Busqueda ..." aria-label="Search">
@@ -57,6 +60,7 @@
     @yield('imagen')
     @yield('sponsor')
     @yield('organizador')
+    @yield('contacto')
 
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">
