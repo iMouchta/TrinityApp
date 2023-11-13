@@ -1,12 +1,1 @@
-
 require('./bootstrap');
-
-window.Vue = require('vue').default;
-
-
-Vue.component('form-component', require('./components/Tasks/Form.vue').default);
-
-
-const app = new Vue({
-    el: '#app',
-});
