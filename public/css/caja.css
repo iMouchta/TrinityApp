@@ -1,17 +1,43 @@
+/* css de todos los eventos */
+.text-center{
+     font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+    font-size: 25px; /* Tamaño de fuente */
+    color: #090101; /* Color del texto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    line-height: 2; /* Altura de línea */
+    font-weight: bold;
+}
+.letras{
+    display: flex;
+    font-family: 'Times New Roman', Times, serif ;
+    font-weight: bold;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+
 
 .card{
-    background-color: #107bc71e;
+    background-color: #abc4f0;
+border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    
+}
+.cardevento{
+    
+    width: 100%;
+    
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+.botonver{
+    margin-bottom: 10px;
+    
 }
 
-.btn-custom {
-    background-color: rgb(38, 255, 0);
-    color: rgb(224, 35, 35); /* Cambia el color del texto del botón para que sea legible en el fondo rojo */
-    /* Otros estilos personalizados, como borde, tamaño de fuente, etc. */
-    
-    margin: 0 auto; /* Esto debería centrar horizontalmente el botón */
-    display: block; /* Asegura que ocupe todo el ancho disponible */
- 
-}
+
 .descripcion{
     background-color: aqua;
     width: 100%;
@@ -89,13 +115,7 @@ margin-left: -20px;
     max-height: 100%;
 
 }
-.crono{
-    display: flex;
 
-  
-    margin-bottom: 0px;
-    text-align: left;
-}
 .titulocrono{
     
     background-color: aqua;
