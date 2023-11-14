@@ -2,7 +2,7 @@
 
 @section('sponsor')
     <div class="container">
-        <form action="{{ route('guardarSponsor') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <form action="{{ route('guardarSponsor') }}" id="formulario" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             <h1><center>Registrar Sponsor</center></h1>
             <div class="mb-3">
@@ -64,4 +64,51 @@
         })
         })()
     </script>
+
+<script>
+    $('#formulario').on('submit' ,function(e){ 
+        e.preventDefault(); 
+        Swal.fire({
+        title: "¿Estas seguro de registrar la información?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Registrar" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Registrado",
+            text: "Se registro correctamente.",
+            icon: "success",
+            allowOutsideClick: false
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+                window.location.href = '/welcome';
+            }
+            });
+        }
+        });
+    })
+
+    $('#cancelar').on('click', function() {
+        Swal.fire({
+        title: "¿Estas Seguro que deseas Salir?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, salir del registro" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/welcome';
+        }
+        });
+    });
+</script>
 @endsection
