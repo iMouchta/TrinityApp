@@ -64,7 +64,7 @@
         })()
     </script>
 
-<!-- <script>
+<script>
     $('#formulario').on('submit' ,function(e){ 
         e.preventDefault(); 
         Swal.fire({
@@ -85,8 +85,8 @@
             allowOutsideClick: false
             }).then((result) => {
             if (result.isConfirmed) {
-                
-                // window.location.href = '/welcome';
+                this.submit();
+                window.location.href = '/welcome';
             }
             });
         }
@@ -105,9 +105,9 @@
         allowOutsideClick: false
         }).then((result) => {
         if (result.isConfirmed) {
-            // window.location.href = '/welcome';
+            window.location.href = '/welcome';
         }
         });
     });
-</script> -->
+</script>
 @endsection
