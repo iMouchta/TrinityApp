@@ -2,7 +2,7 @@
 
 @section('organizador')
     <div class="container">
-        <form action="{{ route('guardarOrganizador') }}" id="formulario" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <form action="{{ route('guardarOrganizador') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             <h1><center>Registar organizador</center></h1>
             <div class="mb-3">

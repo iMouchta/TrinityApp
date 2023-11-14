@@ -2,7 +2,7 @@
 
 @section('sponsor')
     <div class="container">
-        <form action="{{ route('guardarSponsor') }}" id="formulario" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <form action="{{ route('guardarSponsor') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             <h1><center>Registrar Sponsor</center></h1>
             <div class="mb-3">

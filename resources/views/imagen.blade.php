@@ -2,7 +2,7 @@
 
 @section('imagen')
     <div class="container">
-        <form action="{{ route('guardarImagen') }}" method="POST"  id="formulario" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <form action="{{ route('guardarImagen') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             <h1><center>Registrar Afiche</center></h1>
             <div class="mb-3">

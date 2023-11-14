@@ -3,7 +3,7 @@
 @section('evento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('guardarEvento') }}" method="post" id="eventoC" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <form action="{{ route('guardarEvento') }}" method="post"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 @csrf
                 <h1>
                     <center>Crear evento</center>
