@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\OrganizadorController;
 use App\Http\Controllers\SponsorController;
 
+Route::get('/eventos/{evento}', [EventoController::class, 'verEvento']) -> name('ver.evento');
 
 Route::get('/imagen', [ImagenController::class, 'mostrarFormulario']) -> name('imagen');
 
@@ -19,24 +21,18 @@ Route::get('/organizador', [OrganizadorController::class, 'formularioOrganizador
 
 Route::post('/guardarOrganizador', [OrganizadorController::class, 'guardarOrganizador'])->name('guardarOrganizador');
 
+Route::get('/contacto', [ContactoController::class, 'formularioContacto']) -> name('contacto');
+
+Route::post('/guardarContacto', [ContactoController::class, 'guardarContacto'])->name('guardarContacto');
 
 Route::get('/', function () { return view('welcome');}) ->name('welcome');
 
 Route::get('/evento', function () {return view('evento');})->name('evento');
 
-
-
-
-
-
 Route::get('/misEventos', [EventoController::class, 'misEventos'])->name('misEventos');
-
-
-Route::get('/eventoDetalle', [EventoController::class, 'eventoDetalle'])->name('eventoDetalle');
-
-
 
 Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->name('formulario');
 
 Route::post('/guardarEvento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');
 
+Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');

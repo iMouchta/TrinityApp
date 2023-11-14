@@ -12,11 +12,11 @@ class EventoController extends Controller
 {
     public function guardarEvento(Request $request)
     {
-   
+
         $request->validate([
             'EVENTO_NOMBRE' => 'required|unique:evento',
-           
-            ]);
+
+        ]);
 
         try {
 
@@ -37,25 +37,22 @@ class EventoController extends Controller
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
                     $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
-                    $fecha->EVENTO_ID = $evento->id; 
-                    
+                    $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
+                    $fecha->EVENTO_ID = $evento->EVENTO_ID;
                     $fecha->save();
                 }
             }
 
-            if($request->has('requisitos.REQUISITO_NOMBRE')){
-                foreach ($request->input('requisitos.REQUISITO_NOMBRE') as $key => $nombreRequisito){
+            if ($request->has('requisitos.REQUISITO_NOMBRE')) {
+                foreach ($request->input('requisitos.REQUISITO_NOMBRE') as $key => $nombreRequisito) {
                     $requisito = new Requisito;
-                    $requisito -> REQUISITO_NOMBRE = $nombreRequisito;
-                    $requisito -> EVENTO_ID = $evento->id;
-
-                    $requisito -> save();
-
+                    $requisito->REQUISITO_NOMBRE = $nombreRequisito;
+                    $requisito->EVENTO_ID = $evento->EVENTO_ID;
+                    $requisito->save();
                 }
-
             }
 
-                      return redirect()->route('evento')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');
+            return redirect()->route('evento')->withInput()->with('success', 'Evento y calendarización guardados correctamente.');
         } catch (ValidationException $e) {
             return redirect()->route('evento')->withErrors($e->validator->errors());
         }
@@ -67,45 +64,48 @@ class EventoController extends Controller
 
         foreach ($eventos as $evento) {
             $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
-            
+
         }
         return view('misEventos')->with('eventos', $eventos);
     }
 
-
-    
     public function eventoDetalle()
     {
-        $eventos = Evento::all(); // Obtiene todos los eventos
-    
-        // Itera sobre cada evento para obtener las fechas asociadas a cada uno
+        $eventos = Evento::all();
         foreach ($eventos as $evento) {
             $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
-            $evento->requisitos = $this->obtenerRequisitos($evento->EVENTO_ID); 
+            $evento->requisitos = $this->obtenerRequisitos($evento->EVENTO_ID);
         }
-    
+
         return view('eventoDetalle', ['eventos' => $eventos]);
     }
-    
+
     public function obtenerFechas($idEvento)
-    {   
+    {
         $fechas = Fecha::where('EVENTO_ID', $idEvento)->get();
         return $fechas;
     }
     public function obtenerRequisitos($idEvento)
-    {   
+    {
         $requisitos = Requisito::where('EVENTO_ID', $idEvento)->get();
         return $requisitos;
     }
 
+    public function verEvento($eventoId)
+    {
+        $evento = Evento::with(['fechas', 'imagenes'])->findOrFail($eventoId);
+        return view('ver', ['evento' => $evento]);
+    }
+    public function buscar(Request $request)
+    {
+        $query = $request->input('query');
 
-    public function unEventoDetalle($idEvento)
-{
-    $evento = Evento::find($idEvento);
-    
-    $fechas = Fecha::where('EVENTO_ID', $idEvento)->get();
-    $requisitos = Requisito::where('EVENTO_ID', $idEvento)->get();
+        $eventos = Evento::where('EVENTO_NOMBRE', 'like', "%$query%")
+            ->orWhere('EVENTO_TIPO', 'like', "%$query%")
+            ->orWhere('EVENTO_MODALIDAD', 'like', "%$query%")
+            ->orWhere('EVENTO_COSTO', 'like', "%$query%")
+            ->get();
 
-    return view('unEventoDetalle', compact('evento', 'fechas', 'requisitos'));
+        return view('buscar', ['eventos' => $eventos]);
+    }
 }
- }

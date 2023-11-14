@@ -56,10 +56,6 @@ form {
     padding: 0;
 }
   
-form > * {
-    margin: 20px 0;
-}
-
 label{
     font-weight: 700;
 }
