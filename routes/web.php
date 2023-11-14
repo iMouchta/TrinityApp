@@ -36,3 +36,5 @@ Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->n
 Route::post('/guardarEvento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');
 
 Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');
+
+// Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
