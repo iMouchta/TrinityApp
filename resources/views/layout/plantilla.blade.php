@@ -32,19 +32,19 @@
                             <li><a class="dropdown-item" href="{{ route('evento') }}">Registrar Evento</a></li>
                             <li><a class="dropdown-item" href="{{ route('imagen') }}">Registrar Afiche</a></li>
                             <li><a class="dropdown-item" href="{{ route('sponsor') }}">Registrar Sponsor</a></li>
-                            <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
+                            <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a>
+                            </li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link" aria-current="page" href="{{ route('misEventos') }}">Todos los Eventos</a>
                     </li>
-                    <li class="nav-item" style="margin-right: 10px;">
-                        <a class="nav-link" aria-current="page" href="{{ route('eventoDetalle') }}">Ver eventos a detalle</a>
-                    </li>
+                    
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Busqueda ..." aria-label="Search">
+                <form class="d-flex" role="search" action="{{ route('buscar') }}" method="GET">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Busqueda ..."
+                        aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
             </div>
@@ -57,10 +57,10 @@
     @yield('imagen')
     @yield('sponsor')
     @yield('organizador')
-    @yield('eventoDetalle')
     @yield('contacto')
     @yield('content')
-    
+    @yield('buscar')
+
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">
             <div class="row">
