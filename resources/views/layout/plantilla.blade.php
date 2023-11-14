@@ -11,6 +11,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@yield('titulo')</title>
 
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Hace que el contenido se expanda al 100% de la altura de la ventana */
+            margin: 0;
+        }
+        
+        footer {
+            margin-top: auto; 
+            background-color: #333; 
+            color: white; 
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -61,30 +79,30 @@
     @yield('eventoDetalle')
     @yield('contacto')
     @yield('content')
-    <footer class="bg-white text-white text-center py-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Síguenos en las redes sociales</h5>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/UmssBolOficial/"
-                            class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-facebook-f"></i> Facebook
-                        </a>
-                        <a href="#" class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-twitter"></i> Twitter
-                        </a>
-                        <a href="#" class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="#" class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-linkedin-in"></i> LinkedIn
-                        </a>
+                <footer class="bg-white text-white text-center py-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Síguenos en las redes sociales</h5>
+                                <div class="social-icons">
+                                    <a href="https://www.facebook.com/UmssBolOficial/"
+                                        class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-twitter"></i> Twitter
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+                </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

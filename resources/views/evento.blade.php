@@ -35,6 +35,7 @@
                         <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3" required></textarea>
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
                         <textarea class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required></textarea>
+                        
                         <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
                         <input type="text" class="form-control" name="EVENTO_UBICACION" required minlength="8"
                             maxlength="250">
