@@ -11,7 +11,8 @@
 
         <p>Imágenes:</p>
         @foreach ($evento->imagenes as $imagen)
-            <img src="{{ asset('storage/app/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}">
+        <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}">
+
         @endforeach
     </div>
 @endsection

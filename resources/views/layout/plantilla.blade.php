@@ -34,7 +34,6 @@
                             <li><a class="dropdown-item" href="{{ route('sponsor') }}">Registrar Sponsor</a></li>
                             <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
-                            <li><a class="dropdown-item" href="{{ route('eventoDetalle') }}">Ver eventos a detalle</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
@@ -61,6 +60,7 @@
     @yield('eventoDetalle')
     @yield('contacto')
     @yield('content')
+    
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">
             <div class="row">

@@ -49,7 +49,7 @@ class ImagenController extends Controller
 
         if ($imagen) {
             $nombreImagen = $tipoImagen . '.' . $imagen->getClientOriginalExtension();
-            $ruta = $imagen->storeAs('imagenes_evento', $nombreImagen, 'local');
+            $ruta = $imagen->storeAs('imagenes_evento', $nombreImagen, 'public');
             $imagenModel = new Imagen;
             $imagenModel->EVENTO_ID = $eventoId;
             $imagenModel->IMAGEN_IMAGEN = $ruta;
