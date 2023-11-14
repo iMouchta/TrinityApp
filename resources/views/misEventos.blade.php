@@ -13,8 +13,7 @@
     <div class="container">
         <div class="row">
             @foreach ($eventos as $evento)
-                <div class="col-md-3">
-                    <div class="cardevento">
+                <div class="cardevento">
                         <div class="card w-100">
                             <div class="card-body">
 
