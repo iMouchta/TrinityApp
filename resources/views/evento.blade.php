@@ -3,7 +3,7 @@
 @section('evento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('guardarEvento') }}" method="post" id="eventoC" enctype="multipart/form-data">
+            <form action="{{ route('guardarEvento') }}" method="post"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 @csrf
                 <h1>
                     <center>Crear evento</center>
@@ -11,8 +11,11 @@
                 <div class = "row">
                     <div class ="col">
                         <label for="EVENTO_NOMBRE" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}"
-                            required minlength="4" maxlength="200">
+                        <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}" placeholder="Ingrese el nombre"
+                            required minlength="3" maxlength="200">
+                            <div class="valid-feedback">Nombre válido</div>    <!--tooltip -->
+                            <div class="invalid-feedback">Use un nombre de "minimo de 3 caracteres"</div>
+
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
                         <select name= "EVENTO_MODALIDAD" class="form-control" value="{{ old('EVENTO_MODALIDAD') }}"
                             required>
@@ -20,8 +23,12 @@
                             <option value ="Grupal">Grupal</option>
                         </select>
 
+                        <div class ="col">
                         <label for="EVENTO_COSTO" class="form-label">Costo:</label>
-                        <input type="number" class="form-control" name="EVENTO_COSTO" value="{{ old('EVENTO_COSTO') }}">
+                        <input type="text" class="form-control" name="EVENTO_COSTO" value="{{ old('EVENTO_COSTO') }}" placeholder="Ingrese el costo" requerid pattern="^[0-9]{1,6}$">
+                        <div class="valid-feedback">Costo válido</div>
+                        <div class="invalid-feedback">Registre un costo válido"</div>
+                        </div>
                         <label for="EVENTO_TIPO" class="form-label">Tipo de evento:</label>
                         <select name= "EVENTO_TIPO" class="form-control" value="{{ old('EVENTO_TIPO') }}" required>
                             <option value ="Entrenamiento">Rondas de entrenamiento</option>
@@ -33,11 +40,16 @@
                         </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
                         <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3" required></textarea>
+
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
                         <textarea class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required></textarea>
-                        <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
-                        <input type="text" class="form-control" name="EVENTO_UBICACION" required minlength="8"
+                        <div class ="col">
+                        <label for="EVENTO_UBICACION" class="form-label">Ubicación:</label>
+                        <input type="text" class="form-control" name="EVENTO_UBICACION" placeholder="Ingrese la ubicación" required minlength="8"
                             maxlength="250">
+                            <div class="valid-feedback">Ubición válida</div>    <!--tooltip -->
+                            <div class="invalid-feedback">Registre una ubicación válida"</div>
+                        </div>
                     </div>
                 </div>
 
@@ -46,7 +58,7 @@
                         <label for="requisitos-container" class="form-label">Requisitos:</label>
                         <div class="requisito-input">
                             <div class ="row g-1">
-                                <input type="text" class="form-control" name="requisitos[REQUISITO_NOMBRE][]">
+                                <input type="text" class="form-control" name="requisitos[REQUISITO_NOMBRE][]" requerid>
                             </div>
                         </div>
                         <br>
@@ -127,12 +139,10 @@
                         {{ session('success') }}
                     </div>
                 @endif
-
                 <center>
-                    <button type="button" class="btn btn-danger">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
                 </center>
-
 
             </form>
 
@@ -190,4 +200,73 @@
 
     </div>
     <br>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+            }, false)
+        })
+        })()
+    </script>
+
+<script>
+    $('#eventoC').on('submit' ,function(e){ 
+        e.preventDefault(); 
+        Swal.fire({
+        title: "¿Estas seguro de registrar la información?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Registrar" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Registrado",
+            text: "Se registro correctamente.",
+            icon: "success",
+            allowOutsideClick: false
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+                window.location.href = '/welcome';
+            }
+            });
+        }
+        });
+    })
+
+    $('#cancelar').on('click', function() {
+        Swal.fire({
+        title: "¿Estas Seguro que deseas Salir?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, salir del registro" ,
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/welcome';
+        }
+        });
+    });
+</script>
 @endsection
