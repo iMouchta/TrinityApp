@@ -6,6 +6,7 @@ use App\Models\Evento;
 use App\Models\Imagen;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ImagenController extends Controller
 {
@@ -17,41 +18,51 @@ class ImagenController extends Controller
 
     public function guardarImagen(Request $request)
     {
-        $eventoId = $request->input('evento_id');
+        $request->validate([
+            'banner' => 'required|image|max:10240',
+            'icono' => 'required|image|max:10240',
+            'afiche' => 'required|image|max:10240',
+            'imagenesDiversas.*' => 'image|max:10240',
+        ]);
+        try {
+            $eventoId = $request->input('evento_id');
 
-        $this->registrarImagen('banner', $request->file('banner'), $eventoId, 'banner');
+            $this->registrarImagen('banner', $request->file('banner'), $eventoId);
+            $this->registrarImagen('icono', $request->file('icono'), $eventoId);
+            $this->registrarImagen('afiche', $request->file('afiche'), $eventoId);
 
-        $this->registrarImagen('icono', $request->file('icono'), $eventoId, 'icono');
 
-        $this->registrarImagen('afiche', $request->file('afiche'), $eventoId, 'afiche');;
-
-        if ($request->hasFile('imagenesDiversas') && is_array($request->file('imagenesDiversas'))) {
-            foreach ($request->file('imagenesDiversas') as $key => $imagen) {
-                $tipo = 'imagenvariada-' . $eventoId . '-' . $key;
-                $this->registrarImagen('imagen', $imagen, $eventoId, $tipo);
+            if ($request->hasFile('imagenesDiversas') && is_array($request->file('imagenesDiversas'))) {
+                foreach ($request->file('imagenesDiversas') as $key => $imagen) {
+                    $tipo = 'imagenvariada' . $eventoId . '-' . $key;
+                    $this->registrarImagen('imagen', $imagen, $eventoId, $tipo);
+                }
             }
-        }
-        
 
-        return redirect()->route('imagen')->with('success', 'Imágenes guardadas correctamente.');
+            return redirect()->route('imagen')->withInput()->with('success', 'Imagenes guardadas correctamente.');
+        } catch (ValidationException $e) {
+            return redirect()->route('imagen')->withErrors($e->validator->errors());
+        }
     }
 
-    private function registrarImagen($tipo, $imagen, $eventoId)
+    private function registrarImagen($tipo, $imagen, $eventoId, $sufijo = '')
     {
         $imagenExistente = Imagen::where('EVENTO_ID', $eventoId)
             ->where('IMAGEN_TIPO', $tipo)
             ->first();
-    
-        if ($imagenExistente) {
-            Storage::delete($imagenExistente->IMAGEN_IMAGEN);
+
+        if ($imagenExistente && $tipo !== 'imagen') {
+            Storage::disk('public')->delete($imagenExistente->IMAGEN_IMAGEN);
             $imagenExistente->delete();
         }
-    
-        if ($imagen) {
-            // Construir el nombre de la imagen según el tipo y el ID del evento
-            $nombreImagen = $tipo . $eventoId . '.' . $imagen->getClientOriginalExtension();
-            $ruta = $imagen->storeAs('imagenes_evento', $nombreImagen, 'public');
-            
+
+        if ($imagen && $imagen->isValid()) {
+            $nombreImagen = $tipo . '_' . $eventoId . $sufijo . '.' . $imagen->getClientOriginalExtension();
+            $ruta = 'imagenes_evento/' . $nombreImagen;
+
+            Storage::disk('public')->makeDirectory('imagenes_evento');
+            Storage::disk('public')->put($ruta, file_get_contents($imagen), 'public');
+
             $imagenModel = new Imagen;
             $imagenModel->EVENTO_ID = $eventoId;
             $imagenModel->IMAGEN_IMAGEN = $ruta;

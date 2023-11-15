@@ -2,9 +2,12 @@
 
 @section('imagen')
     <div class="container">
-        <form action="{{ route('guardarImagen') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <form action="{{ route('guardarImagen') }}" method="POST" enctype="multipart/form-data"
+            class="row g-3 needs-validation" novalidate>
             @csrf
-            <h1><center>Registrar Afiche</center></h1>
+            <h1>
+                <center>Registrar Afiche</center>
+            </h1>
             <div class="mb-3">
                 <label for="evento_id" class="form-label">Seleccionar Evento:</label>
                 <select class="form-control" id="evento_id" name="evento_id">
@@ -13,7 +16,6 @@
                     @endforeach
                 </select>
             </div>
-
 
             <div class="mb-3">
                 <label for="banner" class="form-label">Banner:</label>
@@ -38,11 +40,29 @@
 
             <div class="mb-3">
                 <label for="imagenesDiversas" class="form-label">Imágenes diversas:</label>
-                <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple required>
+                <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple
+                    required>
                 <div class="valid-feedback">Imagenes válidas</div>
                 <div class="invalid-feedback">Use una imagen valida"</div>
-                
+
             </div>
+
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             <center>
                 <button type="submit" class="btn btn-primary">Registrar</button>
@@ -53,66 +73,66 @@
     <br>
     <script>
         (() => {
-        'use strict'
+            'use strict'
 
-        const forms = document.querySelectorAll('.needs-validation')
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-            form.classList.add('was-validated')
-            }, false)
-        })
+                    form.classList.add('was-validated')
+                }, false)
+            })
         })()
     </script>
 
-<script>
-    $('#formulario').on('submit' ,function(e){ 
-        e.preventDefault(); 
-        Swal.fire({
-        title: "¿Estas seguro de registrar la información?",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Registrar" ,
-        cancelButtonText: "Cancelar",
-        allowOutsideClick: false
-        }).then((result) => {
-        if (result.isConfirmed) {
+    <script>
+        $('#formulario').on('submit', function(e) {
+            e.preventDefault();
             Swal.fire({
-            title: "Registrado",
-            text: "Se registro correctamente.",
-            icon: "success",
-            allowOutsideClick: false
+                title: "¿Estas seguro de registrar la información?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Registrar",
+                cancelButtonText: "Cancelar",
+                allowOutsideClick: false
             }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-                window.location.href = '/';
-            }
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Registrado",
+                        text: "Se registro correctamente.",
+                        icon: "success",
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                            window.location.href = '/';
+                        }
+                    });
+                }
             });
-        }
-        });
-    })
+        })
 
-    $('#cancelar').on('click', function() {
-        Swal.fire({
-        title: "¿Estas Seguro que deseas Salir?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, salir del registro" ,
-        cancelButtonText: "Cancelar",
-        allowOutsideClick: false
-        }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '/';
-        }
+        $('#cancelar').on('click', function() {
+            Swal.fire({
+                title: "¿Estas Seguro que deseas Salir?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, salir del registro",
+                cancelButtonText: "Cancelar",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/';
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endsection
