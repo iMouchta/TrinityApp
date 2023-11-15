@@ -38,4 +38,4 @@ Route::post('/guardarEvento', 'App\Http\Controllers\EventoController@guardarEven
 
 Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');
 
-Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
+//Route::get('/welcome', [MainController::class, 'index'])->name('welcome');

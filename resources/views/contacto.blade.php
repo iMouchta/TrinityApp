@@ -2,7 +2,7 @@
 
 @section('contacto')
     <div class="container">
-    <form action="{{ route('guardarContacto') }}" id="formulario" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>  <!-- was-validated needs-validation novalidate -->
+    <form action="{{ route('guardarContacto') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>  
             @csrf
             <h1><center>Registar contacto</center></h1>
             <div class="mb-3 w-25" >
@@ -17,7 +17,7 @@
                 <label for="CONTACTO_NOMBRE" class="form-label">Nombre:</label>
                 <input type="text" class="form-control" name="CONTACTO_NOMBRE" value="{{ old('CONTACTO_NOMBRE') }}" placeholder="Ingrese el nombre" required
                 minlength="3" maxlength="100">
-                    <div class="valid-feedback">Nombre válido</div>    <!--tooltip -->
+                    <div class="valid-feedback">Nombre válido</div>
                     <div class="invalid-feedback">Use un nombre de "minimo de 3 caracteres"</div>
             </div>
             
@@ -31,8 +31,8 @@
             
             <div class="mb-3 position-relative w-100">
                 <label for="CONTACTO_EMAIL" class="form-label">Email:</label>
-                <input type="email" class="form-control" name="CONTACTO_EMAIL" value="{{ old('CONTACTO_EMAIL') }}" placeholder="Ingrese el correo" required >
-                <div class="valid-feedback">Correo válido</div>
+                <input type="email" class="form-control" name="CONTACTO_EMAIL" value="{{ old('CONTACTO_EMAIL') }}" placeholder="Ingrese el correo">
+                <div class="valid-feedback">Campo válido</div>
                 <div class="invalid-feedback">Use un correo válido</div>
             </div>
             <center>
@@ -43,14 +43,9 @@
     </div>
     <br>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
         'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
         const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
         Array.from(forms).forEach(form => {
             form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
@@ -86,7 +81,7 @@
             }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                window.location.href = '/welcome';
+                window.location.href = '/';
             }
             });
         }
@@ -105,7 +100,7 @@
         allowOutsideClick: false
         }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '/welcome';
+            window.location.href = '/';
         }
         });
     });

@@ -52,14 +52,10 @@
     </div>
     <br>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
         'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
         const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
         Array.from(forms).forEach(form => {
             form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
@@ -95,7 +91,7 @@
             }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                window.location.href = '/welcome';
+                window.location.href = '/';
             }
             });
         }
@@ -114,7 +110,7 @@
         allowOutsideClick: false
         }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '/welcome';
+            window.location.href = '/';
         }
         });
     });

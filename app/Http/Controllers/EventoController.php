@@ -105,7 +105,6 @@ class EventoController extends Controller
             ->orWhere('EVENTO_MODALIDAD', 'like', "%$query%")
             ->orWhere('EVENTO_COSTO', 'like', "%$query%")
             ->get();
-
         return view('buscar', ['eventos' => $eventos]);
     }
 }
