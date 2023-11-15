@@ -1,6 +1,7 @@
 @extends('layout/plantilla')
 
 @section('misEventos')
+
 <link rel="stylesheet" href="{{ asset('css/caja.css') }}">
 
     
@@ -12,13 +13,12 @@
             <div class="cardevento">
                 <div class="card w-100">
                     <div class="card-body">
-
                         <div class="titulo">
                             <h2 class="text-center">{{ $evento->EVENTO_NOMBRE }}</h2>
                         </div>
                             <p class="letras ">Tipo de Evento : {{ $evento->EVENTO_TIPO }}</p>
 
-                                        @foreach($evento->fechas->take(2) as $fecha)
+                                       @foreach($evento->fechas->take(2) as $fecha)
                                             <p class="letras">{{ $fecha->FECHA_NOMBRE }} : {{ $fecha->FECHA_FECHA }}</p>
                                         @endforeach
                                        
@@ -31,6 +31,7 @@
                     </div>      
                 </div>
             <br>
+
         </div>
     @endforeach
     </div>

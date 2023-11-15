@@ -69,13 +69,9 @@ class EventoController extends Controller
         return view('misEventos')->with('eventos', $eventos);
     }
 
-
-
     public function eventoDetalle()
     {
-        $eventos = Evento::all(); // Obtiene todos los eventos
-
-        // Itera sobre cada evento para obtener las fechas asociadas a cada uno
+        $eventos = Evento::all();
         foreach ($eventos as $evento) {
             $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
             $evento->requisitos = $this->obtenerRequisitos($evento->EVENTO_ID);
@@ -95,23 +91,24 @@ class EventoController extends Controller
         return $requisitos;
     }
 
-
-    public function unEventoDetalle($idEvento)
-    {
-        $evento = Evento::find($idEvento);
-
-        $fechas = Fecha::where('EVENTO_ID', $idEvento)->get();
-        $requisitos = Requisito::where('EVENTO_ID', $idEvento)->get();
-
-        return view('unEventoDetalle', compact('evento', 'fechas', 'requisitos'));
-    }
     public function verEvento($eventoId)
-    {    
+    {
         $evento = Evento::with(['fechas', 'imagenes'])->findOrFail($eventoId);
         $requisitos = Requisito::where('EVENTO_ID', $eventoId)->get();
         $contactos = Contacto::where('EVENTO_ID', $eventoId)->get();
     
         return view('ver', ['evento' => $evento, 'requisitos' => $requisitos, 'contactos' => $contactos]);
     }
-    
+    public function buscar(Request $request)
+    {
+        $query = $request->input('query');
+
+        $eventos = Evento::where('EVENTO_NOMBRE', 'like', "%$query%")
+            ->orWhere('EVENTO_TIPO', 'like', "%$query%")
+            ->orWhere('EVENTO_MODALIDAD', 'like', "%$query%")
+            ->orWhere('EVENTO_COSTO', 'like', "%$query%")
+            ->get();
+
+        return view('buscar', ['eventos' => $eventos]);
+    }
 }
