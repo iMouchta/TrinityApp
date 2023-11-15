@@ -4,7 +4,7 @@ h1{
   text-shadow: 4px 4px rgb(213, 198, 198);
   width: 100%;
   word-wrap: break-word;
-  font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+
   font-size: 50px; /* Tamaño de fuente */
   color: #090101; /* Color del texto */
   letter-spacing: 1px; /* Espaciado entre letras */
@@ -13,7 +13,7 @@ h1{
   
     }
 .text-center{
-   font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+
   font-size: 25px; /* Tamaño de fuente */
   color: #090101; /* Color del texto */
   letter-spacing: 1px; /* Espaciado entre letras */
@@ -22,7 +22,7 @@ h1{
 }
 .letras{
   display: flex;
-  font-family: 'Times New Roman', Times, serif ;
+
   font-weight: bold;
   margin-bottom: 0px;
   text-align: left;
@@ -185,5 +185,14 @@ margin-left: -20px;
 }
 .titulocro{
   margin-bottom: 0px;
+}
+.descripcion-bold {
+
+
+
+  margin-bottom: 0px;
+  text-align: left;
+  font-weight: 700;
+  color: #180a0a; /* Color del texto */
 }
 
