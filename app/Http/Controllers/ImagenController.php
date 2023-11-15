@@ -36,24 +36,26 @@ class ImagenController extends Controller
         return redirect()->route('imagen')->with('success', 'Imágenes guardadas correctamente.');
     }
 
-    private function registrarImagen($tipo, $imagen, $eventoId, $tipoImagen)
+    private function registrarImagen($tipo, $imagen, $eventoId)
     {
         $imagenExistente = Imagen::where('EVENTO_ID', $eventoId)
-            ->where('IMAGEN_TIPO', $tipoImagen)
+            ->where('IMAGEN_TIPO', $tipo)
             ->first();
-
+    
         if ($imagenExistente) {
             Storage::delete($imagenExistente->IMAGEN_IMAGEN);
             $imagenExistente->delete();
         }
-
+    
         if ($imagen) {
-            $nombreImagen = $tipoImagen . '.' . $imagen->getClientOriginalExtension();
-            $ruta = $imagen->storeAs('imagenes_evento', $nombreImagen, 'local');
+            // Construir el nombre de la imagen según el tipo y el ID del evento
+            $nombreImagen = $tipo . $eventoId . '.' . $imagen->getClientOriginalExtension();
+            $ruta = $imagen->storeAs('imagenes_evento', $nombreImagen, 'public');
+            
             $imagenModel = new Imagen;
             $imagenModel->EVENTO_ID = $eventoId;
             $imagenModel->IMAGEN_IMAGEN = $ruta;
-            $imagenModel->IMAGEN_TIPO = $tipoImagen;
+            $imagenModel->IMAGEN_TIPO = $tipo;
             $imagenModel->save();
         }
     }
