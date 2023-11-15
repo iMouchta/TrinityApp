@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Contacto;
 use App\Models\Evento;
 use App\Models\Fecha;
 use App\Models\Requisito;
@@ -25,7 +25,7 @@ class EventoController extends Controller
             $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
             $evento->EVENTO_DESCRIPCION = $request->input('EVENTO_DESCRIPCION');
             $evento->EVENTO_MODALIDAD = $request->input('EVENTO_MODALIDAD');
-            $evento->EVENTO_BASES = $request->input('EVENTO_BASE');
+            $evento->EVENTO_BASES = $request->input('EVENTO_BASES');
             $evento->EVENTO_UBICACION = $request->input('EVENTO_UBICACION');
             $evento->EVENTO_NOTIFICACIONES = $request->has('EVENTO_NOTIFICACIONES') ? 1 : 0;
             $evento->EVENTO_USUARIOS = $request->has('EVENTO_USUARIOS') ? 1 : 0;
@@ -94,7 +94,10 @@ class EventoController extends Controller
     public function verEvento($eventoId)
     {
         $evento = Evento::with(['fechas', 'imagenes'])->findOrFail($eventoId);
-        return view('ver', ['evento' => $evento]);
+        $requisitos = Requisito::where('EVENTO_ID', $eventoId)->get();
+        $contactos = Contacto::where('EVENTO_ID', $eventoId)->get();
+    
+        return view('ver', ['evento' => $evento, 'requisitos' => $requisitos, 'contactos' => $contactos]);
     }
     public function buscar(Request $request)
     {
@@ -105,6 +108,7 @@ class EventoController extends Controller
             ->orWhere('EVENTO_MODALIDAD', 'like', "%$query%")
             ->orWhere('EVENTO_COSTO', 'like', "%$query%")
             ->get();
+
         return view('buscar', ['eventos' => $eventos]);
     }
 }

@@ -1,54 +1,116 @@
 /* css de todos los eventos */
+h1{
+  text-shadow: 4px 4px rgb(213, 198, 198);
+  width: 100%;
+  word-wrap: break-word;
+  font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+  font-size: 50px; /* Tamaño de fuente */
+  color: #090101; /* Color del texto */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  line-height: 2; /* Altura de línea */
+  font-weight: 900;
+  
+    }
 .text-center{
-     font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
-    font-size: 25px; /* Tamaño de fuente */
-    color: #090101; /* Color del texto */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    line-height: 2; /* Altura de línea */
-    font-weight: bold;
+   font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+  font-size: 25px; /* Tamaño de fuente */
+  color: #090101; /* Color del texto */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  line-height: 2; /* Altura de línea */
+  font-weight: bold;
 }
 .letras{
-    display: flex;
-    font-family: 'Times New Roman', Times, serif ;
-    font-weight: bold;
-    margin-bottom: 0px;
-    text-align: left;
+  display: flex;
+  font-family: 'Times New Roman', Times, serif ;
+  font-weight: bold;
+  margin-bottom: 0px;
+  text-align: left;
 }
-
+.titulo{
+   
+   white-space: nowrap;
+   overflow: hidden;
+  
+   max-width: 100ch;
+   text-overflow: ellipsis;
+}
+h2{
+  white-space: nowrap;
+  overflow: hidden;
+ 
+  max-width: 100ch;
+  text-overflow: ellipsis;
+}
 
 
 .card{
-    background-color: #abc4f0;
-border-radius: 20px;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-    
+  background-color: #ffffff;
+
+  width: 100%;
+  height: 230px;
+  overflow: auto;
+
+  
 }
 .cardevento{
-    
-    width: 100%;
-    
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+   height: 230px;
+  width: 100%;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.contiene{
+   margin-top: 50px;
+   margin-left: 50px;
+   margin-right: 50px;
+   margin-bottom: 50px;
+
+
+
 }
 .botonver{
-    margin-bottom: 10px;
-    
+  margin-bottom: 10px;
+  
 }
+
+/* css de todos la imagen afiche */
+.imagen-ampliada {
+  display: none;
+  /* Estilos para el contenedor de la imagen ampliada */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+ 
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* Ajusta el tamaño según tus preferencias */
+  width: 1000px;
+  max-width: 1000px;
+  /* Otros estilos de diseño, como bordes, sombras, etc. */
+  /* ... */
+}
+
+.imagen-ampliada img {
+  width: 100%;
+  height: auto;
+  /* Otros estilos según sea necesario */
+  /* ... */
+}
+
+
 
 
 .descripcion{
-    background-color: aqua;
-    width: 100%;
-    word-wrap: break-word;
+  background-color: aqua;
+  width: 100%;
+  word-wrap: break-word;
 
 }
 .container{
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 
-    overflow: hidden;
+  overflow: hidden;
 
 }
 .baner{
@@ -57,70 +119,71 @@ height: 100px;
 }
 
 .baner-imagen{
-    position: absolute;
-    
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  
+  width: 100%;
+  height: 100%;
 margin-top: -20px;
 margin-left: -20px;
-   height: 100px;
-   margin-bottom: 10px;
+ height: 100px;
+ margin-bottom: 10px;
 }
 
 
 
 .float-right{
-    width: 100px;
-    height: 100px;
-    margin-left: auto;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
 }
 .texto-titulo {
 
-    display: flex;
+  display: flex;
 
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 
 
-    display: inline-block;
-    background-color: rgb(63, 103, 103);
-    width: 100%;
-    word-wrap: break-word;
+  display: inline-block;
+  background-color: rgb(63, 103, 103);
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .imagen-redonda {
-    border-radius: 50%; 
-    justify-content: center;
-    max-width: 70%;
-    max-height: 70%;
+  border-radius: 50%; 
+  justify-content: center;
+  max-width: 70%;
+  max-height: 70%;
 
-    align-items: center;
-    justify-content: center;
-  
+  align-items: center;
+  justify-content: center;
+
 }
 
 .imagen-ampliada {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    max-width: 80%;
-    max-height: 80%;
-    cursor: pointer;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  max-width: 80%;
+  max-height: 80%;
+  cursor: pointer;
 }
 .afiche{
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 
 }
 
 .titulocrono{
-    
-    background-color: aqua;
-   
+  
+  background-color: aqua;
+ 
 }
 .titulocro{
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
+
