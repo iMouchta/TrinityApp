@@ -19,12 +19,14 @@ class ImagenController extends Controller
     public function guardarImagen(Request $request)
     {
         $request->validate([
-            'banner' => 'required|image|max:10240',
-            'icono' => 'required|image|max:10240',
-            'afiche' => 'required|image|max:10240',
+            'banner' => 'image|max:10240',
+            'icono' => 'image|max:10240',
+            'afiche' => 'image|max:10240',
             'imagenesDiversas.*' => 'image|max:10240',
         ]);
+        
         try {
+            dd($request->all());
             $eventoId = $request->input('evento_id');
 
             $this->registrarImagen('banner', $request->file('banner'), $eventoId);

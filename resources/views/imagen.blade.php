@@ -19,14 +19,14 @@
 
             <div class="mb-3">
                 <label for="banner" class="form-label">Banner:</label>
-                <input type="file" class="form-control" id="banner" name="banner" required>
+                <input type="file" class="form-control" id="banner" name="banner">
                 <div class="valid-feedback">Banner válido</div>
                 <div class="invalid-feedback">Use una imagen valida"</div>
             </div>
 
             <div class="mb-3">
                 <label for="icono" class="form-label">Icono del evento:</label>
-                <input type="file" class="form-control" id="icono" name="icono" required>
+                <input type="file" class="form-control" id="icono" name="icono">
                 <div class="valid-feedback">Icono válido</div>
                 <div class="invalid-feedback">Use una imagen valida"</div>
             </div>
@@ -40,8 +40,7 @@
 
             <div class="mb-3">
                 <label for="imagenesDiversas" class="form-label">Imágenes diversas:</label>
-                <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple
-                    required>
+                <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple>
                 <div class="valid-feedback">Imagenes válidas</div>
                 <div class="invalid-feedback">Use una imagen valida"</div>
 
