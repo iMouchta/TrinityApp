@@ -31,12 +31,12 @@
                         </div>
                         <label for="EVENTO_TIPO" class="form-label">Tipo de evento:</label>
                         <select name= "EVENTO_TIPO" class="form-control" value="{{ old('EVENTO_TIPO') }}" required>
-                            <option value ="Entrenamiento">Rondas de entrenamiento</option>
+                            <option value ="Rondas de Entrenamiento">Rondas de entrenamiento</option>
                             <option value ="Reclutamiento">Reclutamiento</option>
                             <option value ="Clasificatorios">Clasificatorios</option>
-                            <option value ="Taller">Taller de programacion competitiva</option>
+                            <option value ="Taller de programacion competitiva">Taller de programacion competitiva</option>
                             <option value ="Competencias">Competencias</option>
-                            <option value ="Especial">Especial</option>
+                            <option value ="Evento especial">Especial</option>
                         </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
                         <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3" required></textarea>

@@ -18,7 +18,7 @@
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Hace que el contenido se expanda al 100% de la altura de la ventana */
+            min-height: 100vh;
             margin: 0;
         }
         
@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark " style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg bd-navbar sticky-top navbar-dark " style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"> Logo </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

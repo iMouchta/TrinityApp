@@ -34,7 +34,7 @@ Route::get('/misEventos', [EventoController::class, 'misEventos'])->name('misEve
 
 Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->name('formulario');
 
-Route::post('/guardarEvento', 'App\Http\Controllers\EventoController@guardarEvento')->name('guardarEvento');
+Route::post('/guardarEvento', [EventoController::class, 'guardarEvento'])->name('guardarEvento');
 
 Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');
 

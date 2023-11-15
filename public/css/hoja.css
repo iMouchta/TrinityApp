@@ -11,7 +11,7 @@ main {
 }
 
 .navbar {
-    font-size: 40px; /* Tamaño de fuente personalizado */
+    font-size: 25px; 
     background-blend-mode: multiply;
     background-color: initial;
     background-image: url(https://www.umss.edu.bo/wp-content/uploads/2021/11/5650360.png),linear-gradient(56deg,#002a4c 76%,#e30613 100%);

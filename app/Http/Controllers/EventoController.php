@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Contacto;
 use App\Models\Evento;
 use App\Models\Fecha;
@@ -19,7 +20,6 @@ class EventoController extends Controller
         ]);
 
         try {
-
             $evento = new Evento;
             $evento->EVENTO_NOMBRE = $request->input('EVENTO_NOMBRE');
             $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
