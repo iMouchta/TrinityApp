@@ -9,7 +9,7 @@
     </h1>
     <div class= "contiene">
         <div class="row">
-            @foreach ($eventos as $evento)
+        @foreach ($eventos->reverse() as $evento)
                 <div class="col-md-3">
                     <div class="cardevento">
                         <div class="card w-100">

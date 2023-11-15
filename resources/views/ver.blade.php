@@ -4,6 +4,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/eventoaDetalle.css') }}">
     <div class="container">
+    @if ($evento->imagenes->where('IMAGEN_TIPO', 'banner')->isNotEmpty())
         <div class="baner">
             @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'banner') as $imagen)
                 <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
@@ -12,6 +13,8 @@
                 object-fit: cover;">
             @endforeach
         </div>
+        @endif
+
         <div class="row">
             <div class="col-8">
                 <div class="row">
@@ -22,14 +25,17 @@
                             </strong>
                         </div>
                     </div>
+                    @if ($evento->imagenes->where('IMAGEN_TIPO', 'icono')->isNotEmpty())
                     <div class="col-4  d-flex align-items-center justify-content-center">
+                        
                         @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'icono') as $imagen)
                             <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                                style="width: 100%;
-                            height: 50%;
-                            object-fit: cover;">
+                               class="imagen-redonda ">
                         @endforeach
+
                     </div>
+                    @endif
+
                 </div>
 
                 @if ($evento->EVENTO_TIPO !== null)
@@ -97,8 +103,9 @@
             </div>
 
             <div class="col-4 ">
-                @if ($requisitos->isNotEmpty())
+               
                     <div class="descripcion">
+
                         <p><span class="descripcion-bold">Organizadores:</span> </p>
                         <div class="row">
 
@@ -118,20 +125,22 @@
                         </div>
 
                     </div>
-                @endif
+            
 
-
+                @if ($evento->imagenes->where('IMAGEN_TIPO', 'afiche')->isNotEmpty())
                 <div class="descripcion">
+
                     <p><span class="descripcion-bold">Afiche:</span> </p>
 
                     @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'afiche') as $imagen)
                         <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                            style="width: 100%;
+                        style="width: 100%;
                         height: 50%;
-                        object-fit: cover;">
+                        object-fit: cover;"     onclick="expandirImagen(this);"> >
                     @endforeach
 
                 </div>
+                @endif
 
                 <div id="imagenAmpliada" class="imagen-ampliada" style="display: none;">
                     <img id="imagenAmpliadaContenido" src="" onclick="contraerImagen()" alt="Afiche ampliado">
@@ -162,6 +171,8 @@
 
                 </div>
             </div>
+            
+            <br>
             <div>
                 @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'imagen') as $imagen)
                     <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"style="width: 100%;
