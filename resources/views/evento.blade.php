@@ -266,7 +266,7 @@
         allowOutsideClick: false
         }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '/welcome';
+            window.location.href = '/';
         }
         });
     });

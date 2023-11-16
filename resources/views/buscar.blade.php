@@ -37,7 +37,7 @@
                 </div>
             </div>
         @else
-            <p>No se encontraron resultados.</p>
+            <h4>No se encontraron resultados.</h4>
         @endif
     </div>
 @endsection
