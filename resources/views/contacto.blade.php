@@ -31,7 +31,8 @@
             
             <div class="mb-3 position-relative w-100">
                 <label for="CONTACTO_EMAIL" class="form-label">Email:</label>
-                <input type="email" class="form-control" name="CONTACTO_EMAIL" value="{{ old('CONTACTO_EMAIL') }}" placeholder="Ingrese el correo">
+                <input type="email" class="form-control" name="CONTACTO_EMAIL" value="{{ old('CONTACTO_EMAIL') }}" placeholder="Ingrese el correo" 
+                        pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/">
                 <div class="valid-feedback">Campo válido</div>
                 <div class="invalid-feedback">Use un correo válido</div>
             </div>
@@ -39,6 +40,36 @@
                 <button type="submit" class="btn btn-primary">Registrar</button>
                 <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
             </center>
+
+                @if(session('success'))
+                    <script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Datos guardados correctamente',
+                            text: '{{ session('success') }}',
+                            allowOutsideClick: false
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                            
+                            window.location.href = '/';
+                            }
+                        });
+                    </script>
+                @endif
+
+                @if ($errors->any())
+                    <script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            html: '<ul>' +
+                                @foreach ($errors->all() as $error)
+                                    '<li>{{ $error }}</li>' +
+                                @endforeach
+                                '</ul>',
+                        });
+                    </script>
+                @endif
         </form>
     </div>
     <br>
@@ -60,34 +91,7 @@
     </script>
 
 <script>
-    $('#formulario').on('submit' ,function(e){ 
-        e.preventDefault(); 
-        Swal.fire({
-        title: "¿Estas seguro de registrar la información?",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Registrar" ,
-        cancelButtonText: "Cancelar",
-        allowOutsideClick: false
-        }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-            title: "Registrado",
-            text: "Se registro correctamente.",
-            icon: "success",
-            allowOutsideClick: false
-            }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-                window.location.href = '/';
-            }
-            });
-        }
-        });
-    })
-
+    
     $('#cancelar').on('click', function() {
         Swal.fire({
         title: "¿Estas Seguro que deseas Salir?",

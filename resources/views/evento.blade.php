@@ -127,19 +127,27 @@
 
 
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            html: '<ul>' +
+                                @foreach ($errors->all() as $error)
+                                    '<li>{{ $error }}</li>' +
+                                @endforeach
+                                '</ul>',
+                        });
+                    </script>
                 @endif
 
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
+                @if(session('success'))
+                    <script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: '{{ session('success') }}',
+                        });
+                    </script>
                 @endif
                 <center>
                 <button type="submit" class="btn btn-primary">Registrar</button>
@@ -247,7 +255,7 @@
             }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                window.location.href = '/welcome';
+                window.location.href = '/';
             }
             });
         }
@@ -266,7 +274,7 @@
         allowOutsideClick: false
         }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '/welcome';
+            window.location.href = '/';
         }
         });
     });

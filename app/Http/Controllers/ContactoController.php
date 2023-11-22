@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contacto;
 use App\Models\Evento;
 
+
 class ContactoController extends Controller
 {
     public function formularioContacto()
@@ -16,16 +17,19 @@ class ContactoController extends Controller
 
     public function guardarContacto(Request $request)
     {
+        try {
+            $eventoId = $request->input('evento_id');
+            $contacto = new Contacto;
+            $contacto->CONTACTO_NOMBRE = $request->input('CONTACTO_NOMBRE');
+            $contacto->CONTACTO_NUMERO = $request->input('CONTACTO_NUMERO');
+            $contacto->CONTACTO_EMAIL = $request->input('CONTACTO_EMAIL');
+            $contacto->EVENTO_ID = $eventoId;
+            $contacto->save();
+
+            return redirect()->route('contacto')->with('success', 'Contacto guardado correctamente.');
         
-
-        $eventoId = $request->input('evento_id');
-        $contacto = new Contacto;
-        $contacto->CONTACTO_NOMBRE = $request->input('CONTACTO_NOMBRE');
-        $contacto->CONTACTO_NUMERO = $request->input('CONTACTO_NUMERO');
-        $contacto->CONTACTO_EMAIL = $request->input('CONTACTO_EMAIL');
-        $contacto->EVENTO_ID = $eventoId;
-        $contacto->save();
-
-        return redirect()->route('contacto')->with('success', 'Contacto guardado correctamente.');
+        } catch (ValidationException $e) {
+            return redirect()->route('evento')->withErrors($e->validator->errors());
+        }
     }
 }
