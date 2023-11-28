@@ -19,7 +19,7 @@ class Evento extends Model
 
     public function requisitos()
     {
-        return $this->hasMany(Requisito::class);
+        return $this->hasMany(Requisito::class, 'EVENTO_ID', 'EVENTO_ID');
     }
 
     public function imagenes()

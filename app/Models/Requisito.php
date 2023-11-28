@@ -10,7 +10,7 @@ class Requisito extends Model
     protected $fillable = ['REQUISITO_NOMBRE', 'EVENTO_ID'];
 
     public function evento()
-    {
-        return $this->belongsTo(Evento::class);
-    }
+{
+    return $this->belongsTo(Evento::class, 'EVENTO_ID', 'EVENTO_ID');
+}
 }

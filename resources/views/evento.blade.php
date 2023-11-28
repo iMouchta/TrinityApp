@@ -48,7 +48,7 @@
                         <input type="text" class="form-control" name="EVENTO_UBICACION" required minlength="8"
 
                             maxlength="250">
-                            <div class="valid-feedback">Ubición válida</div>    <!--tooltip -->
+                            <div class="valid-feedback">Ubición válida</div> 
                             <div class="invalid-feedback">Registre una ubicación válida"</div>
                         </div>
                     </div>

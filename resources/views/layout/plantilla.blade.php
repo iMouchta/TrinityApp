@@ -8,12 +8,13 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/hoja.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>@yield('titulo')</title>
 
 
@@ -24,11 +25,11 @@
             min-height: 100vh;
             margin: 0;
         }
-        
+
         footer {
-            margin-top: auto; 
-            background-color: #333; 
-            color: white; 
+            margin-top: auto;
+            background-color: #333;
+            color: white;
             text-align: center;
             padding: 20px 0;
         }
@@ -37,7 +38,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bd-navbar sticky-top navbar-dark " style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg bd-navbar navbar-dark " style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"> Logo </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -63,7 +64,7 @@
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link" aria-current="page" href="{{ route('misEventos') }}">Todos los Eventos</a>
                     </li>
-                    
+
                 </ul>
                 <form class="d-flex" role="search" action="{{ route('buscar') }}" method="GET">
                     <input class="form-control me-2" type="search" name="query" placeholder="Busqueda ..."
@@ -82,31 +83,33 @@
     @yield('organizador')
     @yield('contacto')
     @yield('content')
- @yield('buscar')
-                <footer class="bg-white text-white text-center py-3">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5>Síguenos en las redes sociales</h5>
-                                <div class="social-icons">
-                                    <a href="https://www.facebook.com/UmssBolOficial/"
-                                        class="btn btn-outline-white text-white btn-social">
-                                        <i class="fab fa-facebook-f"></i> Facebook
-                                    </a>
-                                    <a href="#" class="btn btn-outline-white text-white btn-social">
-                                        <i class="fab fa-twitter"></i> Twitter
-                                    </a>
-                                    <a href="#" class="btn btn-outline-white text-white btn-social">
-                                        <i class="fab fa-instagram"></i> Instagram
-                                    </a>
-                                    <a href="#" class="btn btn-outline-white text-white btn-social">
-                                        <i class="fab fa-linkedin-in"></i> LinkedIn
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                   </div>
-                </footer>
+    @yield('buscar')
+    @yield('editarEvento')
+    
+    <footer class="bg-white text-white text-center py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Síguenos en las redes sociales</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/UmssBolOficial/"
+                            class="btn btn-outline-white text-white btn-social">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="#" class="btn btn-outline-white text-white btn-social">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a>
+                        <a href="#" class="btn btn-outline-white text-white btn-social">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="#" class="btn btn-outline-white text-white btn-social">
+                            <i class="fab fa-linkedin-in"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

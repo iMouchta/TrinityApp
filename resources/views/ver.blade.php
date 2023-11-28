@@ -7,9 +7,7 @@
         <div class="baner">
             @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'banner') as $imagen)
                 <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                    style="width: 100%;
-                height: 50%;
-                object-fit: cover;">
+                     class="baner">
             @endforeach
         </div>
         <div class="row">

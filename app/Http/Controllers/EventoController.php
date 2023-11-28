@@ -15,7 +15,7 @@ class EventoController extends Controller
     {
 
         $request->validate([
-            'EVENTO_NOMBRE' => 'required|unique:evento',
+            'EVENTO_NOMBRE' => 'required|unique:evento'
 
         ]);
 
@@ -63,7 +63,7 @@ class EventoController extends Controller
         $eventos = Evento::all();
 
         foreach ($eventos as $evento) {
-            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
+            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); 
 
         }
         return view('misEventos')->with('eventos', $eventos);
@@ -73,7 +73,7 @@ class EventoController extends Controller
     {
         $eventos = Evento::all();
         foreach ($eventos as $evento) {
-            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
+            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID);
             $evento->requisitos = $this->obtenerRequisitos($evento->EVENTO_ID);
         }
 
@@ -96,7 +96,7 @@ class EventoController extends Controller
         $evento = Evento::with(['fechas', 'imagenes'])->findOrFail($eventoId);
         $requisitos = Requisito::where('EVENTO_ID', $eventoId)->get();
         $contactos = Contacto::where('EVENTO_ID', $eventoId)->get();
-    
+
         return view('ver', ['evento' => $evento, 'requisitos' => $requisitos, 'contactos' => $contactos]);
     }
     public function buscar(Request $request)
@@ -110,5 +110,66 @@ class EventoController extends Controller
             ->get();
 
         return view('buscar', ['eventos' => $eventos]);
+    }
+
+
+    public function editar($eventoId)
+    {
+        $evento = Evento::with(['fechas', 'requisitos'])->findOrFail($eventoId);
+
+        return view('editarEvento', [
+            'evento' => $evento,
+        ]);
+    }
+
+
+
+    public function actualizar(Request $request, $eventoId)
+    {
+        $request->validate([
+            'EVENTO_NOMBRE' => 'required|unique:evento'
+        ]);
+
+        try {
+            $evento = Evento::findOrFail($eventoId);
+
+            $evento->EVENTO_NOMBRE = $request->input('EVENTO_NOMBRE');
+            $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
+            $evento->EVENTO_DESCRIPCION = $request->input('EVENTO_DESCRIPCION');
+            $evento->EVENTO_MODALIDAD = $request->input('EVENTO_MODALIDAD');
+            $evento->EVENTO_BASES = $request->input('EVENTO_BASES');
+            $evento->EVENTO_UBICACION = $request->input('EVENTO_UBICACION');
+            $evento->EVENTO_NOTIFICACIONES = $request->has('EVENTO_NOTIFICACIONES') ? 1 : 0;
+            $evento->EVENTO_USUARIOS = $request->has('EVENTO_USUARIOS') ? 1 : 0;
+            $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
+
+            $evento->save();
+
+            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FECHA')) {
+                $evento->fechas()->delete();
+
+                foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
+                    $fecha = new Fecha;
+                    $fecha->FECHA_NOMBRE = $nombreFecha;
+                    $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
+                    $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
+                    $evento->fechas()->save($fecha);
+                }
+            }
+
+            if ($request->has('requisitos.REQUISITO_NOMBRE')) {
+                $evento->requisitos()->delete();
+
+                foreach ($request->input('requisitos.REQUISITO_NOMBRE') as $key => $nombreRequisito) {
+                    $requisito = new Requisito;
+                    $requisito->REQUISITO_NOMBRE = $nombreRequisito;
+                    $evento->requisitos()->save($requisito);
+                }
+            }
+
+            return redirect()->route('editarEvento', ['evento' => $eventoId])->withInput()->with('success', 'Evento y calendarización actualizados correctamente.');
+        } catch (ValidationException $e) {
+            return redirect()->route('editarEvento', ['evento' => $eventoId])->withErrors($e->validator->errors());
+        }
     }
 }

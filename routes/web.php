@@ -7,6 +7,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\OrganizadorController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\MainController;
+//use App\Http\Controllers\MailController;
 
 Route::get('/eventos/{evento}', [EventoController::class, 'verEvento']) -> name('ver.evento');
 
@@ -39,3 +40,10 @@ Route::post('/guardarEvento', [EventoController::class, 'guardarEvento'])->name(
 Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');
 
 //Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
+
+Route::get('/editar-evento/{evento}', 'EventoController@editar')->name('editarEvento');
+
+
+Route::post('/actualizar-evento/{evento}', 'EventoController@actualizar')->name('actualizarEvento');
+
+
