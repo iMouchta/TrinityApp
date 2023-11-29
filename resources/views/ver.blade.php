@@ -101,25 +101,23 @@
                     <div class="descripcion">
                         <p><span class="descripcion-bold">Organizadores:</span> </p>
                         <div class="row">
-
-                            <div class="col-md-3 mb-3">
-                                <img src="{{ asset('as.jpg') }}" class="img-fluid" alt="Auspiciador 1">
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <img src="{{ asset('as.jpg') }}" class="img-fluid" alt="Auspiciador 1">
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <img src="{{ asset('as.jpg') }}" class="img-fluid" alt="Auspiciador 1">
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <img src="{{ asset('as.jpg') }}" class="img-fluid" alt="Auspiciador 1">
-                            </div>
-
+                            @foreach ($organizador  as $or)
+                             <p>{{$or->ORGANIZADOR_NOMBRE}}</p>
+                            @endforeach
                         </div>
 
                     </div>
                 @endif
+                
+                <div class="descripcion">
+                    <p><span class="descripcion-bold">Patrocinador:</span> </p>
+                    <div class="row">
+                        @foreach ($sponsor  as $es)
+                         <p>{{$es->SPONSOR_NOMBRE}}</p>
+                        @endforeach
+                    </div>
 
+                </div>
 
                 <div class="descripcion">
                     <p><span class="descripcion-bold">Afiche:</span> </p>
@@ -153,11 +151,14 @@
 
 
                 <div class ="botones">
-                    <button class="button-27" role="button"
-                        href="{{ route('ver.evento', ['evento' => $evento->EVENTO_ID]) }}"> <span
+                    <a class="btn btn-primary btn-sm" role="button"  href="{{ route('asignar.evento',['id' => $evento->EVENTO_ID]) }}"> 
+                        Asignar patrocinador y organizador
+                    </a>
+                    <a class="btn btn-primary btn-sm" role="button"
+                        href="{{ route('register.user.evento', ['id' => $evento->EVENTO_ID]) }}"> <span
                             class="text">REGISTRARSE </span>
-                    </button>
-                    <a class="button-27 btn btn-danger" href="{{ route('misEventos') }}"><span
+                </a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('misEventos') }}"><span
                             class="text">ATRAS</span></a>
 
                 </div>

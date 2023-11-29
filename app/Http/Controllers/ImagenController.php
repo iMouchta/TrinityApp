@@ -26,7 +26,6 @@ class ImagenController extends Controller
         ]);
         
         try {
-            dd($request->all());
             $eventoId = $request->input('evento_id');
 
             $this->registrarImagen('banner', $request->file('banner'), $eventoId);

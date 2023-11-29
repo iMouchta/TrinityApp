@@ -7,6 +7,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\OrganizadorController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\AsignarController;
 
 Route::get('/eventos/{evento}', [EventoController::class, 'verEvento']) -> name('ver.evento');
 
@@ -37,5 +38,19 @@ Route::get('/formulario', 'App\Http\Controllers\EventoController@formulario')->n
 Route::post('/guardarEvento', [EventoController::class, 'guardarEvento'])->name('guardarEvento');
 
 Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');
+
+Route::get('/evento-edit/{id}', [EventoController::class, 'edit']) -> name('edit.evento');
+
+Route::post('/update-evento',[EventoController::class, 'update'])->name('update.evento'); 
+
+
+Route::get('/asignar/{id}', [AsignarController::class, 'asignarToEvent'])->name('asignar.evento');
+
+Route::post('/guardar-asignacio',[AsignarController::class, 'guardarAsignacion'])->name('save.asginar');
+
+Route::get('/elimiar-evento/{id}',[EventoController::class, 'eliminar'])->name('eliminar.evento');
+
+
+Route::get('/registra-usu/{id}',[EventoController::class, 'asignarUser'])->name('register.user.evento');
 
 //Route::get('/welcome', [MainController::class, 'index'])->name('welcome');

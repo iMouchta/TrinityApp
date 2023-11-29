@@ -26,8 +26,17 @@
                             </div>
 
                             <div class=" botonver ">
-                                <center><a href="{{ route('ver.evento', ['evento' => $evento->EVENTO_ID]) }}"
-                                        class="btn btn-primary">Ver evento</a></center>
+                                <center>
+                                    <a href="{{ route('ver.evento', ['evento' => $evento->EVENTO_ID]) }}"
+                                                class="btn btn-primary btn-sm">Ver evento</a>
+                                    <a href="{{ route('edit.evento', ['id' => $evento->EVENTO_ID]) }}" 
+                                                class="btn btn-primary btn-sm" href="#" role="button">Editar</a>
+                                    <a> 
+                                    <a href="{{ route('eliminar.evento', ['id' => $evento->EVENTO_ID]) }}" 
+                                        class="btn btn-danger btn-sm" href="#" role="button"> 
+                                        Eliminar
+                                    </a>
+                                </center>
                                 <!-- Mostrar más información del evento según tus necesidades -->
                             </div>
                         </div>
