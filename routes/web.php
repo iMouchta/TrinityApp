@@ -56,3 +56,4 @@ Route::get('/registra-usu/{id}',[EventoController::class, 'asignarUser'])->name(
 // //Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
 
 Route::get('/baja', function () {return view('baja');})->name('baja');
+Route::get('/usuario', function () {return view('usuario');})->name('usuario');

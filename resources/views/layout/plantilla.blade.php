@@ -59,6 +59,7 @@
                             </li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
                             <li><a class="dropdown-item" href="{{ route('baja') }}">Darse de baja</a></li>
+                            <li><a class="dropdown-item" href="{{ route('usuario') }}">Registrar usuario</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
@@ -84,6 +85,7 @@
     @yield('contacto')
     @yield('content')
     @yield('baja')
+    @yield('usuario')
 
  @yield('buscar')
                 <footer class="bg-white text-white text-center py-3">
