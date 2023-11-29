@@ -5,7 +5,7 @@
 <div class="container">
     <form  method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
     @csrf
-        <h1><center>Darse de baja</center></h1>
+        <h1><center>Se esta dando de baja</center></h1>
             <div class="mb-3 position-relative w-75">
                 <label class="form-label">Nombre:</label>
                 <input type="text" class="form-control"  placeholder="Ingrese el nombre" required
@@ -29,8 +29,8 @@
             </div>
 
             <center>
-                <button type="submit" class="btn btn-primary">Registrar</button>
-                <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
+                <button type="submit" class="btn btn-primary">Darse de baja</button>
+                <button id="cancelar" type="button" class="btn btn-danger">Cancelar</button>
             </center>
 
                 @if(session('success'))

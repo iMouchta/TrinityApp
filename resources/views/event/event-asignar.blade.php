@@ -6,12 +6,12 @@
             class="row g-3 needs-validation" novalidate>
             @csrf
             <h1>
-                <center>Registrar Afiche</center>
+                <center>Asignar Patrocinador y Organizador</center>
             </h1>
             
             <input hidden value="{{$evento->EVENTO_ID}}" name="EVENTO_ID"> 
             <div class="mb-3">
-                <label for="evento_id" class="form-label">Seleccionar Auspiciador:</label>
+                <label for="evento_id" class="form-label">Asignar patrocinador:</label>
                 <select class="form-control" id="SPONSOR_ID" name="SPONSOR_ID">
                     @foreach ($patornacidor as $pt)
                         <option value="{{$pt->SPONSOR_ID}}">{{ $pt->SPONSOR_NOMBRE }} {{ $pt->SPONSOR_ID }}</option>
@@ -22,7 +22,7 @@
 
             <div class="mb-3">
 
-                <label for="evento_id" class="form-label">Seleccionar Evento:</label>
+                <label for="evento_id" class="form-label">Asignar organizador:</label>
                 <select class="form-control" id="ORGANIZADOR_ID" name="ORGANIZADOR_ID">
                     @foreach ($organizador as $or)
                         <option value="{{ $or->ORGANIZADOR_ID }}">{{ $or->ORGANIZADOR_NOMBRE }}</option>

@@ -4,7 +4,7 @@
     <div class="container">
     <form action="{{ route('guardarContacto') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>  
             @csrf
-            <h1><center>Registar Usuario</center></h1>
+            <h1><center>Registrar Usuario</center></h1>
            
             <div class="mb-3 position-relative w-100">
                 <label for="CONTACTO_NOMBRE" class="form-label">Nombre de  coach:</label>
@@ -24,10 +24,10 @@
 
             <div class="mb-3 position-relative w-25">
                 <label for="CONTACTO_NUMERO" class="form-label">Nombre del participante:</label>
-                <input type="text" class="form-control" name="CONTACTO_NUMERO" value="{{ old('CONTACTO_NUMERO') }}"  placeholder="Ingrese el celular o telefono" required
-                pattern="[0-9]{7,8}">
-                    <div class="valid-feedback">Contacto válido</div>
-                    <div class="invalid-feedback">Use un número válido"</div>
+                <input type="text" class="form-control" value="{{ old('CONTACTO_NUMERO') }}"  placeholder="Ingrese el nombre" required
+                >
+                    <div class="valid-feedback">Nombre válido</div>
+                    <div class="invalid-feedback">Use un nombre valido"</div>
             </div>
             
             <center>
