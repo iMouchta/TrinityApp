@@ -4,7 +4,7 @@
     <div class="container">
     <form action="{{ route('guardarContacto') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>  
             @csrf
-            <h1><center>Registar contacto</center></h1>
+            <h1><center>Registrar contacto</center></h1>
             <div class="mb-3 w-25" >
                 <label for="evento_id" class="form-label">Seleccionar Evento:</label>
                 <select class="form-control" id="evento_id" name="evento_id">
