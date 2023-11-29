@@ -6,8 +6,7 @@
     <div class="container">
         <div class="baner">
             @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'banner') as $imagen)
-                <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                     class="baner">
+                <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}" class="baner">
             @endforeach
         </div>
         <div class="row">
@@ -32,7 +31,7 @@
 
                 @if ($evento->EVENTO_TIPO !== null)
                     <div class="descripcion">
-                        <p><span class="descripcion-bold">Tipo de evento:  </span> {{ $evento->EVENTO_TIPO }}</p>
+                        <p><span class="descripcion-bold">Tipo de evento: </span> {{ $evento->EVENTO_TIPO }}</p>
                     </div>
                 @endif
 
@@ -151,10 +150,10 @@
 
 
                 <div class ="botones">
-                    <button class="button-27" role="button"
-                        href="{{ route('ver.evento', ['evento' => $evento->EVENTO_ID]) }}"> <span
-                            class="text">REGISTRARSE </span>
+                    <button class="button-27" href="{{ route('formularioGenerado', ['eventoId' => $evento->EVENTO_ID]) }}"> 
+                        <span class="text">REGISTRARSE </span>
                     </button>
+                    <a href="{{ route('formularioGenerado', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Registrate</a>
                     <a class="button-27 btn btn-danger" href="{{ route('misEventos') }}"><span
                             class="text">ATRAS</span></a>
 
@@ -163,8 +162,8 @@
             <div>
                 @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'imagen') as $imagen)
                     <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"style="width: 100%;
-                            height: 50%;
-                            object-fit: cover;">
+                                height: 50%;
+                                object-fit: cover;">
                 @endforeach
             </div>
 

@@ -14,7 +14,7 @@ class CreateRequisitoTable extends Migration
             $table->string('REQUISITO_NOMBRE', 1024);
             $table->timestamps();
 
-                      $table->unique('REQUISITO_ID', 'FECHA_PK');
+                      $table->unique('REQUISITO_ID', 'REQUISITO_PK');
 
             $table->foreign('EVENTO_ID', 'FK_REQUISITO_CUENTA_CO_EVENTO')
                 ->references('EVENTO_ID')

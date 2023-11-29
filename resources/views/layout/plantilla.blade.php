@@ -85,6 +85,9 @@
     @yield('content')
     @yield('buscar')
     @yield('editarEvento')
+    @yield('formularioRegistro')
+    @yield('formGenerado')
+    @yield('editarFormulario')
     
     <footer class="bg-white text-white text-center py-3">
         <div class="container-fluid">

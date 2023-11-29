@@ -57,7 +57,7 @@
                     </div>
                 </div>
         </div>
-        
+
         <div id="fechas-container">
             <label for="fechas-container" class="form-label">Cronograma:</label>
             @foreach ($evento->fechas as $fecha)
@@ -108,11 +108,14 @@
         </div>
 
 
-        <center><button type="submit" class="btn btn-primary">Actualizar</button></center>
-
+        <center>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button id="cancelar" type="button" class="btn btn-danger">Cancelar</button>
+            </center>
         </form>
 
     </div>
+    <br>
     <script>
         function agregarFecha() {
             var container = document.getElementById('fechas-container');
@@ -215,7 +218,7 @@
 
         $('#cancelar').on('click', function() {
             Swal.fire({
-                title: "¿Estas Seguro que deseas Salir?",
+                title: "¿Estas Seguro que deseas salir?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -225,7 +228,7 @@
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/welcome';
+                    window.location.href = '/misEventos';
                 }
             });
         });

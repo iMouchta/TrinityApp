@@ -26,5 +26,8 @@ class Evento extends Model
     {
         return $this->hasMany(Imagen::class, 'EVENTO_ID', 'EVENTO_ID');
     }
-
+    public function regforms()
+    {
+        return $this->hasMany(regform::class, 'EVENTO_ID', 'EVENTO_ID');
+    }
 }
