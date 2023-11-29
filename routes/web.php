@@ -54,3 +54,5 @@ Route::get('/elimiar-evento/{id}',[EventoController::class, 'eliminar'])->name('
 Route::get('/registra-usu/{id}',[EventoController::class, 'asignarUser'])->name('register.user.evento');
 
 // //Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
+
+Route::get('/baja', function () {return view('baja');})->name('baja');
