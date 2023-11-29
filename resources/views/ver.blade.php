@@ -149,19 +149,28 @@
                 @endif
 
 
+                <style>
+    .botones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Adjust as needed for the desired spacing */
+    }
 
-                <div class ="botones">
-                    <a class="btn btn-primary btn-sm" role="button"  href="{{ route('asignar.evento',['id' => $evento->EVENTO_ID]) }}"> 
-                        Asignar patrocinador y organizador
-                    </a>
-                    <a class="btn btn-primary btn-sm" role="button"
-                        href="{{ route('register.user.evento', ['id' => $evento->EVENTO_ID]) }}"> <span
-                            class="text">REGISTRARSE </span>
-                </a>
-                    <a class="btn btn-primary btn-sm" href="{{ route('misEventos') }}"><span
-                            class="text">ATRAS</span></a>
+    .btn {
+        margin-right: 10px; /* Adjust the value as needed for the desired separation */
+    }
+</style>
 
-                </div>
+<div class="botones">
+    <a class="btn btn-primary btn-sm" role="button" href="{{ route('usuario') }}">Registro individual</a>
+    <a class="btn btn-primary btn-sm" role="button" href="{{ route('asignar.evento',['id' => $evento->EVENTO_ID]) }}">Asignaciones</a>
+    <a class="btn btn-primary btn-sm" role="button" href="{{ route('register.user.evento', ['id' => $evento->EVENTO_ID]) }}">
+        <span class="text">Registrar</span>
+    </a>
+    <a class="btn btn-primary btn-sm" href="{{ route('misEventos') }}"><span class="text">Atras</span></a>
+</div>
+
+
             </div>
             <div>
                 @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'imagen') as $imagen)

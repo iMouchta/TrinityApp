@@ -59,7 +59,7 @@
                             </li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
                             <li><a class="dropdown-item" href="{{ route('baja') }}">Darse de baja</a></li>
-                            <li><a class="dropdown-item" href="{{ route('usuario') }}">Registrar usuario</a></li>
+                            
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
