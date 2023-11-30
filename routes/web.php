@@ -8,6 +8,8 @@ use App\Http\Controllers\OrganizadorController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AsignarController;
+use App\Http\Controllers\RegformController;
+use App\Http\Controllers\formularioGeneradoController;
 
 Route::get('/eventos/{evento}', [EventoController::class, 'verEvento']) -> name('ver.evento');
 
@@ -58,3 +60,16 @@ Route::get('/registra-usu/{id}',[EventoController::class, 'asignarUser'])->name(
 Route::get('/baja', function () {return view('baja');})->name('baja');
 
 Route::get('/usuario', function () {return view('usuario');})->name('usuario');
+
+Route::get('/formulario-registro/{eventoId}', [RegformController::class, 'mostrarFormulario'])->name('mostrarFormularioRegistro');
+Route::post('/guardar-formulario/{eventoId}', [RegformController::class, 'guardarFormulario'])->name('guardarFormulario');
+
+Route::get('/formulario-generado/{eventoId}', [formularioGeneradoController::class,'mostrarFormularioGenerado'])->name('formularioGenerado');
+Route::post('/procesar-formulario-generado', 'RegformController@procesarFormularioGenerado')->name('procesarFormularioGenerado');
+Route::post('/editar-formulario/{eventoId}', 'RegformController@editarFormulario')->name('editarFormulario');
+
+Route::put('/actualizar-formulario/{regformId}', [RegformController::class, 'actualizarFormulario'])->name('actualizarFormulario');
+Route::get('/formulario-edicion/{eventoId}/{regformId}', [RegformController::class, 'mostrarFormularioEdicion'])->name('mostrarFormularioEdicion');
+Route::put('/actualizar-formulario/{regformId}', [RegformController::class, 'actualizarFormulario'])->name('actualizarFormulario');
+
+

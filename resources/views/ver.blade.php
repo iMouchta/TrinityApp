@@ -162,11 +162,9 @@
 </style>
 
 <div class="botones">
-    <a class="btn btn-primary btn-sm" role="button" href="{{ route('usuario') }}">Registro individual</a>
+    < <a href="{{ route('formularioGenerado', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Registrate</a>
     <a class="btn btn-primary btn-sm" role="button" href="{{ route('asignar.evento',['id' => $evento->EVENTO_ID]) }}">Asignaciones</a>
-    <a class="btn btn-primary btn-sm" role="button" href="{{ route('register.user.evento', ['id' => $evento->EVENTO_ID]) }}">
-        <span class="text">Registrar</span>
-    </a>
+    
     <a class="btn btn-primary btn-sm" href="{{ route('misEventos') }}"><span class="text">Atras</span></a>
 </div>
 
