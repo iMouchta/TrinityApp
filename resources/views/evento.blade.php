@@ -44,14 +44,15 @@
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
                         <textarea class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required></textarea>
                         
-                        <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
-                        <input type="text" class="form-control" name="EVENTO_UBICACION" required minlength="8"
-
-                            maxlength="250">
-                            <div class="valid-feedback">Ubición válida</div>    <!--tooltip -->
+                            <div class="col">
+                            <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
+                            <input type="text" class="form-control" name="EVENTO_UBICACION" placeholder="Ingrese la direccion" requerid
+                            minlength="4" maxlength="250">
+                            <div class="valid-feedback">Ubición válida</div> 
                             <div class="invalid-feedback">Registre una ubicación válida"</div>
-                        </div>
-                    </div>
+                            </div>
+                            
+                        
                 </div>
 
                 <div>
