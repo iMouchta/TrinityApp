@@ -58,7 +58,9 @@
                             <li><a class="dropdown-item" href="{{ route('sponsor') }}">Registrar Sponsor</a></li>
                             <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
-                            <li><a class="dorpdown-item" ></a></li>
+                            <li><a class="dropdown-item" href="{{ route('seleccionarEvento')}}">Editar Evento</a></li>
+                            <li><a class="dropdown-item" href="{{ route('asigOrganizador')}}">Asignar Organizador</a></li>
+                            <li><a class="dropdown-item" href="{{ route('asigPatrocinador')}}">Asignar Patrocinadores</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
@@ -101,6 +103,8 @@
     @yield('email')
     @yield('formulario')
     @yield('asigOrganizador')
+    @yield('asigPatrocinador')
+    @yield('seleccionarEvento')
 
 
     

@@ -32,7 +32,7 @@ class EventoController extends Controller
             $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
             $evento->save();
 
-            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_INICIO')&& $request->has('fechas.FECHA_FINAL')) {
+            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_INICIO') && $request->has('fechas.FECHA_FINAL')) {
                 foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
@@ -40,7 +40,7 @@ class EventoController extends Controller
                     $fecha->FECHA_FINAL = $request->input('fechas.FECHA_FINAL')[$key];
                     $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
                     $fecha->EVENTO_ID = $evento->EVENTO_ID;
-                    
+
                     $fecha->save();
                 }
             }
@@ -65,8 +65,7 @@ class EventoController extends Controller
         $eventos = Evento::all();
 
         foreach ($eventos as $evento) {
-            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); 
-
+            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID);
         }
         return view('misEventos')->with('eventos', $eventos);
     }
@@ -106,9 +105,6 @@ class EventoController extends Controller
         $query = $request->input('query');
 
         $eventos = Evento::where('EVENTO_NOMBRE', 'like', "%$query%")
-            ->orWhere('EVENTO_TIPO', 'like', "%$query%")
-            ->orWhere('EVENTO_MODALIDAD', 'like', "%$query%")
-            ->orWhere('EVENTO_COSTO', 'like', "%$query%")
             ->get();
 
         return view('buscar', ['eventos' => $eventos]);
@@ -174,5 +170,17 @@ class EventoController extends Controller
         } catch (ValidationException $e) {
             return redirect()->route('editarEvento', ['evento' => $eventoId])->withErrors($e->validator->errors());
         }
+    }
+
+    public function vistaSeleccionarEvento()
+    {
+        $eventos = Evento::all();
+        return view('seleccionarEvento', compact('eventos'));
+    }
+
+    public function editarEvento(Request $request)
+    {
+        $eventoId = $request->input('evento_id');
+        return redirect()->route('editarEvento', ['eventoId' => $eventoId]);
     }
 }

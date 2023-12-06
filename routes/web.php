@@ -43,7 +43,6 @@ Route::get('/buscar', [EventoController::class,'buscar'])->name('buscar');
 
 //Route::get('/welcome', [MainController::class, 'index'])->name('welcome');
 
-Route::get('/editar-evento/{evento}', 'EventoController@editar')->name('editarEvento');
 
 Route::post('/actualizar-evento/{evento}', 'EventoController@actualizar')->name('actualizarEvento');
 
@@ -68,3 +67,9 @@ Route::post('/enviar-correo', [MailController::class, 'enviarCorreoPersonalizado
 
 Route::get('/asigOrganizador', [OrganizadorController::class, 'asignar']) -> name('asigOrganizador');
 Route::post('/guardarOrga', [OrganizadorController::class, 'guardarOrga'])->name('guardarOrga');
+
+Route::get('/seleccionar-evento', 'EventoController@vistaSeleccionarEvento')->name('seleccionarEvento');
+Route::get('/editarEvento{eventoId}', 'EventoController@editarEvento')->name('editarEvento');
+
+Route::get('/asigPatrocinador', [SponsorController::class, 'asignar']) -> name('asigPatrocinador');
+Route::post('/guardarOrga', [SponsorController::class, 'guardarPatro'])->name('guardarPatro');

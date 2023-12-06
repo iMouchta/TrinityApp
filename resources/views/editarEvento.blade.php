@@ -3,7 +3,7 @@
 @section('editarEvento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('actualizarEvento', ['evento' => $evento->EVENTO_ID]) }}" method="post"
+            <form action="{{ route('editarEvento', ['eventoId' => $evento->EVENTO_ID]) }}" method="get"
                 enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 @csrf
                 <h1>

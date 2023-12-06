@@ -5,7 +5,7 @@
         <center>
             <h2>Editar formulario de registro</h2>
         </center>
-        <form action="{{ route('actualizarFormulario', ['regformId' => $regform->REGFORM_ID]) }}" method="post">
+        <form action="{{ route('actualizarFormulario', ['regformId' => $regform->REGFORM_ID]) }}" method="get">
             @method('PUT')
             @csrf
 
@@ -69,7 +69,6 @@
                 var filaOriginal = document.querySelector('.form-row');
                 var nuevaFila = filaOriginal.cloneNode(true);
 
-                // Agrega un botón de eliminar a la nueva fila
                 var botonEliminar = document.createElement('button');
                 botonEliminar.type = 'button';
                 botonEliminar.className = 'btn btn-danger';
@@ -83,7 +82,6 @@
                 document.getElementById('camposAdicionales').appendChild(nuevaFila);
             }
 
-            // Función para eliminar la fila correspondiente
             function eliminarCampo(botonEliminar) {
                 var fila = botonEliminar.parentNode.parentNode;
                 fila.parentNode.removeChild(fila);
