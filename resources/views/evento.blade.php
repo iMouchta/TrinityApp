@@ -77,13 +77,17 @@
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Actividad Inicial">
+                                        placeholder="Actividad Inicial" required>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="date" class="form-control" name="fechas[FECHA_FECHA][]"
-                                        placeholder="Fecha">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
+                                        placeholder="Fecha Inicial" required>
                                 </div>
-                                <div class="col-sm-6 col-md-8">
+                                <div class="col-auto">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
+                                        placeholder="Fecha Final" required>
+                                </div>
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
                                         placeholder = "Descripcion">
                                 </div>
@@ -92,13 +96,17 @@
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Actividad Final">
+                                        placeholder="Actividad Final" required>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="date" class="form-control" name="fechas[FECHA_FECHA][]"
-                                        placeholder="Fecha">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
+                                        placeholder="Fecha Inicial" required>
                                 </div>
-                                <div class="col-sm-6 col-md-8">
+                                <div class="col-auto">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
+                                        placeholder="Fecha Final" required>
+                                </div>
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
                                         placeholder = "Descripcion">
                                 </div>
@@ -158,9 +166,12 @@
                         '<input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]" placeholder="Actividad">' +
                         '</div>' +
                         '<div class="col-auto">' +
-                        '<input type="date" class="form-control" name="fechas[FECHA_FECHA][]" placeholder="Fecha">' +
+                        '<input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]" placeholder="Fecha">' +
                         '</div>' +
-                        '<div class="col-md-7">' +
+                        '<div class="col-auto">' +
+                        '<input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]" placeholder="Fecha">' +
+                        '</div>' +
+                        '<div class="col-md-4">' +
                         '<input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]" placeholder="Descripcion">' +
                         '</div>' +
                         '<div class="col-auto">' +

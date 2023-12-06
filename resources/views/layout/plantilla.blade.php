@@ -100,6 +100,7 @@
     @yield('editarFormulario')
     @yield('email')
     @yield('formulario')
+    @yield('asigOrganizador')
 
 
     

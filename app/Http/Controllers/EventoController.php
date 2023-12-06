@@ -32,11 +32,12 @@ class EventoController extends Controller
             $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
             $evento->save();
 
-            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FECHA')) {
+            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_INICIO')&& $request->has('fechas.FECHA_FINAL')) {
                 foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
-                    $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
+                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_INICIO')[$key];
+                    $fecha->FECHA_FINAL = $request->input('fechas.FECHA_FINAL')[$key];
                     $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
                     $fecha->EVENTO_ID = $evento->EVENTO_ID;
                     
@@ -146,13 +147,14 @@ class EventoController extends Controller
 
             $evento->save();
 
-            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FECHA')) {
+            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FINAL') && $request->has('fechas.FECHA_FINAL')) {
                 $evento->fechas()->delete();
 
                 foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
-                    $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
+                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_INICIO')[$key];
+                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_FINAL')[$key];
                     $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
                     $evento->fechas()->save($fecha);
                 }

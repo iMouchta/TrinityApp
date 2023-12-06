@@ -64,3 +64,7 @@ Route::put('/actualizar-formulario/{regformId}', [RegformController::class, 'act
 Route::get('/mostrar-formulario', [MailController::class, 'mostrarFormulario']);
 
 Route::post('/enviar-correo', [MailController::class, 'enviarCorreoPersonalizado']);
+
+
+Route::get('/asigOrganizador', [OrganizadorController::class, 'asignar']) -> name('asigOrganizador');
+Route::post('/guardarOrga', [OrganizadorController::class, 'guardarOrga'])->name('guardarOrga');

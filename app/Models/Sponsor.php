@@ -10,7 +10,8 @@ class Sponsor extends Model
     protected $primaryKey = 'SPONSOR';
     protected $fillable = ['SPONSOR_NOMBRE', 'SPONSOR_ENLACE', 'SPONSOR_LOGO', 'EVENTO_ID'];
 
-    public function sponsors{
-        return $this -> hasMany(Sponsor::class, 'EVENTO_ID');
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class, 'evento_organizador', 'organizador_id', 'evento_id');
     }
 }

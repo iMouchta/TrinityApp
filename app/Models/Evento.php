@@ -30,4 +30,8 @@ class Evento extends Model
     {
         return $this->hasMany(regform::class, 'EVENTO_ID', 'EVENTO_ID');
     }
+    public function organizadores()
+    {
+        return $this->belongsToMany(Organizador::class, 'evento_organizador', 'evento_id', 'organizador_id');
+    }
 }

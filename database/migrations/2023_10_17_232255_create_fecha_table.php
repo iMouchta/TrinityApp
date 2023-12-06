@@ -12,7 +12,8 @@ class CreateFechaTable extends Migration
             $table->increments('FECHA_ID'); 
             $table->integer('EVENTO_ID')->unsigned();
             $table->string('FECHA_NOMBRE', 1024);
-            $table->date('FECHA_FECHA');
+            $table->datetime('FECHA_INICIO');
+            $table->datetime('FECHA_FINAL');
             $table->string('FECHA_DESCRIPCION', 1024)->nullable();            
 
             $table->unique('FECHA_ID', 'FECHA_PK');

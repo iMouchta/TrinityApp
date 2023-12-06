@@ -8,8 +8,6 @@
     src: url('/fonts/RobotoCondensed-Bold.ttf') format('truetype');
 }
 
-
-
 body{
     background-color:aliceblue;
     display: flex;

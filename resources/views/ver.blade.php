@@ -76,8 +76,8 @@
                             <tr>
                                 <th scope="row">{{ $index + 1 }}</th>
                                 <td>{{ $fecha->FECHA_NOMBRE }}</td>
-                                <td>{{ $fecha->FECHA_FECHA }}</td>
-                                <td>No por ahora</td>
+                                <td>{{ $fecha->FECHA_INICIO }}</td>
+                                <td>{{ $fecha->FECHA_FINAL}}</td>
                                 <td>{{ $fecha->DESCRIPCION }}</td>
                             </tr>
                         @endforeach
