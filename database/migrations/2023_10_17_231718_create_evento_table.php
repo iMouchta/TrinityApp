@@ -20,6 +20,7 @@ class CreateEventoTable extends Migration
             $table->float('EVENTO_COSTO')->nullable();
             $table->mediumText('EVENTO_BASES')->nullable();
             $table->timestamps();
+            
 
             $table->unique('EVENTO_ID', 'EVENTO_PK');
         });

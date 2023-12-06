@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RobotoCondensed-Bold';
+    src: url('/fonts/RobotoCondensed-Bold.ttf') format('truetype');
+}
+
+
+
 body{
     background-color:aliceblue;
     display: flex;
@@ -10,19 +22,79 @@ main {
     flex: 1;
 }
 
+#carousel-container {
+    margin-top: 10%;
+    width: 90%;
+    margin-left: 5%;
+    height:40% ;
+    overflow: hidden;
+    position: relative;
+}
+
+#image-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    
+}
+
+.carousel-image {
+    height: 100%;
+    width:100%; 
+    object-fit:fill;
+}
+
+.bton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+#prevBton {
+    left: 0;
+}
+
+#nextBton {
+    right: 0;
+}
+
 .navbar {
-    font-size: 25px; 
+    font-size: 25px;
     background-blend-mode: multiply;
     background-color: initial;
     background-image: url(https://www.umss.edu.bo/wp-content/uploads/2021/11/5650360.png),linear-gradient(56deg,#002a4c 76%,#e30613 100%);
 }
+
+.navbar-brand{
+    height: 62px;
+    display: contents;
+    font-family: 'RobotoCondensed-Bold';
+    
+
+}
+
+#containerB{
+    margin-top: 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    
+}
+
 .container{
     margin-top: 20px;
-    background-color: #ffffff; /* Color de fondo del contenedor */
-    background-color: #ffffff; /* Color de fondo del contenedor */
-    border-radius: 5px; /* Borde redondeado del contenedor */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
-    padding: 20px; /* Espaciado interno del contenido dentro del contenedor */  
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    font-family: 'Roboto-Regular';
 }
 
 .drop-container {
@@ -49,6 +121,7 @@ ul {
 
 li {
     margin: 5px 0;
+    font-family: 'RobotoCondensed-Bold';
 }
 
 form {

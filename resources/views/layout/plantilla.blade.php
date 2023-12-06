@@ -40,7 +40,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bd-navbar navbar-dark " style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"> Logo </a>
+            <a class="navbar-brand" href="/"> HackHub </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -56,14 +56,24 @@
                             <li><a class="dropdown-item" href="{{ route('evento') }}">Registrar Evento</a></li>
                             <li><a class="dropdown-item" href="{{ route('imagen') }}">Registrar Afiche</a></li>
                             <li><a class="dropdown-item" href="{{ route('sponsor') }}">Registrar Sponsor</a></li>
-                            <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a>
-                            </li>
+                            <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
+                            <li><a class="dorpdown-item" ></a></li>
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link" aria-current="page" href="{{ route('misEventos') }}">Todos los Eventos</a>
                     </li>
+                    {{-- <li>
+                        <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="nav-link" aria-current="page" >Formulario de registro</a>
+                    </li> --}}
+                    {{-- <div class=" botonver">
+                        <center>
+                            <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Formulario de registro</a>
+                            <a href="{{ route('editarEvento', ['evento' => $evento->EVENTO_ID]) }}"class="btn btn-warning">Editar evento</a>
+                        </center>
+
+                    </div> --}}
 
                 </ul>
                 <form class="d-flex" role="search" action="{{ route('buscar') }}" method="GET">
@@ -88,32 +98,12 @@
     @yield('formularioRegistro')
     @yield('formGenerado')
     @yield('editarFormulario')
-    
-    <footer class="bg-white text-white text-center py-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Síguenos en las redes sociales</h5>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/UmssBolOficial/"
-                            class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-facebook-f"></i> Facebook
-                        </a>
-                        <a href="#" class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-twitter"></i> Twitter
-                        </a>
-                        <a href="#" class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="#" class="btn btn-outline-white text-white btn-social">
-                            <i class="fab fa-linkedin-in"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @yield('email')
+    @yield('formulario')
 
+
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>

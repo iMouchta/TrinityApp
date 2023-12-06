@@ -13,7 +13,7 @@
                         <label for="EVENTO_NOMBRE" class="form-label">Nombre:</label>
                         <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}" placeholder="Ingrese el nombre"
                             required minlength="3" maxlength="200">
-                            <div class="valid-feedback">Nombre válido</div>    <!--tooltip -->
+                            <div class="valid-feedback">Nombre válido</div> 
                             <div class="invalid-feedback">Use un nombre de "minimo de 3 caracteres"</div>
 
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
@@ -35,7 +35,7 @@
                             <option value ="Reclutamiento">Reclutamiento</option>
                             <option value ="Clasificatorios">Clasificatorios</option>
                             <option value ="Taller de programacion competitiva">Taller de programacion competitiva</option>
-                            <option value ="Competencias">Competencias</option>
+                            <option value ="Competencia">Competencia</option>
                             <option value ="Evento especial">Especial</option>
                         </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>

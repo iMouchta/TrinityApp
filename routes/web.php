@@ -9,7 +9,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegformController;
 use App\Http\Controllers\formularioGeneradoController;
-//use App\Http\Controllers\MailController;
+use App\Http\Controllers\MailController;
 
 Route::get('/eventos/{evento}', [EventoController::class, 'verEvento']) -> name('ver.evento');
 
@@ -61,3 +61,6 @@ Route::get('/formulario-edicion/{eventoId}/{regformId}', [RegformController::cla
 Route::put('/actualizar-formulario/{regformId}', [RegformController::class, 'actualizarFormulario'])->name('actualizarFormulario');
 
 
+Route::get('/mostrar-formulario', [MailController::class, 'mostrarFormulario']);
+
+Route::post('/enviar-correo', [MailController::class, 'enviarCorreoPersonalizado']);

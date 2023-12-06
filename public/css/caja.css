@@ -37,12 +37,10 @@ h1 {
 }
 
 .titulo {
-
-  white-space: nowrap;
-  overflow: hidden;
-
-  max-width: 100ch;
-  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+max-width: 100ch;
+text-overflow: ellipsis;
 }
 
 h2 {
