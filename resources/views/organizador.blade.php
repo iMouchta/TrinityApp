@@ -5,6 +5,16 @@
         <form action="{{ route('guardarOrganizador') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             <h1><center>Registar organizador</center></h1>
+
+            <div class="mb-3">
+                <label for="evento_id" class="form-label">Seleccionar Evento:</label>
+                <select class="form-control" id="evento_id" name="evento_id">
+                    @foreach ($eventos as $evento)
+                        <option value="{{ $evento->EVENTO_ID }}">{{ $evento->EVENTO_NOMBRE }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
             <div class="mb-3">
                 <label for="ORGANIZADOR_NOMBRE" class="form-label">Nombre del organizador:</label>
                 <input type="text" class="form-control" name="ORGANIZADOR_NOMBRE" placeholder="Ingrese el nombre" required

@@ -5,6 +5,16 @@
         <form action="{{ route('guardarSponsor') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             <h1><center>Registrar Sponsor</center></h1>
+
+            <div class="mb-3">
+                <label for="evento_id" class="form-label">Seleccionar Evento:</label>
+                <select class="form-control" id="evento_id" name="evento_id">
+                    @foreach ($eventos as $evento)
+                        <option value="{{ $evento->EVENTO_ID }}">{{ $evento->EVENTO_NOMBRE }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
             <div class="mb-3">
                 <label for="SPONSOR_NOMBRE" class="form-label">Nombre del Sponsor:</label>
                 <input type="text" class="form-control" name="SPONSOR_NOMBRE" placeholder="Ingrese el nombre" required minlength="3" maxlength="100">
