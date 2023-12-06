@@ -1,0 +1,223 @@
+.texto-titulo {
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+
+    width: 100%;
+    word-wrap: break-word;
+    font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+    font-size: 25px; /* Tamaño de fuente */
+    color: #090101; /* Color del texto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    line-height: 2; /* Altura de línea */
+    font-weight: 900;
+  }
+
+  h1{
+text-shadow: 4px 4px rgb(213, 198, 198)
+  }
+  h4 {  
+ 
+    display: flex;
+  margin-right: 10px;
+    display: inline-block;
+
+    width: 100%;
+    word-wrap: break-word;
+    font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+    font-size: 20px; /* Tamaño de fuente */
+    color: #090101; /* Color del texto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    line-height: 2; /* Altura de línea */
+    font-weight: 500;
+  }
+  p{
+  
+    margin: 0;
+  }
+ 
+  .imagen-redonda {
+    border-radius: 50%; 
+    justify-content: center;
+    max-width: 70%;
+    max-height: 70%;
+  
+    align-items: center;
+    justify-content: center;
+  
+  }
+  .imagen-ampliada {
+    display: none;
+    /* Estilos para el contenedor de la imagen ampliada */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+   
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    /* Ajusta el tamaño según tus preferencias */
+    width: 1000px;
+    max-width: 1000px;
+    /* Otros estilos de diseño, como bordes, sombras, etc. */
+    /* ... */
+  }
+  
+  .imagen-ampliada img {
+    width: 100%;
+    height: auto;
+    /* Otros estilos según sea necesario */
+    /* ... */
+  }
+  .afiche{
+    max-width: 100%;
+    max-height: 100%;
+  
+  }
+  
+.titulocrono{
+  font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+
+  
+ 
+}
+
+.float-right{
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+}
+.container{
+  position: relative;
+  width: 100%;
+
+  overflow: hidden;
+
+}
+.baner{
+width: 100%;
+height: 100px; 
+}
+
+.baner-imagen{
+  position: absolute;
+  
+  width: 100%;
+  height: 100%;
+margin-top: -20px;
+margin-left: -20px;
+ height: 100px;
+ margin-bottom: 10px;
+}
+.descripcion{
+
+  width: 100%;
+  word-wrap: break-word;
+  font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+}
+.descripcion-bold {
+  font-family: 'Times New Roman', Times, serif ; /* Cambia la fuente a Arial */
+  font-weight: 700;
+  color: #180a0a; /* Color del texto */
+}
+.botones{
+  text-align: center; /* Centra los elementos hijos horizontalmente */
+}
+
+.btn {
+    display: inline-block; /* Para que los botones se muestren en línea */
+}
+.afiche{
+  border-radius: 15px;
+  width: 200px;
+  height: 200px;
+}
+.container{
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+
+.button-88 {
+
+  font-size: 18px;
+  padding: 10px 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 130px; /* Ajusta el ancho del botón */
+  height: 40px; 
+}
+
+.button-88:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+  font-size: 18px;
+  padding: 10px 20px; 
+}
+
+.button-88:active {
+  
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+
+
+/* CSS */
+.button-27 {
+  color: black; 
+  align-items: center;
+  justify-content: center; 
+  width: 130px; /* Ajusta el ancho del botón */
+  height: 40px; 
+  position: relative;
+
+  background: linear-gradient(0deg, #fcfcfc 0%, #f5f5f5 100%);
+  border: 6px solid transparent;
+  border-radius: 16px;
+  background-clip: padding-box;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5), 1px 3px 3px 2px #fff, 0 0 0 6px #ECECEC;
+  border-radius: 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+
+}
+.button-27:after {
+  color: black; 
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  left: -6px;
+  right: -6px;
+  background: linear-gradient(#fff, #ededed);
+  content: "";
+  z-index: -1;
+
+}
+.button-27:hover {
+  color: black; 
+  border: 2px solid transparent;
+  background-image: linear-gradient(180deg, #E6E6E6 0%, #F7F7F7 100%);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.35), 0 0 0 6px #ECECEC;
+
+}
+.button-27:active {
+  color: black; 
+  border-top: 1px solid transparent;
+}
