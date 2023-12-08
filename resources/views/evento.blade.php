@@ -6,7 +6,7 @@
             <form action="{{ route('guardarEvento') }}" method="post"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 @csrf
                 <h1>
-                    <center>Crear evento</center>
+                    <center>Crear Evento</center>
                 </h1>
                 <div class = "row">
                     <div class ="col">

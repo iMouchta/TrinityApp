@@ -33,6 +33,7 @@
             text-align: center;
             padding: 20px 0;
         }
+        
     </style>
 
 </head>
@@ -40,7 +41,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bd-navbar navbar-dark " style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"> HackHub </a>
+            <a class="navbar-brand" href="/"><img src="/logo.svg" alt="logo" style="width: 2%;">HackHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -81,7 +82,7 @@
                 <form class="d-flex" role="search" action="{{ route('buscar') }}" method="GET">
                     <input class="form-control me-2" type="search" name="query" placeholder="Busqueda ..."
                         aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <button class="btn btn-success" type="submit">Buscar</button>
                 </form>
             </div>
         </div>
