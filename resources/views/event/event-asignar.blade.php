@@ -2,52 +2,36 @@
 
 @section('imagen')
     <div class="container">
-        <form action="{{ route('guardarImagen') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('save.asginar') }}" method="POST" enctype="multipart/form-data"
             class="row g-3 needs-validation" novalidate>
             @csrf
             <h1>
-                <center>Registrar Afiche</center>
+                <center>Asignar Patrocinador y Organizador</center>
             </h1>
+            
+            <input hidden value="{{$evento->EVENTO_ID}}" name="EVENTO_ID"> 
             <div class="mb-3">
-                <label for="evento_id" class="form-label">Seleccionar Evento:</label>
-                <select class="form-control" id="evento_id" name="evento_id">
-                    @foreach ($eventos as $evento)
-                        <option value="{{ $evento->EVENTO_ID }}">{{ $evento->EVENTO_NOMBRE }}</option>
+                <label for="evento_id" class="form-label">Asignar patrocinador:</label>
+                <select class="form-control" id="SPONSOR_ID" name="SPONSOR_ID">
+                    @foreach ($patornacidor as $pt)
+                        <option value="{{$pt->SPONSOR_ID}}">{{ $pt->SPONSOR_NOMBRE }} {{ $pt->SPONSOR_ID }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
+
+            <div class="mb-3">
+
+                <label for="evento_id" class="form-label">Asignar organizador:</label>
+                <select class="form-control" id="ORGANIZADOR_ID" name="ORGANIZADOR_ID">
+                    @foreach ($organizador as $or)
+                        <option value="{{ $or->ORGANIZADOR_ID }}">{{ $or->ORGANIZADOR_NOMBRE }}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label for="banner" class="form-label">Banner:</label>
-                <input type="file" class="form-control" id="banner" name="banner">
-                <div class="valid-feedback">Banner válido</div>
-                <div class="invalid-feedback">Use una imagen valida"</div>
-            </div>
 
-            <div class="mb-3">
-                <label for="icono" class="form-label">Icono del evento:</label>
-                <input type="file" class="form-control" id="icono" name="icono">
-                <div class="valid-feedback">Icono válido</div>
-                <div class="invalid-feedback">Use una imagen valida"</div>
-            </div>
-
-            <div class="mb-3">
-                <label for="afiche" class="form-label">Afiche oficial del evento:</label>
-                <input type="file" class="form-control" id="afiche" name="afiche" required>
-                <div class="valid-feedback">Afiche válido</div>
-                <div class="invalid-feedback">Use una imagen valida"</div>
-            </div>
-
-            <div class="mb-3">
-                <label for="imagenesDiversas" class="form-label">Imágenes diversas:</label>
-                <input type="file" class="form-control" id="imagenesDiversas" name="imagenesDiversas[]" multiple>
-                <div class="valid-feedback">Imagenes válidas</div>
-                <div class="invalid-feedback">Use una imagen valida"</div>
-
-            </div>
-
-
-            <!-- @if ($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -55,48 +39,18 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif -->
+            @endif
 
-            <!-- @if (session('success'))
+            @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
-            @endif -->
+            @endif
 
             <center>
                 <button type="submit" class="btn btn-primary">Registrar</button>
                 <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
             </center>
-
-                @if(session('success'))
-                    <script>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Datos guardados correctamente',
-                            text: '{{ session('success') }}',
-                            allowOutsideClick: false
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                            
-                            window.location.href = '/';
-                            }
-                        });
-                    </script>
-                @endif
-
-                @if ($errors->any())
-                    <script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            html: '<ul>' +
-                                @foreach ($errors->all() as $error)
-                                    '<li>{{ $error }}</li>' +
-                                @endforeach
-                                '</ul>',
-                        });
-                    </script>
-                @endif
         </form>
     </div>
     <br>
@@ -165,3 +119,4 @@
         });
     </script>
 @endsection
+

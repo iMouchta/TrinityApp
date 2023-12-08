@@ -37,6 +37,17 @@
                                     </div>
                                 </div>
 
+                           <div class=" botonver ">
+                                <center>
+                                <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Formulario de registro</a>
+                                    <a href="{{ route('ver.evento', ['evento' => $evento->EVENTO_ID]) }}"
+                                                class="btn btn-primary btn-sm">Ver evento</a>
+                                    <a href="{{ route('edit.evento', ['id' => $evento->EVENTO_ID]) }}" 
+                                                class="btn btn-primary btn-sm" href="#" role="button">Editar</a>
+                                    <a> 
+                                    
+                                </center>
+                                <!-- Mostrar más información del evento según tus necesidades -->
                             </div>
                         </div>
                     </a>

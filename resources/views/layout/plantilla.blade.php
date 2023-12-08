@@ -58,9 +58,13 @@
                             <li><a class="dropdown-item" href="{{ route('sponsor') }}">Registrar Sponsor</a></li>
                             <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
+                            <li><a class="dropdown-item" href="{{ route('baja') }}">Darse de baja</a></li>
+                       
+
                             <li><a class="dropdown-item" href="{{ route('seleccionarEvento')}}">Editar Evento</a></li>
                             <li><a class="dropdown-item" href="{{ route('asigOrganizador')}}">Asignar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('asigPatrocinador')}}">Asignar Patrocinadores</a></li>
+
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
@@ -95,7 +99,12 @@
     @yield('organizador')
     @yield('contacto')
     @yield('content')
-    @yield('buscar')
+
+    @yield('baja')
+    @yield('usuario')
+    @yield('formularioRegistro')
+    @yield('formGenerado')
+    @yield('editarFormulario')
     @yield('editarEvento')
     @yield('formularioRegistro')
     @yield('formGenerado')
@@ -106,6 +115,31 @@
     @yield('asigPatrocinador')
     @yield('seleccionarEvento')
 
+ @yield('buscar')
+                <footer class="bg-white text-white text-center py-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Síguenos en las redes sociales</h5>
+                                <div class="social-icons">
+                                    <a href="https://www.facebook.com/UmssBolOficial/"
+                                        class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-twitter"></i> Twitter
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </footer>
 
     
     

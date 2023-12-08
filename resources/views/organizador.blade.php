@@ -50,6 +50,22 @@
                 <button type="submit" class="btn btn-primary">Registrar</button>
                 <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
             </center>
+
+                @if(session('success'))
+                    <script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Datos guardados correctamente',
+                            text: '{{ session('success') }}',
+                            allowOutsideClick: false
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                            
+                            window.location.href = '/';
+                            }
+                        });
+                    </script>
+                @endif
             
         </form>
     </div>
