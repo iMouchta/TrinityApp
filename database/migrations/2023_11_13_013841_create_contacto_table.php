@@ -14,8 +14,7 @@ class CreateContactoTable extends Migration
             $table->string('CONTACTO_NOMBRE', 1024);
             $table->string('CONTACTO_NUMERO', 50);
             $table->string('CONTACTO_EMAIL', 1024);
-            $table->timestamps();
-
+   
             $table->unique('CONTACTO_ID', 'CONTACTO_PK');
 
             $table->foreign('EVENTO_ID', 'SE_INFORMA_POR_FK')

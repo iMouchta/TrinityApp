@@ -7,6 +7,11 @@ class Sponsor extends Model
 {
 
     protected $table = 'sponsor';
-    protected $fillable = ['SPONSOR_NOMBRE', 'SPONSOR_ENLACE', 'SPONSOR_LOGO'];
+    protected $primaryKey = 'SPONSOR';
+    protected $fillable = ['SPONSOR_NOMBRE', 'SPONSOR_ENLACE', 'SPONSOR_LOGO', 'EVENTO_ID'];
 
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class, 'evento_organizador', 'organizador_id', 'evento_id');
+    }
 }

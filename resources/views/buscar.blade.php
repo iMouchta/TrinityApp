@@ -21,7 +21,7 @@
                                         </div>
                                         <p class="letras ">{{ $evento->EVENTO_TIPO }}</p>
                                         @foreach ($evento->fechas->take(1) as $fecha)
-                                            <p class="letras">{{ $fecha->FECHA_NOMBRE }} : {{ $fecha->FECHA_FECHA }}</p>
+                                            <p class="letras">{{ $fecha->FECHA_NOMBRE }} : {{ $fecha->FECHA_INICIO }}</p>
                                         @endforeach
 
                                     </div>

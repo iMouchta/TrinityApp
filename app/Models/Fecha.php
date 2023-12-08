@@ -8,7 +8,8 @@ class Fecha extends Model
 {
     protected $primaryKey = 'FECHA_ID';
     protected $table = 'fecha';
-    protected $fillable = ['FECHA_NOMBRE', 'FECHA_FECHA', 'FECHA_DESCRIPCION','EVENTO_ID'];
+    protected $fillable = ['FECHA_NOMBRE', 'FECHA_INICIO', 'FECHA_FINAL', 'FECHA_DESCRIPCION','EVENTO_ID'];
+    public $timestamps = false;
 
     public function evento()
     {

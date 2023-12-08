@@ -13,7 +13,7 @@
                         <label for="EVENTO_NOMBRE" class="form-label">Nombre:</label>
                         <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}" placeholder="Ingrese el nombre"
                             required minlength="3" maxlength="200">
-                            <div class="valid-feedback">Nombre válido</div>    <!--tooltip -->
+                            <div class="valid-feedback">Nombre válido</div> 
                             <div class="invalid-feedback">Use un nombre de "minimo de 3 caracteres"</div>
 
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
@@ -35,7 +35,7 @@
                             <option value ="Reclutamiento">Reclutamiento</option>
                             <option value ="Clasificatorios">Clasificatorios</option>
                             <option value ="Taller de programacion competitiva">Taller de programacion competitiva</option>
-                            <option value ="Competencias">Competencias</option>
+                            <option value ="Competencia">Competencia</option>
                             <option value ="Evento especial">Especial</option>
                         </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
@@ -48,6 +48,7 @@
                             <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
                             <input type="text" class="form-control" name="EVENTO_UBICACION" placeholder="Ingrese la direccion" requerid
                             minlength="4" maxlength="250">
+
                             <div class="valid-feedback">Ubición válida</div> 
                             <div class="invalid-feedback">Registre una ubicación válida"</div>
                             </div>
@@ -78,13 +79,17 @@
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Actividad Inicial">
+                                        placeholder="Actividad Inicial" required>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="date" class="form-control" name="fechas[FECHA_FECHA][]"
-                                        placeholder="Fecha">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
+                                        placeholder="Fecha Inicial" required>
                                 </div>
-                                <div class="col-sm-6 col-md-8">
+                                <div class="col-auto">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
+                                        placeholder="Fecha Final" required>
+                                </div>
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
                                         placeholder = "Descripcion">
                                 </div>
@@ -93,13 +98,17 @@
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Actividad Final">
+                                        placeholder="Actividad Final" required>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="date" class="form-control" name="fechas[FECHA_FECHA][]"
-                                        placeholder="Fecha">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
+                                        placeholder="Fecha Inicial" required>
                                 </div>
-                                <div class="col-sm-6 col-md-8">
+                                <div class="col-auto">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
+                                        placeholder="Fecha Final" required>
+                                </div>
+                                <div class="col-sm-4">
                                     <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
                                         placeholder = "Descripcion">
                                 </div>
@@ -189,9 +198,12 @@
                         '<input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]" placeholder="Actividad">' +
                         '</div>' +
                         '<div class="col-auto">' +
-                        '<input type="date" class="form-control" name="fechas[FECHA_FECHA][]" placeholder="Fecha">' +
+                        '<input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]" placeholder="Fecha">' +
                         '</div>' +
-                        '<div class="col-md-7">' +
+                        '<div class="col-auto">' +
+                        '<input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]" placeholder="Fecha">' +
+                        '</div>' +
+                        '<div class="col-md-4">' +
                         '<input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]" placeholder="Descripcion">' +
                         '</div>' +
                         '<div class="col-auto">' +

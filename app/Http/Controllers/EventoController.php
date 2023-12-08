@@ -20,7 +20,7 @@ class EventoController extends Controller
     {
 
         $request->validate([
-            'EVENTO_NOMBRE' => 'required|unique:evento',
+            'EVENTO_NOMBRE' => 'required|unique:evento'
 
         ]);
 
@@ -37,13 +37,15 @@ class EventoController extends Controller
             $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
             $evento->save();
 
-            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FECHA')) {
+            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_INICIO') && $request->has('fechas.FECHA_FINAL')) {
                 foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
                     $fecha = new Fecha;
                     $fecha->FECHA_NOMBRE = $nombreFecha;
-                    $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
+                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_INICIO')[$key];
+                    $fecha->FECHA_FINAL = $request->input('fechas.FECHA_FINAL')[$key];
                     $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
                     $fecha->EVENTO_ID = $evento->EVENTO_ID;
+
                     $fecha->save();
                 }
             }
@@ -68,8 +70,7 @@ class EventoController extends Controller
         $eventos = Evento::all();
 
         foreach ($eventos as $evento) {
-            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
-
+            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID);
         }
         return view('misEventos')->with('eventos', $eventos);
     }
@@ -78,7 +79,7 @@ class EventoController extends Controller
     {
         $eventos = Evento::all();
         foreach ($eventos as $evento) {
-            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID); // Asumiendo que el ID del evento es 'id'
+            $evento->fechas = $this->obtenerFechas($evento->EVENTO_ID);
             $evento->requisitos = $this->obtenerRequisitos($evento->EVENTO_ID);
         }
 
@@ -122,28 +123,32 @@ class EventoController extends Controller
         $query = $request->input('query');
 
         $eventos = Evento::where('EVENTO_NOMBRE', 'like', "%$query%")
-            ->orWhere('EVENTO_TIPO', 'like', "%$query%")
-            ->orWhere('EVENTO_MODALIDAD', 'like', "%$query%")
-            ->orWhere('EVENTO_COSTO', 'like', "%$query%")
             ->get();
 
         return view('buscar', ['eventos' => $eventos]);
     }
 
-    public function edit($id){
-        $evento = Evento::with(['fechas', 'imagenes'])->findOrFail($id);
+    public function editar($eventoId)
+    {
+        $evento = Evento::with(['fechas', 'requisitos'])->findOrFail($eventoId);
 
-      
-
-        $requisitos = Requisito::where('EVENTO_ID', $id)->get();
-        $contactos = Contacto::where('EVENTO_ID', $id)->get();
-        return view('event.event-edit', ['evento' => $evento, 'requisitos' => $requisitos, 'contactos' => $contactos]);
+        return view('editarEvento', [
+            'evento' => $evento,
+        ]);
     }
 
-    public function update(Request $request){ 
-           
+
+
+    public function actualizar(Request $request, $eventoId)
+    {
+        $request->validate([
+            'EVENTO_NOMBRE' => 'required|unique:evento'
+        ]);
+
         try {
-            $evento = Evento::find($request->EVENT_ID);
+            $evento = Evento::findOrFail($eventoId);
+
+
             $evento->EVENTO_NOMBRE = $request->input('EVENTO_NOMBRE');
             $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
             $evento->EVENTO_DESCRIPCION = $request->input('EVENTO_DESCRIPCION');
@@ -154,81 +159,45 @@ class EventoController extends Controller
             $evento->EVENTO_USUARIOS = $request->has('EVENTO_USUARIOS') ? 1 : 0;
             $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
             $evento->save();
+            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FINAL') && $request->has('fechas.FECHA_FINAL')) {
+                $evento->fechas()->delete();
 
-        
-            
-
-           // $claves = array_keys($request->fechas);
-
-
-        
-            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FECHA') && $request->has('fechas.FECHA_ID') ) {
                 foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
-                        $fecha = Fecha::findOrNew($request->input('fechas.FECHA_ID')[$key])->first();
-                        $fecha->FECHA_NOMBRE = $nombreFecha;
-                        $fecha->FECHA_FECHA = $request->input('fechas.FECHA_FECHA')[$key];
-                        $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
-                        $fecha->EVENTO_ID = $evento->EVENTO_ID;
-                        $fecha->save();      
+                    $fecha = new Fecha;
+                    $fecha->FECHA_NOMBRE = $nombreFecha;
+                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_INICIO')[$key];
+                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_FINAL')[$key];
+                    $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
+                    $evento->fechas()->save($fecha);
+
                 }
             }
 
             if ($request->has('requisitos.REQUISITO_NOMBRE')) {
+                $evento->requisitos()->delete();
+
                 foreach ($request->input('requisitos.REQUISITO_NOMBRE') as $key => $nombreRequisito) {
-                    $requisito = Requisito::findOrNew($request->input('requisitos.REQUISITO_ID')[$key]);
+                    $requisito = new Requisito;
                     $requisito->REQUISITO_NOMBRE = $nombreRequisito;
-                    $requisito->EVENTO_ID = $evento->EVENTO_ID;
-                    $requisito->save();
+                    $evento->requisitos()->save($requisito);
                 }
             }
 
-            return redirect()->route('misEventos')->withInput()->with('success', 'Evento y actualizado correctamente.');
+            return redirect()->route('editarEvento', ['evento' => $eventoId])->withInput()->with('success', 'Evento y calendarización actualizados correctamente.');
         } catch (ValidationException $e) {
-            return redirect()->route('evento')->withErrors($e->validator->errors());
+            return redirect()->route('editarEvento', ['evento' => $eventoId])->withErrors($e->validator->errors());
         }
-
     }
-    public function eliminar($id){ 
-        $fechas = Fecha::where('EVENTO_ID',$id)->get();
-         foreach( $fechas as $fecha){
-             $fecha->delete();
-         }
-         $requesitos = Requisito::where('EVENTO_ID',$id)->get();
-    
-         foreach( $requesitos as $requisto){
-            $requisto->delete();
-         }
 
-         $patrocinios=  Patrocinio::where('EVENTO_ID',$id)->get(); 
-       
-         foreach($patrocinios as $patrocinio){ 
-            $patrocinio->delete();
-         }
+    public function vistaSeleccionarEvento()
+    {
+        $eventos = Evento::all();
+        return view('seleccionarEvento', compact('eventos'));
+    }
 
-          $organize = Organizan::where('EVENTO_ID',$id)->get();
-          foreach($organize as $or){ 
-            $or->delete();
-         }
-
-         $contacto = Contacto::where('EVENTO_ID',$id)->get();
-         foreach($contacto as $con){ 
-           $con->delete();
-        }
-
-        $imagen = Imagen::where('EVENTO_ID',$id)->get();
-        foreach($imagen as $im){ 
-          $im->delete();
-        }
-
-     
-        $evento = Evento::find($id)->delete();
-        return redirect()->route('misEventos')->withInput()->with('success', 'Evento eliminado.');
-
-     } 
-
-     public function  asignarUser($id){ 
-        
-        return view('event.user-register');
-     }
-    
+    public function editarEvento(Request $request)
+    {
+        $eventoId = $request->input('evento_id');
+        return redirect()->route('editarEvento', ['eventoId' => $eventoId]);
+    }
 }

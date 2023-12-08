@@ -1,142 +1,116 @@
 @extends('layout/plantilla')
 
 @section('content')
+    <div>
+        <div class="container-fluid" style="height: 35%; padding:0; position:absolute; z-index:-10;">
+            @if ($evento->imagenes->where('IMAGEN_TIPO', 'banner')->count() > 0)
+                @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'banner') as $imagen)
+                    <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
+                        style="height: 100%; width: 100%;">
+                @endforeach
+            @else
+                <img src="{{ asset('storage/umss_logo-768x284.png') }}" alt="Banner Predeterminado"
+                    style="height: 100%; width: 100%;">
+            @endif
 
-    <link rel="stylesheet" href="{{ asset('css/eventoaDetalle.css') }}">
-    <div class="container">
-        <div class="baner">
-            @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'banner') as $imagen)
-                <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                    style="width: 100%;
-                height: 50%;
-                object-fit: cover;">
-            @endforeach
         </div>
-        <div class="row">
-            <div class="col-8">
-                <div class="row">
-                    <div class="col-8 d-flex align-items-center justify-content-center">
-                        <div class="texto-titulo ">
-                            <strong>
-                                <h1>{{ $evento->EVENTO_NOMBRE }}</h1>
-                            </strong>
-                        </div>
-                    </div>
-                    <div class="col-4  d-flex align-items-center justify-content-center">
+        <div class="container-fluid" style="height: 35%; padding:0; background-color:rgba(0, 0, 0, 0.6); position:absolute;">
+            <div>
+                <h1>Sponsors</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="top: 40%; padding:0; background-color:#C0C0C0; position:absolute; height:250px;">
+        <div class="container" id="containerB" style="display: flex; aling-items:center; height:auto;padding-top:3rem;">
+            <div class="col-md-10" style="display: flex">
+                <div class="container" id="containerB"
+                    style="width: 140px;height:140px;margin-right:1.2rem;margin-left:0rem; padding:0rem;">
+                    @if ($evento->imagenes->where('IMAGEN_TIPO', 'icono')->count() > 0)
                         @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'icono') as $imagen)
                             <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                                style="width: 100%;
-                            height: 50%;
-                            object-fit: cover;">
+                                style="height: 100%; width: 100%;">
                         @endforeach
-                    </div>
+                    @else
+                        <img src="{{ asset('storage/iconopredeterminado.png') }}" alt="Icono Predeterminado"
+                            style="height: 100%; width: 100%;">
+                    @endif
+
                 </div>
-
-                @if ($evento->EVENTO_TIPO !== null)
-                    <div class="descripcion">
-                        <p><span class="descripcion-bold">Tipo de evento:  </span> {{ $evento->EVENTO_TIPO }}</p>
-                    </div>
-                @endif
-
-                @if ($evento->EVENTO_DESCRIPCION !== null)
-                    <div class="descripcion ">
-                        <p><span class="descripcion-bold">Descripcion: </span> {{ $evento->EVENTO_DESCRIPCION }}</p>
-                    </div>
-                @endif
-
-                @if ($evento->EVENTO_BASES !== null)
-                    <div class="descripcion ">
-                        <p><span class="descripcion-bold">Bases del evento: </span> {{ $evento->EVENTO_BASES }}</p>
-                    </div>
-                @endif
-
-                <div class="descripcion">
-                    <p><span class="descripcion-bold">Modalidad: </span> {{ $evento->EVENTO_MODALIDAD }}</p>
-                </div>
-
-
-                <div class="row">
-                    <div class="col  ">
-                        @if ($evento->fechas->isNotEmpty())
-                            <div class="titulocrono ">
-                                <h4> Cronograma</h4>
-
-                                @foreach ($evento->fechas as $fecha)
-                                    <p> <span class="descripcion-bold"> {{ $fecha->FECHA_NOMBRE }} :</span>
-                                        {{ $fecha->FECHA_FECHA }} {{ $fecha->FECHA_DESCRIPCION }} </p>
-                                @endforeach
-                            </div>
-                        @endif
-                        @if ($contactos->isNotEmpty())
-                            <div class="titulocrono">
-                                <h4>Contactos</h4>
-                                @foreach ($contactos as $contacto)
-                                    <p> <span class="descripcion-bold"> {{ $contacto->CONTACTO_NOMBRE }} </span>
-                                        <span class="descripcion-bold"> cel :</span> {{ $contacto->CONTACTO_NUMERO }}
-                                        <span class="descripcion-bold"> gmal :</span> {{ $contacto->CONTACTO_EMAIL }}
-                                    </p>
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-
-
-                    <div class="col">
-                        @if ($requisitos->isNotEmpty())
-                            <div class="titulocrono">
-                                <h4>Requisios</h4>
-                                @foreach ($requisitos as $requisito)
-                                    <p> <strong> * </strong> {{ $requisito->REQUISITO_NOMBRE }} </p>
-                                @endforeach
-                            </div>
-                        @endif
-
-
-                    </div>
+                <div class="col-md-9"
+                    style="border-left:2px white solid; padding-left:1.2rem; border-right:2px white solid; color:white;">
+                    <h1>{{ $evento->EVENTO_NOMBRE }}</h1>
+                    <h2>{{ $evento->EVENTO_TIPO }} - {{ $evento->EVENTO_MODALIDAD }}</h2>
+                    <h3>{{ $evento->EVENTO_UBICACION }}</h3>
                 </div>
             </div>
-
-            <div class="col-4 ">
-                @if ($requisitos->isNotEmpty())
-                    <div class="descripcion">
-                        <p><span class="descripcion-bold">Organizadores:</span> </p>
-                        <div class="row">
-                            @foreach ($organizador  as $or)
-                             <p>{{$or->ORGANIZADOR_NOMBRE}}</p>
-                            @endforeach
-                        </div>
-
-                    </div>
-                @endif
-                
-                <div class="descripcion">
-                    <p><span class="descripcion-bold">Patrocinador:</span> </p>
-                    <div class="row">
-                        @foreach ($sponsor  as $es)
-                         <p>{{$es->SPONSOR_NOMBRE}}</p>
+            <div class="container" id="containerB" style="display:grid; justify-content: end">
+                <button type="button" class="btn btn-secondary" disabled>Precio: {{ $evento->EVENTO_COSTO }} BS</button>
+                <br>
+                <button type="button" class="btn btn-success">Registrarme</button>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex;flex-wrap: wrap;">
+        <div class="container-fluid"
+            style="top: 39.6rem; background-color:rgba(217, 217, 217,0.21);position:absolute;height:fit-content;  width: 67%;z-index:-10; padding-top:3rem; padding-left:4rem; padding-right: 4rem">
+            <h1>Descripcion</h1>
+            <p style="text-align: justify;">
+                {{ $evento->EVENTO_DESCRIPCION }}
+            </p>
+            <div>
+                <h1>Cronograma</h1>
+                <p style="text-align: justify;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre de la actividad</th>
+                            <th scope="col">Fecha de Inicio</th>
+                            <th scope="col">Fecha Final</th>
+                            <th scope="col">Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($evento->fechas as $index => $fecha)
+                            <tr>
+                                <th scope="row">{{ $index + 1 }}</th>
+                                <td>{{ $fecha->FECHA_NOMBRE }}</td>
+                                <td>{{ $fecha->FECHA_INICIO }}</td>
+                                <td>{{ $fecha->FECHA_FINAL}}</td>
+                                <td>{{ $fecha->DESCRIPCION }}</td>
+                            </tr>
                         @endforeach
-                    </div>
-
-                </div>
-
-                <div class="descripcion">
-                    <p><span class="descripcion-bold">Afiche:</span> </p>
-
-                    @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'afiche') as $imagen)
-                        <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
-                            style="width: 100%;
-                        height: 50%;
-                        object-fit: cover;">
+                    </tbody>
+                </table>
+                </p>
+            </div>
+            <div>
+                <h1>Bases del Evento</h1>
+                <p style="text-align: justify;">
+                    {{ $evento->EVENTO_BASES }}
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4"
+            style="top: 39.6rem; padding:0; background-color:rgb(255, 255, 255);position:absolute; width: 33%;height:130%;z-index:-10;left:67% ">
+            <div style="margin-top: 10%;width: 90%;margin-left: 5%;height:40% ;">
+                @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'afiche') as $imagen)
+                    <img src=" {{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"
+                        style="height: 100% ;width:100%; object-fit:fill;">
+                @endforeach
+            </div>
+            <div id="carousel-container">
+                <div id="image-container">
+                    @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'imagen') as $imagen)
+                        <img class="carousel-image" src=" {{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}"
+                            alt="{{ $imagen->IMAGEN_TIPO }}">
                     @endforeach
-
                 </div>
 
-                <div id="imagenAmpliada" class="imagen-ampliada" style="display: none;">
-                    <img id="imagenAmpliadaContenido" src="" onclick="contraerImagen()" alt="Afiche ampliado">
-                </div>
+                <button class="bton" id="prevBton" onclick="prevImage()">❮</button>
+                <button class="bton" id="nextBton" onclick="nextImage()">❯</button>
 
-
-                @if ($evento->EVENTO_UBICACION !== null)
+               @if ($evento->EVENTO_UBICACION !== null)
                     <div class="descripcion">
                         <p><span class="descripcion-bold">Ubicaion:</span> {{ $evento->EVENTO_UBICACION }}</p>
                     </div>
@@ -176,11 +150,12 @@
                             height: 50%;
                             object-fit: cover;">
                 @endforeach
+
             </div>
 
         </div>
-    </div>
 
+    </div>
 @endsection
 
 
@@ -198,4 +173,31 @@
     function contraerImagen() {
         document.getElementById("imagenAmpliada").style.display = "none";
     }
+</script>
+
+
+<script>
+    let currentIndex = 0;
+
+    function showImage(index) {
+        const imageContainer = document.getElementById('image-container');
+        const imageWidth = document.querySelector('.carousel-image').width;
+        imageContainer.style.transform = `translateX(${-index * imageWidth}px)`;
+        currentIndex = index;
+    }
+
+    function nextImage() {
+        const totalImages = document.querySelectorAll('.carousel-image').length;
+        currentIndex = (currentIndex + 1) % totalImages;
+        showImage(currentIndex);
+    }
+
+    function prevImage() {
+        const totalImages = document.querySelectorAll('.carousel-image').length;
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showImage(currentIndex);
+    }
+
+    // Mostrar la primera imagen al cargar la página
+    showImage(currentIndex);
 </script>

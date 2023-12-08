@@ -19,12 +19,19 @@ class Evento extends Model
 
     public function requisitos()
     {
-        return $this->hasMany(Requisito::class);
+        return $this->hasMany(Requisito::class, 'EVENTO_ID', 'EVENTO_ID');
     }
 
     public function imagenes()
     {
         return $this->hasMany(Imagen::class, 'EVENTO_ID', 'EVENTO_ID');
     }
-
+    public function regforms()
+    {
+        return $this->hasMany(regform::class, 'EVENTO_ID', 'EVENTO_ID');
+    }
+    public function organizadores()
+    {
+        return $this->belongsToMany(Organizador::class, 'evento_organizador', 'evento_id', 'organizador_id');
+    }
 }
