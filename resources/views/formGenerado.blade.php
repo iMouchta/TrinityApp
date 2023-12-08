@@ -18,6 +18,7 @@
             @endforeach
 
             <button type="submit" class="btn btn-success">Enviar</button>
+            <button type="submit" class="btn btn-success" >Añadir</button>
         </form>
 
     </div>

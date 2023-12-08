@@ -150,7 +150,7 @@
                     </div>
                 @endif
                 <center>
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                
                 <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
                 </center>
 

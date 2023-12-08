@@ -19,6 +19,7 @@ class CreateEventoTable extends Migration
             $table->string('EVENTO_UBICACION', 1024)->nullable();
             $table->float('EVENTO_COSTO')->nullable();
             $table->mediumText('EVENTO_BASES')->nullable();
+            $table->time('EVENTO_DURACION') -> nullable();
             $table->timestamps();
             
 

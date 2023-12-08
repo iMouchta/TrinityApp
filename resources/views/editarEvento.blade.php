@@ -3,7 +3,7 @@
 @section('editarEvento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('editarEvento', ['eventoId' => $evento->EVENTO_ID]) }}" method="get"
+            <form action="{{ route('editarEvento', ['eventoId' => $evento->EVENTO_ID]) }}" method="post"
                 enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 @csrf
                 <h1>
@@ -11,12 +11,6 @@
                 </h1>
                 <div class="row">
                     <div class="col">
-                        <label for="EVENTO_NOMBRE" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ $evento->EVENTO_NOMBRE }}"
-                            placeholder="Ingrese el nombre" required minlength="3" maxlength="200">
-                        <div class="valid-feedback">Nombre válido</div>
-                        <div class="invalid-feedback">Use un nombre de "mínimo de 3 caracteres"</div>
-
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
                         <select name= "EVENTO_MODALIDAD" class="form-control" value="{{ $evento->EVENTO_MODALIDAD }}"
                             required>

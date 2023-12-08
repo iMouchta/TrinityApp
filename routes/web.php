@@ -51,7 +51,7 @@ Route::post('/actualizar-evento/{evento}', 'EventoController@actualizar')->name(
 Route::get('/formulario-registro/{eventoId}', [RegformController::class, 'mostrarFormulario'])->name('mostrarFormularioRegistro');
 Route::post('/guardar-formulario/{eventoId}', [RegformController::class, 'guardarFormulario'])->name('guardarFormulario');
 
-Route::get('/formulario-generado/{eventoId}', [formularioGeneradoController::class,'mostrarFormularioGenerado'])->name('formularioGenerado');
+Route::get('/formulario-generado/{eventoId}', [formularioGeneradoController::class,'mostrarFormularioGenerado'])->name('formularioRegistro');
 Route::post('/procesar-formulario-generado', 'RegformController@procesarFormularioGenerado')->name('procesarFormularioGenerado');
 Route::post('/editar-formulario/{eventoId}', 'RegformController@editarFormulario')->name('editarFormulario');
 
@@ -69,7 +69,7 @@ Route::get('/asigOrganizador', [OrganizadorController::class, 'asignar']) -> nam
 Route::post('/guardarOrga', [OrganizadorController::class, 'guardarOrga'])->name('guardarOrga');
 
 Route::get('/seleccionar-evento', 'EventoController@vistaSeleccionarEvento')->name('seleccionarEvento');
-Route::get('/editarEvento{eventoId}', 'EventoController@editarEvento')->name('editarEvento');
+Route::post('/editarEvento', 'EventoController@editarEvento')->name('editarEvento');
 
 Route::get('/asigPatrocinador', [SponsorController::class, 'asignar']) -> name('asigPatrocinador');
 Route::post('/guardarOrga', [SponsorController::class, 'guardarPatro'])->name('guardarPatro');
