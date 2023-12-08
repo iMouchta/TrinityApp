@@ -49,7 +49,6 @@
                 <button type="button" class="btn btn-success">Registrarme</button>
             </div>
         </div>
-
     </div>
     <div style="display: flex;flex-wrap: wrap;">
         <div class="container-fluid"
@@ -110,6 +109,47 @@
 
                 <button class="bton" id="prevBton" onclick="prevImage()">❮</button>
                 <button class="bton" id="nextBton" onclick="nextImage()">❯</button>
+
+               @if ($evento->EVENTO_UBICACION !== null)
+                    <div class="descripcion">
+                        <p><span class="descripcion-bold">Ubicaion:</span> {{ $evento->EVENTO_UBICACION }}</p>
+                    </div>
+                @endif
+
+                @if ($evento->EVENTO_COSTO != 0)
+                    <div class="descripcion">
+                        <p><span class="descripcion-bold">Costo:</span> {{ $evento->EVENTO_COSTO }}</p>
+                    </div>
+                @endif
+
+
+                <style>
+    .botones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Adjust as needed for the desired spacing */
+    }
+
+    .btn {
+        margin-right: 10px; /* Adjust the value as needed for the desired separation */
+    }
+</style>
+
+<div class="botones">
+    < <a href="{{ route('formularioGenerado', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Registrate</a>
+    <a class="btn btn-primary btn-sm" role="button" href="{{ route('asignar.evento',['id' => $evento->EVENTO_ID]) }}">Asignaciones</a>
+    
+    <a class="btn btn-primary btn-sm" href="{{ route('misEventos') }}"><span class="text">Atras</span></a>
+</div>
+
+
+            </div>
+            <div>
+                @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'imagen') as $imagen)
+                    <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}" alt="{{ $imagen->IMAGEN_TIPO }}"style="width: 100%;
+                            height: 50%;
+                            object-fit: cover;">
+                @endforeach
 
             </div>
 

@@ -6,6 +6,11 @@ use App\Models\Contacto;
 use App\Models\Evento;
 use App\Models\Fecha;
 use App\Models\Requisito;
+use App\Models\Organizan;
+use App\Models\Patrocinio;
+use App\Models\Organizador;
+use App\Models\Sponsor;
+use App\Models\Imagen;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -94,11 +99,24 @@ class EventoController extends Controller
 
     public function verEvento($eventoId)
     {
+        $sponsor = [];
+        $organizador = [];
         $evento = Evento::with(['fechas', 'imagenes'])->findOrFail($eventoId);
         $requisitos = Requisito::where('EVENTO_ID', $eventoId)->get();
         $contactos = Contacto::where('EVENTO_ID', $eventoId)->get();
+        $organizan  = Organizan::where('EVENTO_ID',$eventoId)->first();
 
-        return view('ver', ['evento' => $evento, 'requisitos' => $requisitos, 'contactos' => $contactos]);
+        $patrocinio =  Patrocinio::where('EVENTO_ID',$eventoId)->first();
+
+        if($organizan != null){ 
+            
+            $organizador =  Organizador::where('ORGANIZADOR_ID',$organizan->ORGANIZADOR_ID)->get();
+        }
+
+        if($patrocinio != null){ 
+            $sponsor =   Sponsor::where('SPONSOR_ID',$patrocinio->SPONSOR_ID )->get();
+        }
+        return view('ver', ['evento' => $evento, 'requisitos' => $requisitos, 'contactos' => $contactos, 'organizador' => $organizador,'sponsor' => $sponsor ]);
     }
     public function buscar(Request $request)
     {
@@ -109,7 +127,6 @@ class EventoController extends Controller
 
         return view('buscar', ['eventos' => $eventos]);
     }
-
 
     public function editar($eventoId)
     {
@@ -131,6 +148,7 @@ class EventoController extends Controller
         try {
             $evento = Evento::findOrFail($eventoId);
 
+
             $evento->EVENTO_NOMBRE = $request->input('EVENTO_NOMBRE');
             $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
             $evento->EVENTO_DESCRIPCION = $request->input('EVENTO_DESCRIPCION');
@@ -140,9 +158,7 @@ class EventoController extends Controller
             $evento->EVENTO_NOTIFICACIONES = $request->has('EVENTO_NOTIFICACIONES') ? 1 : 0;
             $evento->EVENTO_USUARIOS = $request->has('EVENTO_USUARIOS') ? 1 : 0;
             $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
-
             $evento->save();
-
             if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FINAL') && $request->has('fechas.FECHA_FINAL')) {
                 $evento->fechas()->delete();
 
@@ -153,6 +169,7 @@ class EventoController extends Controller
                     $fecha->FECHA_INICIO = $request->input('fechas.FECHA_FINAL')[$key];
                     $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
                     $evento->fechas()->save($fecha);
+
                 }
             }
 
