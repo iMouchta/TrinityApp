@@ -5,16 +5,6 @@
     <div class="container">
             <h1><center>Grafico de Barras</center></h1>
 
-            <style>
-       body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-
-        canvas {
-            margin-top: 50px;
-        }
     </style>
     <div>
         <canvas id="myChart" width="400" height="200"></canvas>
@@ -27,15 +17,16 @@
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Categoría 1', 'Categoría 2', 'Categoría 3', 'Categoría 4', 'Categoría 5'],
+                        labels: ['Evento 1', 'Evento 2', 'Evento 3', 'Evento 4', 'Evento 5', 'Evento 6'],
                         datasets: [{
-                            label: 'Frecuencias',
-                            data: [120, 90, 60, 30, 75],
+                            label: 'Numero de inscritos',
+                            data: [120, 90, 60, 30, 75, 50],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.7)',
                                 'rgba(54, 162, 235, 0.7)',
                                 'rgba(255, 206, 86, 0.7)',
                                 'rgba(75, 192, 192, 0.7)',
+                                'rgba(153, 102, 255, 0.7)',
                                 'rgba(153, 102, 255, 0.7)',
                             ],
                             borderColor: [
@@ -43,6 +34,7 @@
                                 'rgba(54, 162, 235, 1)',
                                 'rgba(255, 206, 86, 1)',
                                 'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
                                 'rgba(153, 102, 255, 1)',
                             ],
                             borderWidth: 1
