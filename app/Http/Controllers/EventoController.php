@@ -120,58 +120,6 @@ class EventoController extends Controller
         ]);
     }
 
-
-
-    public function actualizar(Request $request, $eventoId)
-    {
-        $request->validate([
-            'EVENTO_NOMBRE' => 'required|unique:evento'
-        ]);
-
-        try {
-            $evento = Evento::findOrFail($eventoId);
-
-            $evento->EVENTO_NOMBRE = $request->input('EVENTO_NOMBRE');
-            $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
-            $evento->EVENTO_DESCRIPCION = $request->input('EVENTO_DESCRIPCION');
-            $evento->EVENTO_MODALIDAD = $request->input('EVENTO_MODALIDAD');
-            $evento->EVENTO_BASES = $request->input('EVENTO_BASES');
-            $evento->EVENTO_UBICACION = $request->input('EVENTO_UBICACION');
-            $evento->EVENTO_NOTIFICACIONES = $request->has('EVENTO_NOTIFICACIONES') ? 1 : 0;
-            $evento->EVENTO_USUARIOS = $request->has('EVENTO_USUARIOS') ? 1 : 0;
-            $evento->EVENTO_COSTO = $request->input('EVENTO_COSTO') ?? 0;
-
-            $evento->save();
-
-            if ($request->has('fechas.FECHA_NOMBRE') && $request->has('fechas.FECHA_FINAL') && $request->has('fechas.FECHA_FINAL')) {
-                $evento->fechas()->delete();
-
-                foreach ($request->input('fechas.FECHA_NOMBRE') as $key => $nombreFecha) {
-                    $fecha = new Fecha;
-                    $fecha->FECHA_NOMBRE = $nombreFecha;
-                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_INICIO')[$key];
-                    $fecha->FECHA_INICIO = $request->input('fechas.FECHA_FINAL')[$key];
-                    $fecha->FECHA_DESCRIPCION = $request->input('fechas.FECHA_DESCRIPCION')[$key];
-                    $evento->fechas()->save($fecha);
-                }
-            }
-
-            if ($request->has('requisitos.REQUISITO_NOMBRE')) {
-                $evento->requisitos()->delete();
-
-                foreach ($request->input('requisitos.REQUISITO_NOMBRE') as $key => $nombreRequisito) {
-                    $requisito = new Requisito;
-                    $requisito->REQUISITO_NOMBRE = $nombreRequisito;
-                    $evento->requisitos()->save($requisito);
-                }
-            }
-
-            return redirect()->route('editarEvento', ['evento' => $eventoId])->withInput()->with('success', 'Evento y calendarización actualizados correctamente.');
-        } catch (ValidationException $e) {
-            return redirect()->route('editarEvento', ['evento' => $eventoId])->withErrors($e->validator->errors());
-        }
-    }
-
     public function vistaSeleccionarEvento()
     {
         $eventos = Evento::all();

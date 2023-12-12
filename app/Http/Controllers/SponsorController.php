@@ -40,7 +40,7 @@ class SponsorController extends Controller
     {
         $eventos = Evento::all();
         $sponsors = Sponsor::all();
-        return view('asigSponsor', compact('eventos', 'sponsores'));
+        return view('asigPatrocinador', compact('eventos', 'sponsors'));
     }
 
     public function guardarAsignacion(Request $request)

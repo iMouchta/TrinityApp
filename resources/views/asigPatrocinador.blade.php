@@ -23,7 +23,7 @@
                 <label for="patrocinador_id" class="form-label">Seleccionar Patrocinador:</label>
                 <select class="form-control" id="patrocinador_id" name="patrocinador_id" required>
                     <option value="" disabled selected>Selecciona un patrocinador</option>
-                    @foreach ($patrocinadores as $patrocinador)
+                    @foreach ($sponsors as $patrocinador)
                         <option value="{{ $patrocinador->ORGANIZADOR_ID }}">{{ $patrocinador->ORGANIZADOR_NOMBRE }}</option>
                     @endforeach
                 </select>
@@ -69,7 +69,7 @@
                     <label for="patrocinador_id" class="form-label">Seleccionar Patrocinador:</label>
                     <select class="form-control" name="patrocinadores[]" required>
                         <option value="" disabled selected>Selecciona un patrocinador</option>
-                        @foreach ($patrocinadores as $patrocinador)
+                        @foreach ($sponsors as $patrocinador)
                             <option value="{{ $patrocinador->ORGANIZADOR_ID }}">{{ $patrocinador->ORGANIZADOR_NOMBRE }}</option>
                         @endforeach
                     </select>
