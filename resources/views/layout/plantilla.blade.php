@@ -71,6 +71,17 @@
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link" aria-current="page" href="{{ route('misEventos') }}">Todos los Eventos</a>
                     </li>
+                    <li class="nav-item dropdown" style="margin-right: 10px;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Reportes</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ route('frecuencia') }}">Grafico de frecuencias</a></li>
+                            <li><a class="dropdown-item" href="{{ route('barra') }}">Grafico de barras</a></li>
+                            
+                            
+                        </ul>
+                    </li> 
                     {{-- <li>
                         <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="nav-link" aria-current="page" >Formulario de registro</a>
                     </li> --}}
@@ -115,6 +126,9 @@
     @yield('asigOrganizador')
     @yield('asigPatrocinador')
     @yield('seleccionarEvento')
+
+    @yield('frecuencia')
+    @yield('barra')
 
  @yield('buscar')
                 <footer class="bg-white text-white text-center py-3">

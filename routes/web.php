@@ -104,3 +104,5 @@ Route::post('/updateContacto',[EventoController::class, 'updateContacto'])->name
 Route::get('/asigPatrocinador', [SponsorController::class, 'asignar']) -> name('asigPatrocinador');
 Route::post('/guardarOrga', [SponsorController::class, 'guardarPatro'])->name('guardarPatro');
 
+Route::get('/frecuencia', function () { return view('frecuencia');}) ->name('frecuencia');
+Route::get('/barra', function () { return view('barra');}) ->name('barra');
