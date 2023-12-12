@@ -8,7 +8,7 @@ use App\Mail\TestMail;
 
 class MailController extends Controller
 {
-    public function mostrarFormulario()
+    public function mostrarFormularioCorreo()
     {
         return view('formulario');
     }

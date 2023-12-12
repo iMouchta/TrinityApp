@@ -6,17 +6,16 @@
             <h2>Generar formulario de registro</h2>
         </center>
         <form action="{{ route('guardarFormulario', ['eventoId' => $evento->EVENTO_ID]) }}" method="post"
-            id="formularioRegistro">
+            id="formularioRegistro" enctype="multipart/form-data">
             @csrf
-
-            <div class="form-row mb-2 fila-original">
-                <div class="col-md-4">
+            <div class = "row align-items-center">
+                <div class ="col">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre[]" value="Correo">
+                    <input type="text" class="form-control" name="nombre[]" value="Correo" disabled>
                 </div>
-                <div class="col-md-4">
-                    <label for="tipo">Tipo:</label>
-                    <select class="form-control" name="tipo[]">
+                <div class="col">
+                    <label for="tipo">Tipo:</label >
+                    <select class="form-control" name="tipo[]" disabled>
                         <option value="email">Correo</option>
                         <option value="text">Texto</option>
                         <option value="number">Numeral</option>
@@ -25,19 +24,17 @@
                         <option value="image">Imagen</option>
                     </select>
                 </div>
-                <div class="col-md-4">
+                <div class="col">
                     <label for="configuracion">Configuración:</label>
-                    <select class="form-control" name="configuracion[]">
+                    <select class="form-control" name="configuracion[]" disabled>
                         <option value="obligatorio">Obligatorio</option>
                         <option value="opcional">Opcional</option>
                     </select>
                 </div>
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-danger" onclick="eliminarCampo(this)">Eliminar</button>
-                </div>
+                
             </div>
-            <div id="camposAdicionales"></div>
 
+            <div id="camposAdicionales"></div>
             <br>
             <div>
                 <button type="button" class="btn btn-primary" onclick="agregarCampo()">Añadir</button>
@@ -57,34 +54,34 @@
 
         function agregarCampo() {
             var nuevaFila = `
-                <div class="form-row mb-2">
-                    <div class="col-md-4">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" name="nombre[]" value="">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="tipo">Tipo:</label>
-                        <select class="form-control" name="tipo[]">
-                            <option value="email">Correo</option>
-                            <option value="text">Texto</option>
-                            <option value="number">Numeral</option>
-                            <option value="url">Enlace</option>
-                            <option value="text">Talla de ropa</option>
-                            <option value="image">Imagen</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="configuracion">Configuración:</label>
-                        <select class="form-control" name="configuracion[]">
-                            <option value="obligatorio">Obligatorio</option>
-                            <option value="opcional">Opcional</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-danger" onclick="eliminarCampo(this)">Eliminar</button>
-                    </div>
+            <div class = "row align-items-center">
+                <div class ="col">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre[]" value="">
                 </div>
-
+                <div class="col">
+                    <label for="tipo">Tipo:</label>
+                    <select class="form-control" name="tipo[]">
+                        <option value="email">Correo</option>
+                        <option value="text">Texto</option>
+                        <option value="number">Numeral</option>
+                        <option value="url">Enlace</option>
+                        <option value="text">Talla de ropa</option>
+                        <option value="image">Imagen</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="configuracion">Configuración:</label>
+                    <select class="form-control" name="configuracion[]">
+                        <option value="obligatorio">Obligatorio</option>
+                        <option value="opcional">Opcional</option>
+                    </select>
+                </div>
+                <div class="col text-center" style="padding-top: 2%">
+                    <button type="button" class="btn btn-danger" onclick="eliminarCampo(this)">Eliminar</button>
+                </div>
+            </div>
+          
             `;
 
             document.getElementById('camposAdicionales').insertAdjacentHTML('beforeend', nuevaFila);

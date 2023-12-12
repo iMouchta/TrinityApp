@@ -105,7 +105,7 @@
     @yield('asigOrganizador')
     @yield('asigPatrocinador')
     @yield('seleccionarEvento')
-
+    @yield('detalleEvento')
 
     
     

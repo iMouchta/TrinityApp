@@ -3,10 +3,10 @@
 @section('formGenerado')
     <div class="container">
         <center>
-            <h2>Formulario Generado</h2>
+            <h2>Formulario Generado de {{ $evento->EVENTO_NOMBRE}}</h2>
         </center>
 
-        <form action="{{ route('procesarFormularioGenerado') }}" method="post">
+        <form action="{{ route('procesarFormularioGenerado', ['eventoId' => $evento->EVENTO_ID]) }}" method="post">
             @csrf
 
             @foreach ($formularios as $regform)

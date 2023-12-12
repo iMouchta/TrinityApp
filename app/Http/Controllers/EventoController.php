@@ -131,4 +131,11 @@ class EventoController extends Controller
         $eventoId = $request->input('evento_id');
         return redirect()->route('editarEvento', ['eventoId' => $eventoId]);
     }
+    
+    public function mostrarDetalleEvento(Request $request)
+    {
+        $eventoId = $request->input('evento_id');
+        $evento = Evento::findOrFail($eventoId);
+        return view('detalleEvento', ['evento' => $evento]);
+    }
 }
