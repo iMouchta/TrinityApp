@@ -7,12 +7,22 @@
 
         <div class="mb-3">
             <label for="evento_id" class="form-label">Seleccionar Evento:</label>
-            <select class="form-control" id="evento_id" name="evento_id" required>
-                <option value="" disabled selected>Selecciona un evento</option>
-                @foreach ($eventos as $evento)
-                    <option value="{{ $evento->EVENTO_ID }}">{{ $evento->EVENTO_NOMBRE }}</option>
-                @endforeach
-            </select>
+            <form action="{{route('editarEvento')}}" method="POST">
+                @csrf
+    
+                <div class="mb-3">
+                    <label for="evento_id" class="form-label">Seleccionar Evento:</label>
+                    <select class="form-control" id="evento_id" name="evento_id" required>
+                        <option value="" disabled selected>Selecciona dasdsadasun evento</option>
+                        @foreach ($eventos as $evento)
+                            <option value="{{ $evento->EVENTO_ID }}">{{ $evento->EVENTO_NOMBRE }}</option>
+                        @endforeach
+                    </select>
+
+                    <button type="submit" class="btn btn-outline-dark">Aceptar</button>
+                </div>   
+            </form> 
+        </div>
             <div class="container text-center">
                 <div class="row align-items-start">
                     <div class="col">
@@ -44,6 +54,7 @@
                         </form>
                     </div>
                 </div>
+>>>>>>> d85eb31387f10cf19896f104a6102291720abe62
             </div>
         </div>
 

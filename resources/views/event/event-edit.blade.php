@@ -3,21 +3,23 @@
 @section('evento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('guardarEvento') }}" method="post"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <form action="{{ route('update.evento') }}" method="post"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 @csrf
                 <h1>
-                    <center>Crear Evento</center>
+                    <center>Editar Evento</center>
                 </h1>
+               
                 <div class = "row">
+                     <input name="EVENT_ID" hidden value={{$evento->EVENTO_ID}} > 
                     <div class ="col">
                         <label for="EVENTO_NOMBRE" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}" placeholder="Ingrese el nombre"
+                        <input  disabled ="text" class="form-control" name="EVENTO_NOMBRE" value="{{ $evento->EVENTO_NOMBRE }}" placeholder="Ingrese el nombre"
                             required minlength="3" maxlength="200">
-                            <div class="valid-feedback">Nombre válido</div> 
+                            <div class="valid-feedback">Nombre válido</div>    <!--tooltip -->
                             <div class="invalid-feedback">Use un nombre de "minimo de 3 caracteres"</div>
 
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
-                        <select name= "EVENTO_MODALIDAD" class="form-control" value="{{ old('EVENTO_MODALIDAD') }}"
+                        <select disabled name= "EVENTO_MODALIDAD" class="form-control" value="{{$evento->EVENTO_MODALIDAD}}"
                             required>
                             <option value ="Individual">Individual</option>
                             <option value ="Grupal">Grupal</option>
@@ -25,44 +27,43 @@
 
                         <div class ="col">
                         <label for="EVENTO_COSTO" class="form-label">Costo:</label>
-                        <input type="text" class="form-control" name="EVENTO_COSTO" value="{{ old('EVENTO_COSTO') }}" placeholder="Ingrese el costo" requerid pattern="^[0-9]{1,6}$">
+                        <input disabled type="text" class="form-control" name="EVENTO_COSTO" value="{{$evento->EVENTO_COSTO}}" placeholder="Ingrese el costo" requerid pattern="^[0-9]{1,6}$">
                         <div class="valid-feedback">Costo válido</div>
                         <div class="invalid-feedback">Registre un costo válido"</div>
                         </div>
                         <label for="EVENTO_TIPO" class="form-label">Tipo de evento:</label>
-                        <select name= "EVENTO_TIPO" class="form-control" value="{{ old('EVENTO_TIPO') }}" required>
-                            <option value ="Rondas de Entrenamiento">Rondas de entrenamiento</option>
-                            <option value ="Reclutamiento">Reclutamiento</option>
-                            <option value ="Clasificatorios">Clasificatorios</option>
-                            <option value ="Taller de programacion competitiva">Taller de programacion competitiva</option>
-                            <option value ="Competencia">Competencia</option>
-                            <option value ="Evento especial">Especial</option>
+                        <select disabled name= "EVENTO_TIPO" class="form-control" value="{{$evento->EVENTO_TIPO}}" required>
+                            <option value ="Rondas de Entrenamiento"  @if("Rondas de Entrenamiento" == $evento->EVENTO_TIPO) selected @endif>Rondas de entrenamiento</option>
+                            <option value ="Reclutamiento"  @if("Reclutamiento" == $evento->EVENTO_TIPO) selected @endif  >Reclutamiento</option>
+                            <option value ="Clasificatorios"  @if("Clasificatorios" == $evento->EVENTO_TIPO) selected @endif>Clasificatorios</option>
+                            <option value ="Taller de programacion competitiva"  @if("Taller de programacion competitiva" == $evento->EVENTO_TIPO) selected @endif >Taller de programacion competitiva</option>
+                            <option value ="Competencias"  @if("Competencias" == $evento->EVENTO_TIPO) selected @endif>Competencias</option>
+                            <option value ="Evento especial"  @if("Evento especial" == $evento->EVENTO_TIPO) selected @endif>Especial</option>
                         </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
-                        <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3" required></textarea>
+                        <textarea disabled class="form-control" name= "EVENTO_DESCRIPCION" rows="3"  required >{{$evento->EVENTO_DESCRIPCION}}</textarea>
 
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
-                        <textarea class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required></textarea>
+                        <textarea disabled class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required>{{$evento->EVENTO_BASES}}</textarea>
                         
-                            <div class="col">
-                            <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
-                            <input type="text" class="form-control" name="EVENTO_UBICACION" placeholder="Ingrese la direccion" requerid
-                            minlength="4" maxlength="250">
-
-                            <div class="valid-feedback">Ubición válida</div> 
+                        <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
+                        <input type="text" class="form-control" name="EVENTO_UBICACION" value="{{$evento->EVENTO_UBICACION}}" required minlength="8" maxlength="250">
+                            <div class="valid-feedback">Ubición válida</div>    <!--tooltip -->
                             <div class="invalid-feedback">Registre una ubicación válida"</div>
-                            </div>
-                            
-                        
+                        </div>
+                    </div>
                 </div>
 
                 <div>
                     <div id="requisitos-container">
                         <label for="requisitos-container" class="form-label">Requisitos:</label>
                         <div class="requisito-input">
+                            @foreach($requisitos as $requesito)
                             <div class ="row g-1">
-                                <input type="text" class="form-control" name="requisitos[REQUISITO_NOMBRE][]" requerid>
+                                <input  hidden type="text" value={{$requesito->REQUISITO_ID}} name="requisitos[REQUISITO_ID][]">
+                                <input disabled type="text" value={{$requesito->REQUISITO_NOMBRE}} class="form-control" name="requisitos[REQUISITO_NOMBRE][]" requerid>   
                             </div>
+                            @endforeach
                         </div>
                         <br>
                     </div>
@@ -77,39 +78,34 @@
                         <label for="fecha-input" class="form-label">Cronograma:</label>
                         <div class="fecha-input">
                             <div class="row g-3 align-items-center">
+                                <input name="fechas[FECHA_ID][]" hidden value={{$evento->fechas[0]->FECHA_ID}}> 
+
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Actividad Inicial" required>
+                                    <input type="text" value={{$evento->fechas[0]->FECHA_NOMBRE}} class="form-control" name="fechas[FECHA_NOMBRE][]"
+                                        placeholder="Actividad Inicial">
                                 </div>
                                 <div class="col-auto">
-                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
-                                        placeholder="Fecha Inicial" required>
+                                    <input type="date"  value={{$evento->fechas[0]->FECHA_FECHA}} class="form-control" name="fechas[FECHA_FECHA][]"
+                                        placeholder="Fecha">
                                 </div>
-                                <div class="col-auto">
-                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
-                                        placeholder="Fecha Final" required>
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
+                                <div class="col-sm-6 col-md-8">
+                                    <input type="text" class="form-control" value={{$evento->fechas[0]->FECHA_DESCRIPCION}} name="fechas[FECHA_DESCRIPCION][]"
                                         placeholder = "Descripcion">
                                 </div>
                             </div>
                             <br>
                             <div class="row g-3 align-items-center">
+                                <input  name="fechas[FECHA_ID][]" hidden value={{$evento->fechas[1]->FECHA_ID}}> 
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                                        placeholder="Actividad Final" required>
+                                    <input type="text" value={{$evento->fechas[1]->FECHA_NOMBRE}}  class="form-control" name="fechas[FECHA_NOMBRE][]"
+                                        placeholder="Actividad Final">
                                 </div>
                                 <div class="col-auto">
-                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
-                                        placeholder="Fecha Inicial" required>
+                                    <input type="date"  value={{$evento->fechas[1]->FECHA_FECHA}} class="form-control" name="fechas[FECHA_FECHA][]"
+                                        placeholder="Fecha">
                                 </div>
-                                <div class="col-auto">
-                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
-                                        placeholder="Fecha Final" required>
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
+                                <div class="col-sm-6 col-md-8">
+                                    <input type="text" value={{$evento->fechas[1]->FECHA_DESCRIPCION}} class="form-control" name="fechas[FECHA_DESCRIPCION][]"
                                         placeholder = "Descripcion">
                                 </div>
                             </div>
@@ -135,7 +131,7 @@
                     </label>
                 </div>
 
-<!-- 
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -144,47 +140,18 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif -->
+                @endif
 
-                <!-- @if (session('success'))
+                @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
-                @endif -->
+                @endif
                 <center>
-                
-                <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
+                <button type="submit" class="btn btn-primary">Actualizar Evento</button>
+                <a  href="{{ route('checkEdit', ['eventoId' => $evento->EVENTO_ID]) }}"   id="cancelar" type="button" class="btn btn-danger">Cancelar</a>
+                <a  href="{{ route('eliminar.evento', ['id' => $evento->EVENTO_ID]) }}"  id="cancelar" type="button" class="btn btn-danger">Eliminar</a>
                 </center>
-
-                @if(session('success'))
-                    <script>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Datos guardados correctamente',
-                            text: '{{ session('success') }}',
-                            allowOutsideClick: false
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                            
-                            window.location.href = '/';
-                            }
-                        });
-                    </script>
-                @endif
-
-                @if ($errors->any())
-                    <script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            html: '<ul>' +
-                                @foreach ($errors->all() as $error)
-                                    '<li>{{ $error }}</li>' +
-                                @endforeach
-                                '</ul>',
-                        });
-                    </script>
-                @endif
 
             </form>
 
@@ -198,12 +165,9 @@
                         '<input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]" placeholder="Actividad">' +
                         '</div>' +
                         '<div class="col-auto">' +
-                        '<input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]" placeholder="Fecha">' +
+                        '<input type="date" class="form-control" name="fechas[FECHA_FECHA][]" placeholder="Fecha">' +
                         '</div>' +
-                        '<div class="col-auto">' +
-                        '<input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]" placeholder="Fecha">' +
-                        '</div>' +
-                        '<div class="col-md-4">' +
+                        '<div class="col-md-7">' +
                         '<input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]" placeholder="Descripcion">' +
                         '</div>' +
                         '<div class="col-auto">' +

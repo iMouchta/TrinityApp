@@ -33,6 +33,7 @@
             text-align: center;
             padding: 20px 0;
         }
+        
     </style>
 
 </head>
@@ -40,7 +41,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bd-navbar navbar-dark " style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"> HackHub </a>
+            <a class="navbar-brand" href="/"><img src="/logo.svg" alt="logo" style="width: 2%;">HackHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -58,9 +59,13 @@
                             <li><a class="dropdown-item" href="{{ route('sponsor') }}">Registrar Sponsor</a></li>
                             <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
+                            <li><a class="dropdown-item" href="{{ route('baja') }}">Darse de baja</a></li>
+                       
+
                             <li><a class="dropdown-item" href="{{ route('seleccionarEvento')}}">Editar Evento</a></li>
                             <li><a class="dropdown-item" href="{{ route('asigOrganizador')}}">Asignar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('asigPatrocinador')}}">Asignar Patrocinadores</a></li>
+
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
@@ -81,7 +86,7 @@
                 <form class="d-flex" role="search" action="{{ route('buscar') }}" method="GET">
                     <input class="form-control me-2" type="search" name="query" placeholder="Busqueda ..."
                         aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <button class="btn btn-success" type="submit">Buscar</button>
                 </form>
             </div>
         </div>
@@ -95,7 +100,12 @@
     @yield('organizador')
     @yield('contacto')
     @yield('content')
-    @yield('buscar')
+
+    @yield('baja')
+    @yield('usuario')
+    @yield('formularioRegistro')
+    @yield('formGenerado')
+    @yield('editarFormulario')
     @yield('editarEvento')
     @yield('formularioRegistro')
     @yield('formGenerado')
@@ -106,6 +116,31 @@
     @yield('asigPatrocinador')
     @yield('seleccionarEvento')
 
+ @yield('buscar')
+                <footer class="bg-white text-white text-center py-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Síguenos en las redes sociales</h5>
+                                <div class="social-icons">
+                                    <a href="https://www.facebook.com/UmssBolOficial/"
+                                        class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-twitter"></i> Twitter
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                    <a href="#" class="btn btn-outline-white text-white btn-social">
+                                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </footer>
 
     
     

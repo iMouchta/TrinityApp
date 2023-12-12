@@ -16,7 +16,7 @@
                             <div class="card w-80">
                                 <div class="card-body" style="padding: 0px;">
                                     <div>
-                                        @if ($evento->imagenes->where('IMAGEN_TIPO', 'banner')->count() > 0)
+                                        @if($evento->imagenes->where('IMAGEN_TIPO', 'banner')->count() > 0)
                                             @foreach ($evento->imagenes->where('IMAGEN_TIPO', 'banner') as $imagen)
                                                 <img src="{{ asset('storage/' . $imagen->IMAGEN_IMAGEN) }}"
                                                     alt="{{ $imagen->IMAGEN_TIPO }}" style="height: 7rem; width: 100%;">
@@ -37,6 +37,19 @@
                                     </div>
                                 </div>
 
+                           <div class=" botonver ">
+                                <center>
+                                    <!-- 
+                                   <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Formulario de registro</a>
+                                   
+                                    <a href="{{ route('ver.evento', ['evento' => $evento->EVENTO_ID]) }}"
+                                                class="btn btn-primary btn-sm">Ver evento</a>
+                                    <a href="{{ route('edit.evento', ['id' => $evento->EVENTO_ID]) }}" 
+                                                class="btn btn-primary btn-sm" href="#" role="button">Editar</a>
+                                    <a> 
+                                    -->
+                                </center>
+                                <!-- Mostrar más información del evento según tus necesidades -->
                             </div>
                         </div>
                     </a>
