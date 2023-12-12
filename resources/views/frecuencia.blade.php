@@ -3,7 +3,7 @@
 @section('frecuencia')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
     <div class="container">
-        <h1><center>Grafico de Líneas con Polígono</center></h1>
+        <h1><center>Grafico de frecuencias con polígono</center></h1>
         
         <div>
             <canvas id="myChart" width="400" height="200"></canvas>
