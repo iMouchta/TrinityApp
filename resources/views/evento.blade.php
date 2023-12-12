@@ -13,7 +13,7 @@
                         <label for="EVENTO_NOMBRE" class="form-label">Nombre:</label>
                         <input type="text" class="form-control" name="EVENTO_NOMBRE" value="{{ old('EVENTO_NOMBRE') }}" placeholder="Ingrese el nombre"
                             required minlength="3" maxlength="200">
-                            <div class="valid-feedback">Nombre válido</div> 
+                            <div class="valid-feedback">Nombre válido</div>
                             <div class="invalid-feedback">Use un nombre de "minimo de 3 caracteres"</div>
 
                         <label for="EVENTO_MODALIDAD" class="form-label">Modalidad:</label>
@@ -43,17 +43,17 @@
 
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
                         <textarea class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required></textarea>
-                        
+
                             <div class="col">
                             <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
                             <input type="text" class="form-control" name="EVENTO_UBICACION" placeholder="Ingrese la direccion" requerid
                             minlength="4" maxlength="250">
 
-                            <div class="valid-feedback">Ubición válida</div> 
+                            <div class="valid-feedback">Ubición válida</div>
                             <div class="invalid-feedback">Registre una ubicación válida"</div>
                             </div>
-                            
-                        
+
+
                 </div>
 
                 <div>
@@ -135,7 +135,7 @@
                     </label>
                 </div>
 
-<!-- 
+<!--
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -152,7 +152,7 @@
                     </div>
                 @endif -->
                 <center>
-                
+                <button type="submit" class="btn btn-primary">Registrar</button>
                 <button id="cancelar" type="button" class="btn btn-danger">Salir</button>
                 </center>
 
@@ -165,7 +165,7 @@
                             allowOutsideClick: false
                         }).then((result) => {
                             if (result.isConfirmed) {
-                            
+
                             window.location.href = '/';
                             }
                         });
@@ -269,8 +269,8 @@
     </script>
 
 <script>
-    $('#eventoC').on('submit' ,function(e){ 
-        e.preventDefault(); 
+    $('#eventoC').on('submit' ,function(e){
+        e.preventDefault();
         Swal.fire({
         title: "¿Estas seguro de registrar la información?",
         icon: "question",
