@@ -18,14 +18,6 @@
                             <option value ="Grupal">Grupal</option>
                         </select>
 
-                        <div class ="col">
-                            <label for="EVENTO_COSTO" class="form-label">Costo:</label>
-                            <input type="text" class="form-control" name="EVENTO_COSTO"
-                                value="{{ $evento->EVENTO_COSTO }}" placeholder="Ingrese el costo" requerid
-                                pattern="^[0-9]{1,6}$">
-                            <div class="valid-feedback">Costo válido</div>
-                            <div class="invalid-feedback">Registre un costo válido"</div>
-                        </div>
                         <label for="EVENTO_TIPO" class="form-label">Tipo de evento:</label>
                         <select name= "EVENTO_TIPO" class="form-control" value="{{ $evento->EVENTO_TIPO }}" required>
                             <option value ="Rondas de Entrenamiento">Rondas de entrenamiento</option>
@@ -35,6 +27,7 @@
                             <option value ="Competencias">Competencias</option>
                             <option value ="Evento especial">Especial</option>
                         </select>
+                        
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
                         <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3"
                             required>{{ $evento->EVENTO_DESCRIPCION }}</textarea>
@@ -55,21 +48,23 @@
         <div id="fechas-container">
             <label for="fechas-container" class="form-label">Cronograma:</label>
             @foreach ($evento->fechas as $fecha)
-                <div class="fecha-input">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]" placeholder="Actividad"
-                                value="{{ $fecha->FECHA_NOMBRE }}">
-                        </div>
-                        <div class="col-auto">
-                            <input type="date" class="form-control" name="fechas[FECHA_FECHA][]" placeholder="Fecha"
-                                value="{{ $fecha->FECHA_FECHA }}">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
-                                placeholder="Descripcion" value="{{ $fecha->FECHA_DESCRIPCION }}">
-                        </div>
-                        
+            <div class="fecha-input">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
+                            placeholder="Actividad Final" value="{{ $fecha->FECHA_NOMBRE }}" required>
+                    </div>
+                    <div class="col-auto">
+                        <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
+                            placeholder="Fecha Inicial" value="{{ $fecha->FECHA_INICIO }}" required>
+                    </div>
+                    <div class="col-auto">
+                        <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
+                            placeholder="Fecha Final" value="{{ $fecha->FECHA_FIN }}" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
+                            placeholder = "Descripcion" value="{{ $fecha->FECHA_DESCRIPCION }}" >
                     </div>
                 </div>
                 <br>

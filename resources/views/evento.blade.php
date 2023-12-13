@@ -24,13 +24,6 @@
                             <option value ="Grupal">Grupal</option>
                         </select>
 
-                        <div class ="col">
-                            <label for="EVENTO_COSTO" class="form-label">Costo:</label>
-                            <input type="text" class="form-control" name="EVENTO_COSTO" value="{{ old('EVENTO_COSTO') }}"
-                                placeholder="Ingrese el costo" requerid pattern="^[0-9]{1,6}$">
-                            <div class="valid-feedback">Costo válido</div>
-                            <div class="invalid-feedback">Registre un costo válido"</div>
-                        </div>
                         <label for="EVENTO_TIPO" class="form-label">Tipo de evento:</label>
                         <select name= "EVENTO_TIPO" class="form-control" value="{{ old('EVENTO_TIPO') }}" required>
                             <option value ="Rondas de Entrenamiento">Rondas de entrenamiento</option>
