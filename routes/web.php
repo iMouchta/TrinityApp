@@ -64,14 +64,14 @@ Route::get('/mostrar-formulario/{eventoId}', [RegformController::class, 'mostrar
 Route::get('/mostrar-formulario-correo', [MailController::class, 'mostrarFormularioCorreo'])->name('mostrarFormularioCorreo');
 Route::post('/enviar-correo', [MailController::class, 'enviarCorreoPersonalizado']);
 
-Route::get('/asigOrganizador', [OrganizadorController::class, 'asignar'])->name('asigOrganizador');
-Route::post('/guardarOrga', [OrganizadorController::class, 'guardarOrga'])->name('guardarOrga');
+Route::get('/asigOrganizador/{eventoId}', [OrganizadorController::class, 'asignar'])->name('asigOrganizador');
+Route::post('/guardarOrga/{eventoId}', [OrganizadorController::class, 'guardarOrga'])->name('guardarOrga');
 
 Route::get('/seleccionar-evento', 'EventoController@vistaSeleccionarEvento')->name('seleccionarEvento');
 Route::get('/editarEvento/{eventoId}', [EventoController::class, 'editar'])->name('editarEvento');
 
-Route::get('/asigPatrocinador', [SponsorController::class, 'asignar'])->name('asigPatrocinador');
-Route::post('/guardarOrga', [SponsorController::class, 'guardarPatro'])->name('guardarPatro');
+Route::get('/asigPatrocinador/{eventoId}', [SponsorController::class, 'asignar'])->name('asigPatrocinador');
+Route::post('/guardarPatro/{eventoId}', [SponsorController::class, 'guardarPatro'])->name('guardarPatro');
 
 
 Route::post('/mostrar-detalle-evento', [EventoController::class, 'mostrarDetalleEvento'])->name('mostrarDetalleEvento');

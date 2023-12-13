@@ -36,12 +36,12 @@
                             <option value ="Evento especial">Especial</option>
                         </select>
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
-                        <textarea class="form-control" name= "EVENTO_DESCRIPCION" value="{{ $evento->EVENTO_DESCRIPCION }}" rows="3"
-                            required></textarea>
+                        <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3"
+                            required>{{ $evento->EVENTO_DESCRIPCION }}</textarea>
 
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
-                        <textarea class="form-control" name="EVENTO_BASES" value="{{ $evento->EVENTO_BASES }}" rows="3"
-                            style="resize: none;" required></textarea>
+                        <textarea class="form-control" name="EVENTO_BASES"  rows="3"
+                            style="resize: none;" required> {{ $evento->EVENTO_BASES }}</textarea>
 
                         <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
                         <input type="text" class="form-control" name="EVENTO_UBICACION"
@@ -65,13 +65,11 @@
                             <input type="date" class="form-control" name="fechas[FECHA_FECHA][]" placeholder="Fecha"
                                 value="{{ $fecha->FECHA_FECHA }}">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
                                 placeholder="Descripcion" value="{{ $fecha->FECHA_DESCRIPCION }}">
                         </div>
-                        <div class="col-auto">
-                            <button type="button" class="btn btn-danger" onclick="eliminarFecha(this)">Eliminar</button>
-                        </div>
+                        
                     </div>
                 </div>
                 <br>
@@ -79,27 +77,7 @@
         </div>
         <button type="button" class="btn btn-primary" onclick="agregarFecha()">Agregar Fecha</button>
 
-        <div>
-            <div id="requisitos-container">
-                <label for="requisitos-container" class="form-label">Requisitos:</label>
-                @foreach ($evento->requisitos as $requisito)
-                    <div class="requisito-input">
-                        <div class="row g-1">
-                            <div class="col-md-11">
-                                <input type="text" class="form-control" name="requisitos[REQUISITO_NOMBRE][]"
-                                    value="{{ $requisito->REQUISITO_NOMBRE }}">
-                            </div>
-                            <div class="col-auto">
-                                <button type="button" class="btn btn-danger"
-                                    onclick="eliminarElemento(this)">Eliminar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                @endforeach
-            </div>
-            <button type="button" class="btn btn-primary" onclick="agregarRequisito()">Agregar Requisito</button>
-        </div>
+        
 
 
         <center>

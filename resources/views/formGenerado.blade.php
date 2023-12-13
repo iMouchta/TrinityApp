@@ -19,7 +19,9 @@
             <br>
             <center>
                 <button type="submit" class="btn btn-success">Enviar</button>
-                <button type="submit" class="btn btn-danger">Cancelar</button>
+                <a href="{{ route('evento') }}">
+                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                </a>
             </center>
         </form>
 

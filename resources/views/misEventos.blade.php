@@ -27,8 +27,8 @@
                                         @endif
                                     </div>
                                     <div style="margin: 0% 5%">
-                                        <div class="titulo">
-                                            <h2 class="text-center">{{ $evento->EVENTO_NOMBRE }}</h2>
+                                        <div class="titulo" >
+                                            <h2 class="text-center" style="margin: 0%;">{{ $evento->EVENTO_NOMBRE }}</h2>
                                         </div>
                                         <p class="letras">{{ $evento->EVENTO_TIPO }}</p>
                                         @foreach ($evento->fechas->take(1) as $fecha)

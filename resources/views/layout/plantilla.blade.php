@@ -59,24 +59,12 @@
                             <li><a class="dropdown-item" href="{{ route('organizador') }}">Registrar Organizador</a></li>
                             <li><a class="dropdown-item" href="{{ route('contacto') }}">Registrar Contacto</a></li>
                             <li><a class="dropdown-item" href="{{ route('seleccionarEvento')}}">Editar Evento</a></li>
-                            <li><a class="dropdown-item" href="{{ route('asigOrganizador')}}">Asignar Organizador</a></li>
-                            <li><a class="dropdown-item" href="{{ route('asigPatrocinador')}}">Asignar Patrocinadores</a></li>
+                            
                         </ul>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
                         <a class="nav-link" aria-current="page" href="{{ route('misEventos') }}">Todos los Eventos</a>
                     </li>
-                    {{-- <li>
-                        <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="nav-link" aria-current="page" >Formulario de registro</a>
-                    </li> --}}
-                    {{-- <div class=" botonver">
-                        <center>
-                            <a href="{{ route('mostrarFormularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}"class="btn btn-primary">Formulario de registro</a>
-                            <a href="{{ route('editarEvento', ['evento' => $evento->EVENTO_ID]) }}"class="btn btn-warning">Editar evento</a>
-                        </center>
-
-                    </div> --}}
-
                 </ul>
                 <form class="d-flex" role="search" action="{{ route('buscar') }}" method="GET">
                     <input class="form-control me-2" type="search" name="query" placeholder="Busqueda ..."

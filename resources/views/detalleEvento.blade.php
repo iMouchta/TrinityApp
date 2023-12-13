@@ -22,16 +22,6 @@
                         <button class="btn btn-outline-dark" disabled>Ya existe un formulario de registro para este evento</button>
                     @endif
                 </div>
-                <div class="col">
-                    <a href="{{ route('evento') }}">
-                        <button class="btn btn-outline-dark">Asignar Patrocinador</button>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="{{ route('evento') }}">
-                        <button class="btn btn-outline-dark">Asignar Organizador</button>
-                    </a>
-                </div>
             </div>
         </div>
     </div>

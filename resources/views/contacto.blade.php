@@ -7,7 +7,8 @@
             <h1><center>Registar contacto</center></h1>
             <div class="mb-3 w-25" >
                 <label for="evento_id" class="form-label">Seleccionar Evento:</label>
-                <select class="form-control" id="evento_id" name="evento_id">
+                <select class="form-control" id="evento_id" name="evento_id" required>
+                    <option value="" disabled selected>Selecciona un evento</option>
                     @foreach ($eventos as $evento)
                         <option value="{{ $evento->EVENTO_ID }}">{{ $evento->EVENTO_NOMBRE }}</option>
                     @endforeach
