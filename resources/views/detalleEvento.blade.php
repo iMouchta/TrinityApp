@@ -9,8 +9,8 @@
         <div class="container text-center">
             <div class="row align-items-start">
                 <div class="col">
-                    <a href="{{ route('formularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}">
-                        <button class="btn btn-outline-dark">Editar Formulario de Registro</button>
+                    <a href="{{ route('editarEvento', ['eventoId' => $evento->EVENTO_ID]) }}">
+                        <button class="btn btn-outline-dark">Editar Evento</button>
                     </a>
                 </div>
                 <div class="col">
@@ -23,13 +23,13 @@
                     @endif
                 </div>
                 <div class="col">
-                    <a href="{{ route('formularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}">
-                        <button class="btn btn-outline-dark">Editar Formulario de Registro</button>
+                    <a href="{{ route('evento') }}">
+                        <button class="btn btn-outline-dark">Asignar Patrocinador</button>
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{ route('formularioRegistro', ['eventoId' => $evento->EVENTO_ID]) }}">
-                        <button class="btn btn-outline-dark">Editar Formulario de Registro</button>
+                    <a href="{{ route('evento') }}">
+                        <button class="btn btn-outline-dark">Asignar Organizador</button>
                     </a>
                 </div>
             </div>

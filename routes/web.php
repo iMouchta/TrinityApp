@@ -68,7 +68,7 @@ Route::get('/asigOrganizador', [OrganizadorController::class, 'asignar'])->name(
 Route::post('/guardarOrga', [OrganizadorController::class, 'guardarOrga'])->name('guardarOrga');
 
 Route::get('/seleccionar-evento', 'EventoController@vistaSeleccionarEvento')->name('seleccionarEvento');
-Route::post('/editarEvento', 'EventoController@editarEvento')->name('editarEvento');
+Route::get('/editarEvento/{eventoId}', [EventoController::class, 'editar'])->name('editarEvento');
 
 Route::get('/asigPatrocinador', [SponsorController::class, 'asignar'])->name('asigPatrocinador');
 Route::post('/guardarOrga', [SponsorController::class, 'guardarPatro'])->name('guardarPatro');
