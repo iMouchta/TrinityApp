@@ -50,7 +50,7 @@ Route::get('/buscar', [EventoController::class, 'buscar'])->name('buscar');
 Route::get('/formulario-registro/{eventoId}', [RegformController::class, 'mostrarFormulario'])->name('mostrarFormularioRegistro');
 Route::post('/guardar-formulario/{eventoId}', [RegformController::class, 'guardarFormulario'])->name('guardarFormulario');
 
-Route::get('/formulario-generado/{eventoId}', [formularioGeneradoController::class, 'mostrarFormularioGenerado'])->name('formularioRegistro');
+Route::get('/formulario-generado/{eventoId}', [formularioGeneradoController::class, 'mostrarFormularioGenerado'])->name('formulario-generado');
 Route::post('/procesar-formulario-generado', 'RegformController@procesarFormularioGenerado')->name('procesarFormularioGenerado');
 Route::post('/editar-formulario/{eventoId}', 'RegformController@editarFormulario')->name('editarFormulario');
 

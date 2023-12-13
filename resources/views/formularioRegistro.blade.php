@@ -11,25 +11,15 @@
             <div class = "row align-items-center">
                 <div class ="col">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre[]" value="Correo" disabled>
+                    <input type="text" class="form-control" name="nombre[]" value="Correo" readonly>
                 </div>
-                <div class="col">
-                    <label for="tipo">Tipo:</label >
-                    <select class="form-control" name="tipo[]" disabled>
-                        <option value="email">Correo</option>
-                        <option value="text">Texto</option>
-                        <option value="number">Numeral</option>
-                        <option value="url">Enlace</option>
-                        <option value="text">Talla de ropa</option>
-                        <option value="image">Imagen</option>
-                    </select>
+                <div class ="col">
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" class="form-control" name="tipo[]" value="Correo" readonly>
                 </div>
-                <div class="col">
-                    <label for="configuracion">Configuración:</label>
-                    <select class="form-control" name="configuracion[]" disabled>
-                        <option value="obligatorio">Obligatorio</option>
-                        <option value="opcional">Opcional</option>
-                    </select>
+                <div class ="col">
+                    <label for="configuracion">Configuracion:</label>
+                    <input type="text" class="form-control" name="configuracion[]" value="Obligatorio" readonly>
                 </div>
                 
             </div>
@@ -57,11 +47,11 @@
             <div class = "row align-items-center">
                 <div class ="col">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre[]" value="">
+                    <input type="text" class="form-control" name="nombre[]" value="" required>
                 </div>
                 <div class="col">
                     <label for="tipo">Tipo:</label>
-                    <select class="form-control" name="tipo[]">
+                    <select class="form-control" name="tipo[]" required>
                         <option value="email">Correo</option>
                         <option value="text">Texto</option>
                         <option value="number">Numeral</option>
@@ -72,12 +62,12 @@
                 </div>
                 <div class="col">
                     <label for="configuracion">Configuración:</label>
-                    <select class="form-control" name="configuracion[]">
+                    <select class="form-control" name="configuracion[]" required>
                         <option value="obligatorio">Obligatorio</option>
                         <option value="opcional">Opcional</option>
                     </select>
                 </div>
-                <div class="col text-center" style="padding-top: 2%">
+                <div class="col text-center" style="padding-top: 2%" >
                     <button type="button" class="btn btn-danger" onclick="eliminarCampo(this)">Eliminar</button>
                 </div>
             </div>

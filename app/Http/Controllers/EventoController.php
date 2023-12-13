@@ -6,6 +6,7 @@ use App\Models\Contacto;
 use App\Models\Evento;
 use App\Models\Fecha;
 use App\Models\Requisito;
+use App\Models\regform;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -136,6 +137,12 @@ class EventoController extends Controller
     {
         $eventoId = $request->input('evento_id');
         $evento = Evento::findOrFail($eventoId);
-        return view('detalleEvento', ['evento' => $evento]);
+
+        // Verificar si ya existe un formulario de registro con el campo "Correo"
+        $existeFormularioCorreo = Regform::where('EVENTO_ID', $eventoId)
+            ->where('REGFORM_NOMBRE', 'Correo')
+            ->exists();
+
+        return view('detalleEvento', ['evento' => $evento, 'existeFormularioCorreo' => $existeFormularioCorreo]);
     }
 }

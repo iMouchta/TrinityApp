@@ -46,7 +46,10 @@
             <div class="container" id="containerB" style="display:grid; justify-content: end">
                 <button type="button" class="btn btn-secondary" disabled>Precio: {{ $evento->EVENTO_COSTO }} BS</button>
                 <br>
-                <button type="button" class="btn btn-success">Registrarme</button>
+                <a href="{{ route('formulario-generado', ['eventoId' => $evento->EVENTO_ID]) }}">
+                    <button type="button" class="btn btn-success">Registrarme</button>
+                </a>
+
             </div>
         </div>
 
@@ -77,7 +80,7 @@
                                 <th scope="row">{{ $index + 1 }}</th>
                                 <td>{{ $fecha->FECHA_NOMBRE }}</td>
                                 <td>{{ $fecha->FECHA_INICIO }}</td>
-                                <td>{{ $fecha->FECHA_FINAL}}</td>
+                                <td>{{ $fecha->FECHA_FINAL }}</td>
                                 <td>{{ $fecha->DESCRIPCION }}</td>
                             </tr>
                         @endforeach
