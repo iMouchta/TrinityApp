@@ -16,9 +16,9 @@ class SponsorController extends Controller
         return view('sponsor', compact('eventos'));
     }
 
-    public function guardarSponsor(Request $request, $eventoId)
+    public function guardarSponsor(Request $request)
     {
-
+        $eventoId = $request->input('evento_id');
         $sponsor = new Sponsor;
         $sponsor->EVENTO_ID = $eventoId;
         $sponsor->SPONSOR_NOMBRE = $request->input('SPONSOR_NOMBRE');

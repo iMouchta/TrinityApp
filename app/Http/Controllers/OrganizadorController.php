@@ -16,9 +16,9 @@ class OrganizadorController extends Controller
         return view('organizador', compact('eventos'));
     }
 
-    public function guardarOrganizador(Request $request, $eventoId)
+    public function guardarOrganizador(Request $request)
     {
-
+        $eventoId = $request->input('evento_id');
         $organizador = new Organizador;
         $organizador->EVENTO_ID = $eventoId;
         $organizador->ORGANIZADOR_NOMBRE = $request->input('ORGANIZADOR_NOMBRE');
