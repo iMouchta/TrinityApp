@@ -131,17 +131,58 @@ class EventoController extends Controller
         $eventoId = $request->input('evento_id');
         return redirect()->route('editarEvento', ['eventoId' => $eventoId]);
     }
-    
+
     public function mostrarDetalleEvento(Request $request)
     {
         $eventoId = $request->input('evento_id');
         $evento = Evento::findOrFail($eventoId);
 
-        // Verificar si ya existe un formulario de registro con el campo "Correo"
         $existeFormularioCorreo = Regform::where('EVENTO_ID', $eventoId)
             ->where('REGFORM_NOMBRE', 'Correo')
             ->exists();
 
         return view('detalleEvento', ['evento' => $evento, 'existeFormularioCorreo' => $existeFormularioCorreo]);
+    }
+
+    public function actualizarEvento(Request $request, $eventoId)
+    {
+        try {
+             $request->validate([
+                'EVENTO_MODALIDAD' => 'required|in:Individual,Grupal',
+                'EVENTO_TIPO' => 'required|in:Rondas de Entrenamiento,Reclutamiento,Clasificatorios,Taller de programacion competitiva,Competencias,Evento especial',
+                'EVENTO_DESCRIPCION' => 'required',
+                'EVENTO_BASES' => 'required',
+                'EVENTO_UBICACION' => 'required|min:8|max:250',
+            ]);
+            $evento = Evento::findOrFail($eventoId);
+            $evento->EVENTO_MODALIDAD = $request->input('EVENTO_MODALIDAD');
+            $evento->EVENTO_TIPO = $request->input('EVENTO_TIPO');
+            $evento->EVENTO_DESCRIPCION = $request->input('EVENTO_DESCRIPCION');
+            $evento->EVENTO_BASES = $request->input('EVENTO_BASES');
+            $evento->EVENTO_UBICACION = $request->input('EVENTO_UBICACION');
+            $evento->save();
+            $this->actualizarFechas($evento, $request->input('fechas'));
+
+            return redirect()->route('evento')->with('success', 'Evento actualizado correctamente.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Error al actualizar el evento.']);
+        }
+    }
+
+    private function actualizarFechas(Evento $evento, $fechas)
+    {
+        $evento->fechas()->delete();
+
+        if ($fechas && is_array($fechas)) {
+            foreach ($fechas['FECHA_NOMBRE'] as $key => $nombreFecha) {
+                $fecha = new Fecha;
+                $fecha->FECHA_NOMBRE = $nombreFecha;
+                $fecha->FECHA_INICIO = $fechas['FECHA_INICIO'][$key];
+                $fecha->FECHA_FINAL = $fechas['FECHA_FINAL'][$key];
+                $fecha->FECHA_DESCRIPCION = $fechas['FECHA_DESCRIPCION'][$key];
+                $fecha->EVENTO_ID = $evento->EVENTO_ID;
+                $fecha->save();
+            }
+        }
     }
 }

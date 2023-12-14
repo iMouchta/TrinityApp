@@ -3,8 +3,9 @@
 @section('editarEvento')
     <div class="container">
         <div class="row">
-            <form action="{{ route('editarEvento', ['eventoId' => $evento->EVENTO_ID]) }}" method="post"
+            <form action="{{ route('actualizarEvento', ['eventoId' => $evento->EVENTO_ID]) }}" method="post"
                 enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                @method('PUT')
                 @csrf
                 <h1>
                     <center>Editar evento</center>
@@ -27,14 +28,12 @@
                             <option value ="Competencias">Competencias</option>
                             <option value ="Evento especial">Especial</option>
                         </select>
-                        
+
                         <label for="EVENTO_DESCRIPCION" class="form-label">Descripción del Evento:</label>
-                        <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3"
-                            required>{{ $evento->EVENTO_DESCRIPCION }}</textarea>
+                        <textarea class="form-control" name= "EVENTO_DESCRIPCION" rows="3" required>{{ $evento->EVENTO_DESCRIPCION }}</textarea>
 
                         <label for="EVENTO_BASES" class="form-label">Bases del Evento:</label>
-                        <textarea class="form-control" name="EVENTO_BASES"  rows="3"
-                            style="resize: none;" required> {{ $evento->EVENTO_BASES }}</textarea>
+                        <textarea class="form-control" name="EVENTO_BASES" rows="3" style="resize: none;" required> {{ $evento->EVENTO_BASES }}</textarea>
 
                         <label for="EVENTO_UBICACION" class="form-label">Ubicacion:</label>
                         <input type="text" class="form-control" name="EVENTO_UBICACION"
@@ -43,43 +42,44 @@
                         <div class="invalid-feedback">Registre una ubicación válida"</div>
                     </div>
                 </div>
-        </div>
 
-        <div id="fechas-container">
-            <label for="fechas-container" class="form-label">Cronograma:</label>
-            @foreach ($evento->fechas as $fecha)
-            <div class="fecha-input">
-                <div class="row g-3 align-items-center">
-                    <div class="col-auto">
-                        <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
-                            placeholder="Actividad Final" value="{{ $fecha->FECHA_NOMBRE }}" required>
-                    </div>
-                    <div class="col-auto">
-                        <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
-                            placeholder="Fecha Inicial" value="{{ $fecha->FECHA_INICIO }}" required>
-                    </div>
-                    <div class="col-auto">
-                        <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
-                            placeholder="Fecha Final" value="{{ $fecha->FECHA_FIN }}" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
-                            placeholder = "Descripcion" value="{{ $fecha->FECHA_DESCRIPCION }}" >
-                    </div>
+
+                <div id="fechas-container">
+                    <label for="fechas-container" class="form-label">Cronograma:</label>
+                    @foreach ($evento->fechas as $fecha)
+                        <div class="fecha-input">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" name="fechas[FECHA_NOMBRE][]"
+                                        placeholder="Actividad Final" value="{{ $fecha->FECHA_NOMBRE }}" required>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_INICIO][]"
+                                        placeholder="Fecha Inicial" value="{{ $fecha->FECHA_INICIO }}" required>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="datetime-local" class="form-control" name="fechas[FECHA_FINAL][]"
+                                        placeholder="Fecha Final" value="{{ $fecha->FECHA_FINAL }}" required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="fechas[FECHA_DESCRIPCION][]"
+                                        placeholder = "Descripcion" value="{{ $fecha->FECHA_DESCRIPCION }}">
+                                </div>
+                            </div>
+                            <br>
+                    @endforeach
                 </div>
-                <br>
-            @endforeach
+                <button type="button" class="btn btn-primary" onclick="agregarFecha()">Agregar Fecha</button>
+
+
+
+
+                <center>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button id="cancelar" type="button" class="btn btn-danger">Cancelar</button>
+                </center>
+            </form>
         </div>
-        <button type="button" class="btn btn-primary" onclick="agregarFecha()">Agregar Fecha</button>
-
-        
-
-
-        <center>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-            <button id="cancelar" type="button" class="btn btn-danger">Cancelar</button>
-            </center>
-        </form>
 
     </div>
     <br>

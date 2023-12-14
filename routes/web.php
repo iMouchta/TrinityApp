@@ -75,3 +75,4 @@ Route::post('/guardarPatro/{eventoId}', [SponsorController::class, 'guardarPatro
 
 
 Route::post('/mostrar-detalle-evento', [EventoController::class, 'mostrarDetalleEvento'])->name('mostrarDetalleEvento');
+Route::put('/actualizar-evento/{eventoId}', [EventoController::class, 'actualizarEvento'])->name('actualizarEvento');
